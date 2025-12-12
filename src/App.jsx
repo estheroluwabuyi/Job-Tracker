@@ -1,34 +1,27 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
+import FilterBar from "./components/FilterBar"
 
 function App() {
-  const [count, setCount] = useState(0)
-
   return (
-    <>
-      <div>
-        <a href="https://vite.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
+    <div className="p-7 bg-background">
+      <div className="min-h-screen w-full bg-white shadow-2xl rounded-3xl">
+
+        {/*  HEADER*/}
+        <section className="bg-blue-500  flex justify-between items-center p-8 rounded-t-3xl">
+          <h1 className="text-[2rem] font-semibold tracking-wide uppercase font-monda"> Job Application Tracker</h1>
+
+
+          <div className="relative w-18 h-10 bg-gray-300 rounded-3xl flex items-center">
+            <div className="w-9 h-9 bg-background rounded-full absolute right-0 mx-1"></div>
+          </div>
+        </section>
+
+        {/*  MAIN CONTENT */}
+        <div className="p-8">
+          <FilterBar />
+        </div>
+
       </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.jsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
-    </>
+    </div>
   )
 }
 
