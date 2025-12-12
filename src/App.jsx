@@ -1,3 +1,4 @@
+import EmptyHomepage from "./components/EmptyHomepage"
 import FilterBar from "./components/FilterBar"
 
 function App() {
@@ -16,8 +17,9 @@ function App() {
         </section>
 
         {/*  MAIN CONTENT */}
-        <div className="p-8">
+        <div className="p-10">
           <FilterBar />
+          <EmptyHomepage />
         </div>
 
       </div>

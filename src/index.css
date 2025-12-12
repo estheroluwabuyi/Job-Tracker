@@ -10,6 +10,7 @@
 
   /* colors  */
   --color-background: var(--background);
+  --color-text: #111111;
   /* --color-gray: var(--gray);
   --color-gray-muted: var(--gray-muted);
   --color-text: var(--text);
@@ -50,6 +51,7 @@ body {
   font-size: 1.3rem;
   font-family: var(--font-inter);
   background: #f8f9fa;
+  color: var(--color-text);
 }
 
 button {
