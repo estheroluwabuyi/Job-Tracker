@@ -1,5 +1,5 @@
 import { CgNotes } from "react-icons/cg"
-import { IoIosAdd, } from "react-icons/io"
+import { FaPlus } from "react-icons/fa"
 
 function EmptyHomepage() {
     return (
@@ -7,7 +7,8 @@ function EmptyHomepage() {
             <div className="pt-25 relative ">
                 <CgNotes className="text-[20rem] text-blue " />
 
-                <div className=" border-5 rounded-full border-blue bg-background absolute bottom-0 right-5 "><IoIosAdd className="text-[5rem]  text-blue " /></div>
+                <div className=" border-5 rounded-full border-blue bg-background absolute bottom-0 right-5 p-2">
+                    <FaPlus className="text-[3rem]  text-blue " /></div>
 
             </div>
 
