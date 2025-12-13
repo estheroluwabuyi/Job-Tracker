@@ -1,6 +1,5 @@
 import { CgNotes } from "react-icons/cg"
-import { IoIosAdd, IoIosAddCircle } from "react-icons/io"
-import { IoAdd } from "react-icons/io5"
+import { IoIosAdd, } from "react-icons/io"
 
 function EmptyHomepage() {
     return (
@@ -13,8 +12,8 @@ function EmptyHomepage() {
             </div>
 
             <div className="text-center tracking-wide ">
-                <h2 className="text-[2rem] font-semibold mt-4 font-monda"> No job applications added yet </h2>
-                <p className="text-text/80 mt-2 text-[1.5rem]"> Start by adding your first application. </p></div>
+                <h2 className="text-[2rem] font-semibold mt-4"> No job applications added yet </h2>
+                <p className="text-text/80 mt-2 text-[1.5rem] font-medium"> Start by adding your first application. </p></div>
         </section>
     )
 }
