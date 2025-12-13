@@ -10,7 +10,8 @@
 
   /* colors  */
   --color-background: var(--background);
-  --color-text: #111111;
+  --color-text: var(--text);
+  --color-blue: var(--blue);
   /* --color-gray: var(--gray);
   --color-gray-muted: var(--gray-muted);
   --color-text: var(--text);
@@ -20,6 +21,8 @@
 
 :root {
   --background: #f8f9fa;
+  --blue: #2563EB;
+  --text: #111111;
   /* --gray: #9ca3af;
   --gray-muted: #6b7280;
   --text: #111111;
