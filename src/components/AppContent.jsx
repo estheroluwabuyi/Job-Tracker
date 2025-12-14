@@ -9,14 +9,19 @@ function AppContent() {
   const { toggleHomepage } = useJob();
 
   return (
-    <div className="w-full  bg-white shadow-2xl rounded-3xl">
+    <div className="rounded-3xl">
       {/* Header */}
       <Header />
 
       {/* Main Content  */}
       <div className="p-10 flex flex-col">
-        <StatusBar />
-        {toggleHomepage ? <EmptyHomepage /> : <Homepage />}
+        {toggleHomepage ? (
+          <EmptyHomepage />
+        ) : (
+          <>
+            <StatusBar /> <Homepage />
+          </>
+        )}
         <AddJob />
       </div>
     </div>

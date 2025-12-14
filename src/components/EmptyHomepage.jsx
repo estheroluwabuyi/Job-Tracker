@@ -1,15 +1,10 @@
 import { CgNotes } from "react-icons/cg";
-import { FaPlus } from "react-icons/fa";
 
 function EmptyHomepage() {
   return (
-    <section className="flex flex-col items-center justify-center gap-4 ">
-      <div className="pt-25 relative ">
+    <section className=" absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 flex flex-col items-center justify-center gap-4 ">
+      <div>
         <CgNotes className="text-[20rem] text-blue " />
-
-        {/* <div className=" border-5 rounded-full border-blue bg-background absolute bottom-0 right-5 p-2">
-          <FaPlus className="text-[3rem]  text-blue " />
-        </div> */}
       </div>
 
       <div className="text-center tracking-wide ">

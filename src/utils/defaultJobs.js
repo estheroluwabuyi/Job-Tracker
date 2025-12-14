@@ -69,7 +69,7 @@ export const defaultJobs = [
     company: "Twitter",
     status: "Ignored",
     dateApplied: "2023-05-01",
-    notes: "Applied but never heard back. Candidate decided to move on.",
+    notes: "Applied but never heard back. I've decided to move on.",
     link: "https://careers.twitter.com",
   },
   {

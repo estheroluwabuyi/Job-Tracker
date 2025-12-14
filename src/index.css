@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Monda:wght@400..700&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Monda:wght@400..700&display=swap");
 
 @custom-variant dark (&:where(.dark, .dark *));
 @import "tailwindcss";
@@ -12,19 +12,29 @@
   --color-background: var(--background);
   --color-text: var(--text);
   --color-blue: var(--blue);
-  /* --color-gray: var(--gray);
+  --color-gray: var(--gray);
+  /* 
   --color-gray-muted: var(--gray-muted);
   --color-text: var(--text);
   --color-accent-blue: var(--blue);
   --color-accent-brown: var(--brown); */
+
+  /*  *Breakpoints */
+  --breakpoint-xs: 340px;
+  --breakpoint-ss: 375px;
+  --breakpoint-sm: 640px;
+  --breakpoint-md: 768px;
+  --breakpoint-lg: 1024px;
+  --breakpoint-xl: 1280px;
+  --breakpoint-2xl: 1680px;
 }
 
 :root {
-  --background: #f8f9fa;
-  --blue: #2563EB;
+  --background: #ecf3f9;
+  --blue: #2563eb;
   --text: #111111;
+  --gray: #6b7280;
   /* --gray: #9ca3af;
-  --gray-muted: #6b7280;
   --text: #111111;
   --blue: #2563eb;
   --brown: #7b3f00; */
@@ -50,11 +60,28 @@ textarea:-webkit-autofill {
   transition-property: background-color, color !important;
 }
 
+.scrollbar-hide::-webkit-scrollbar {
+  display: none;
+}
+.scrollbar-hide {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+.status-fade {
+  mask-image: linear-gradient(to right, black 85%, transparent);
+  -webkit-mask-image: linear-gradient(to right, black 85%, transparent);
+}
+
 body {
   font-size: 1.3rem;
   font-family: var(--font-inter);
-  background: #f8f9fa;
+  background: var(--color-background);
   color: var(--color-text);
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 2rem;
 }
 
 button {

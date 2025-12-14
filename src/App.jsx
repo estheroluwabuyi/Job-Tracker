@@ -4,7 +4,7 @@ import AppContent from "./components/AppContent";
 function App() {
   return (
     <JobProvider>
-      <div className="p-7 bg-background min-h-screen flex flex-col justify-center">
+      <div className="relative w-full min-h-[calc(100vh-50px)] bg-background shadow-2xl rounded-3xl">
         <AppContent />
       </div>
     </JobProvider>
