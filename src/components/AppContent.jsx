@@ -7,7 +7,7 @@ import Homepage from "./Homepage";
 import AddJobModal from "./AddJobModal";
 
 function AppContent() {
-  const { toggleHomepage } = useJob();
+  const { jobData, showModal, setShowModal } = useJob();
 
   return (
     <div className="rounded-3xl">
@@ -16,14 +16,15 @@ function AppContent() {
 
       {/* Main Content  */}
       <div className="p-10 flex flex-col">
-        {toggleHomepage ? (
+        {jobData.length === 0 ? (
           <EmptyHomepage />
         ) : (
           <>
             <StatusBar /> <Homepage />
           </>
         )}
-        <AddJobModal />
+
+        {showModal === true && <AddJobModal />}
 
         <AddJob />
       </div>

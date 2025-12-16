@@ -1,5 +1,5 @@
 import { FaEdit, FaLink, FaTrashAlt } from "react-icons/fa";
-import { defaultJobs } from "../utils/defaultJobs";
+import { defaultJobs } from "../data/defaultJobs";
 
 function Homepage() {
   const statusStyles = {

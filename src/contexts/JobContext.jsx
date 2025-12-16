@@ -1,11 +1,13 @@
 import { createContext, useContext, useState } from "react";
+import { defaultJobs } from "../data/defaultJobs";
 
 const JobContext = createContext();
 
 function JobProvider({ children }) {
-  const [toggleHomepage, setToggleHomepage] = useState(true);
+  const [showModal, setShowModal] = useState(false);
+  const [jobData, setJobData] = useState(defaultJobs);
 
-  const value = { toggleHomepage, setToggleHomepage };
+  const value = { showModal, setShowModal, jobData, setJobData };
 
   return <JobContext.Provider value={value}>{children}</JobContext.Provider>;
 }
