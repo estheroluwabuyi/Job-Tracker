@@ -24,7 +24,7 @@ function AppContent() {
           </>
         )}
 
-        {showModal === true && <AddJobModal />}
+        {showModal && <AddJobModal />}
 
         <AddJob />
       </div>

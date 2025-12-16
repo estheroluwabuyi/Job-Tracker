@@ -1,7 +1,21 @@
+import { useEffect } from "react";
+import { useJob } from "../contexts/JobContext";
+
 function AddJobModal() {
+  const { showModal, setShowModal, handleOutsideClick } = useJob();
+
+  if (!showModal) return null;
+
   return (
-    <div className="fixed inset-0 bg-black/40 flex items-center justify-center backdrop-blur-xs z-500">
-      <form className="bg-white  rounded-3xl p-8 shadow-2xl space-y-6">
+    <div
+      className="fixed inset-0 bg-black/40 flex items-center justify-center backdrop-blur-xs z-500 p-4 xs:p-8"
+      onClick={handleOutsideClick}
+    >
+      <form
+        className="bg-white  rounded-3xl p-8 shadow-2xl space-y-6"
+        onClick={(e) => e.stopPropagation()}
+        onSubmit={(e) => e.preventDefault()}
+      >
         {/* Title */}
         <h2 className="text-[1.8rem] font-monda font-bold text-center">
           Add Job Application
@@ -79,6 +93,7 @@ function AddJobModal() {
           <button
             type="button"
             className="px-6 py-3 rounded-xl border border-gray text-gray hover:bg-gray/10 transition"
+            onClick={() => setShowModal(!showModal)}
           >
             Cancel
           </button>
