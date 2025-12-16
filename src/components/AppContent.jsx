@@ -4,6 +4,7 @@ import EmptyHomepage from "./EmptyHomepage";
 import AddJob from "./AddJob";
 import { useJob } from "../contexts/JobContext";
 import Homepage from "./Homepage";
+import AddJobModal from "./AddJobModal";
 
 function AppContent() {
   const { toggleHomepage } = useJob();
@@ -22,6 +23,8 @@ function AppContent() {
             <StatusBar /> <Homepage />
           </>
         )}
+        <AddJobModal />
+
         <AddJob />
       </div>
     </div>

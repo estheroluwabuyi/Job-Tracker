@@ -3,11 +3,11 @@ import { defaultJobs } from "../utils/defaultJobs";
 
 function Homepage() {
   const statusStyles = {
-    Applied: "bg-blue-500 text-white",
-    Interviewed: "bg-amber-500 text-white",
-    Offered: "bg-green-500 text-white",
-    Rejected: "bg-red-600 text-white",
-    Ignored: "bg-gray-400 text-white",
+    Applied: "bg-blue-500 text-background",
+    Interviewed: "bg-amber-500 text-background",
+    Offered: "bg-green-500 text-background",
+    Rejected: "bg-red-600 text-background",
+    Ignored: "bg-gray-400 text-background",
   };
 
   return (
@@ -19,7 +19,7 @@ function Homepage() {
           className="min-w-[280px] max-w-[320px]  shadow-xl bg-white rounded-3xl p-8"
         >
           <div>
-            <h2 className="text-[1.8rem] font-monda font-bold tracking-wide">
+            <h2 className="mb-3 text-[1.8rem] font-monda font-bold tracking-wide">
               {job.position}
             </h2>
             <span
