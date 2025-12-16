@@ -15,9 +15,6 @@ function AddJob() {
       disabled={showModal}
     >
       <FaPlus className="text-[3rem] rounded-full p-1 " />
-      {/* <div className="text-[1rem] -translate-y-1 p-1 tracking-wide font-bold">
-        Add Job
-      </div> */}
     </button>
   );
 }

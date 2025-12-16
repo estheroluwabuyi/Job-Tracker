@@ -48,6 +48,11 @@
 }
 
 /* Global Reset  */
+:global(.react-datepicker) {
+  font-family: inherit;
+  font-size: 1.2rem;
+}
+
 html {
   font-size: 62.5%;
   scroll-behavior: smooth;

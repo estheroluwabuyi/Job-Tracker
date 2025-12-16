@@ -7,6 +7,18 @@ function JobProvider({ children }) {
   const [showModal, setShowModal] = useState(false);
   const [jobData, setJobData] = useState(defaultJobs);
 
+  // Form states
+  const [applicationLink, setApplicationLink] = useState("");
+  const [date, setDate] = useState(new Date());
+  const [status, setStatus] = useState("Applied");
+  const [position, setPosition] = useState("");
+  const [company, setCompany] = useState("");
+  const [notes, setNotes] = useState("");
+
+  const handleCloseModal = () => {
+    setShowModal(false);
+  };
+
   //prevent body scroll when modal is open
   useEffect(() => {
     if (showModal) {
@@ -44,6 +56,10 @@ function JobProvider({ children }) {
     };
   }, [showModal, setShowModal]);
 
+  const handleAddJob = () => {
+    console.log("JOB");
+  };
+
   return (
     <JobContext.Provider
       value={{
@@ -52,6 +68,20 @@ function JobProvider({ children }) {
         jobData,
         setJobData,
         handleOutsideClick,
+        handleCloseModal,
+        applicationLink,
+        setApplicationLink,
+        date,
+        setDate,
+        status,
+        setStatus,
+        position,
+        setPosition,
+        company,
+        setCompany,
+        notes,
+        setNotes,
+        handleAddJob,
       }}
     >
       {children}
