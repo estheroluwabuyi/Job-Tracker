@@ -1,5 +1,4 @@
 import { createContext, useContext, useEffect, useState } from "react";
-import { defaultJobs } from "../data/defaultJobs";
 
 const initialForm = {
   position: "",
@@ -14,7 +13,7 @@ const JobContext = createContext();
 
 function JobProvider({ children }) {
   const [showModal, setShowModal] = useState(false);
-  // const [jobData, setJobData] = useState(defaultJobs);
+
   const [jobData, setJobData] = useState(() => {
     const saved = localStorage.getItem("jobItems");
     return saved ? JSON.parse(saved) : [];
@@ -53,6 +52,13 @@ function JobProvider({ children }) {
     setJobData((prev) => [newJob, ...prev]);
     setJobForm(initialForm);
     setShowModal(false);
+  };
+
+  // Function to delete job
+  const handleDeleteJob = (id) => {
+    if (window.confirm("Are you sure you want to delete this job?")) {
+      setJobData((job) => job.filter((item) => item.id !== id));
+    }
   };
 
   //prevent body scroll when modal is open
@@ -105,6 +111,7 @@ function JobProvider({ children }) {
         jobForm,
         setJobForm,
         updateJobForm,
+        handleDeleteJob,
       }}
     >
       {children}

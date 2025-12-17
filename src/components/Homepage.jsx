@@ -3,7 +3,7 @@ import { useJob } from "../contexts/JobContext";
 import { formatDateForDisplay } from "../helper/formatDate";
 
 function Homepage() {
-  const { jobData } = useJob();
+  const { jobData, handleDeleteJob } = useJob();
 
   const statusStyles = {
     Applied: "bg-blue-500 text-background",
@@ -62,7 +62,7 @@ function Homepage() {
                 <FaEdit size={17} />
               </button>
 
-              <button>
+              <button onClick={() => handleDeleteJob(job.id)}>
                 <FaTrashAlt size={17} />
               </button>
             </div>

@@ -7,7 +7,7 @@ import Homepage from "./Homepage";
 import AddJobModal from "./AddJobModal";
 
 function AppContent() {
-  const { jobData, showModal, setShowModal } = useJob();
+  const { jobData, showModal } = useJob();
 
   return (
     <div className="rounded-3xl">
