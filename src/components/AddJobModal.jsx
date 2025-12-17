@@ -1,22 +1,13 @@
 import { useJob } from "../contexts/JobContext";
+import { formatDateForInput } from "../helper/formatDate";
 
 function AddJobModal() {
   const {
     handleCloseModal,
     handleOutsideClick,
     handleAddJob,
-    applicationLink,
-    setApplicationLink,
-    date,
-    setDate,
-    status,
-    setStatus,
-    position,
-    setPosition,
-    company,
-    setCompany,
-    notes,
-    setNotes,
+    jobForm,
+    updateJobForm
   } = useJob();
 
 
@@ -28,7 +19,10 @@ function AddJobModal() {
       <form
         className="bg-white  rounded-3xl p-8 shadow-2xl space-y-6"
         onClick={(e) => e.stopPropagation()}
-        onSubmit={(e) => e.preventDefault()}
+        onSubmit={(e) => {
+          e.preventDefault();
+          handleAddJob();
+        }}
       >
         {/* Title */}
         <h2 className="text-[1.8rem] font-monda font-bold text-center">
@@ -44,8 +38,8 @@ function AddJobModal() {
             type="text"
             placeholder="e.g. Frontend Developer"
             className=" w-[65%] p-3 rounded-xl border border-gray/30 focus:outline-none focus:ring-2 focus:ring-blue"
-            value={position}
-            onChange={(e) => setPosition(e.target.value)}
+            value={jobForm.position}
+           onChange={(e) => updateJobForm('position', e.target.value)}
           />
         </div>
 
@@ -56,8 +50,8 @@ function AddJobModal() {
             type="text"
             placeholder="e.g. Google"
             className="w-[65%] p-3 rounded-xl border border-gray/30 focus:outline-none focus:ring-2 focus:ring-blue"
-            value={company}
-            onChange={(e) => setCompany(e.target.value)}
+            value={jobForm.company}
+            onChange={(e) => updateJobForm('company', e.target.value)}
           />
         </div>
 
@@ -70,8 +64,8 @@ function AddJobModal() {
             type="url"
             placeholder="https://..."
             className="w-[65%] p-3 rounded-xl border border-gray/30 focus:outline-none focus:ring-2 focus:ring-blue"
-            value={applicationLink}
-            onChange={(e) => setApplicationLink(e.target.value)}
+            value={jobForm.applicationLink}
+           onChange={(e) => updateJobForm('applicationLink', e.target.value)}
           />
         </div>
 
@@ -83,8 +77,8 @@ function AddJobModal() {
           <input
             type="date"
             className="w-[65%] p-3 rounded-xl border border-gray/30 focus:outline-none focus:ring-2 focus:ring-blue"
-            value={date.toISOString().split("T")[0]}
-            onChange={(e) => setDate(new Date(e.target.value))}
+            value={formatDateForInput(jobForm.date)}
+            onChange={(e) => updateJobForm('date', new Date(e.target.value))}
           />
                   
         </div>
@@ -94,8 +88,8 @@ function AddJobModal() {
           <label className="w-[35%] text-[1.2rem] font-semibold">Status</label>
           <select
             className="w-[65%] p-3 rounded-xl border border-gray/30 bg-white focus:outline-none focus:ring-2 focus:ring-blue"
-            value={status}
-            onChange={(e) => setStatus(e.target.value)}
+            value={jobForm.status}
+            onChange={(e) => updateJobForm('status', e.target.value)}
           >
             <option>Applied</option>
             <option>Interviewed</option>
@@ -112,8 +106,8 @@ function AddJobModal() {
             rows="4"
             placeholder="Optional notes..."
             className="p-3 rounded-xl border border-gray/30 resize-none focus:outline-none focus:ring-2 focus:ring-blue"
-            value={notes}
-            onChange={(e) => setNotes(e.target.value)}
+            value={jobForm.notes}
+            onChange={(e) => updateJobForm('notes', e.target.value)}
           />
         </div>
 
@@ -129,7 +123,6 @@ function AddJobModal() {
           <button
             type="submit"
             className="px-6 py-3 rounded-xl bg-blue text-white font-semibold hover:bg-blue/90 transition"
-            onClick={handleAddJob}
           >
             Save Job
           </button>

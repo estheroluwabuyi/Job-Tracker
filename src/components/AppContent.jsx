@@ -11,10 +11,8 @@ function AppContent() {
 
   return (
     <div className="rounded-3xl">
-      {/* Header */}
       <Header />
 
-      {/* Main Content  */}
       <div className="p-10 flex flex-col">
         {jobData.length === 0 ? (
           <EmptyHomepage />

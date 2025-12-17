@@ -1,6 +1,15 @@
 import { createContext, useContext, useEffect, useState } from "react";
 import { defaultJobs } from "../data/defaultJobs";
 
+const initialForm = {
+  date: new Date(),
+  status: "Applied",
+  position: "",
+  company: "",
+  notes: "",
+  applicationLink: "",
+};
+
 const JobContext = createContext();
 
 function JobProvider({ children }) {
@@ -8,15 +17,32 @@ function JobProvider({ children }) {
   const [jobData, setJobData] = useState(defaultJobs);
 
   // Form states
-  const [applicationLink, setApplicationLink] = useState("");
-  const [date, setDate] = useState(new Date());
-  const [status, setStatus] = useState("Applied");
-  const [position, setPosition] = useState("");
-  const [company, setCompany] = useState("");
-  const [notes, setNotes] = useState("");
+  const [jobForm, setJobForm] = useState(initialForm);
 
+  // Function to update field in form
+  const updateJobForm = (field, value) => {
+    setJobForm((prev) => ({
+      ...prev,
+      [field]: value,
+    }));
+  };
+
+  // Function to close modal when cancel is clicked
   const handleCloseModal = () => {
     setShowModal(false);
+    setJobForm(initialForm);
+  };
+
+  // Function to add new job when save job is clicked
+  const handleAddJob = () => {
+    const newJob = { ...jobForm, id: Date.now() };
+
+    setJobData((prev) => [newJob, ...prev]);
+    setJobForm(initialForm);
+    setShowModal(false);
+
+    console.log("New job added:", newJob);
+    console.log("Updated jobData:", jobData);
   };
 
   //prevent body scroll when modal is open
@@ -56,10 +82,6 @@ function JobProvider({ children }) {
     };
   }, [showModal, setShowModal]);
 
-  const handleAddJob = () => {
-    console.log("JOB");
-  };
-
   return (
     <JobContext.Provider
       value={{
@@ -69,19 +91,10 @@ function JobProvider({ children }) {
         setJobData,
         handleOutsideClick,
         handleCloseModal,
-        applicationLink,
-        setApplicationLink,
-        date,
-        setDate,
-        status,
-        setStatus,
-        position,
-        setPosition,
-        company,
-        setCompany,
-        notes,
-        setNotes,
         handleAddJob,
+        jobForm,
+        setJobForm,
+        updateJobForm,
       }}
     >
       {children}

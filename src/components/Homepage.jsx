@@ -1,7 +1,9 @@
 import { FaEdit, FaLink, FaTrashAlt } from "react-icons/fa";
-import { defaultJobs } from "../data/defaultJobs";
+import { useJob } from "../contexts/JobContext";
 
 function Homepage() {
+  const { jobData } = useJob();
+
   const statusStyles = {
     Applied: "bg-blue-500 text-background",
     Interviewed: "bg-amber-500 text-background",
@@ -13,7 +15,7 @@ function Homepage() {
   return (
     // <div className="mt-15 flex gap-6 overflow-x-auto pb-4 scrollbar-hide">
     <div className="mt-20  pb-4 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-10 place-items-center">
-      {defaultJobs.map((job, i) => (
+      {jobData.map((job, i) => (
         <div
           key={i}
           className="min-w-[280px] max-w-[320px]  shadow-xl bg-white rounded-3xl p-8"
