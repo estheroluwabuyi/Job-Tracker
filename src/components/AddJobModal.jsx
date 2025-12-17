@@ -40,6 +40,7 @@ function AddJobModal() {
             className=" w-[65%] p-3 rounded-xl border border-gray/30 focus:outline-none focus:ring-2 focus:ring-blue"
             value={jobForm.position}
            onChange={(e) => updateJobForm('position', e.target.value)}
+           required
           />
         </div>
 
@@ -52,6 +53,7 @@ function AddJobModal() {
             className="w-[65%] p-3 rounded-xl border border-gray/30 focus:outline-none focus:ring-2 focus:ring-blue"
             value={jobForm.company}
             onChange={(e) => updateJobForm('company', e.target.value)}
+            required
           />
         </div>
 
@@ -90,6 +92,7 @@ function AddJobModal() {
             className="w-[65%] p-3 rounded-xl border border-gray/30 bg-white focus:outline-none focus:ring-2 focus:ring-blue"
             value={jobForm.status}
             onChange={(e) => updateJobForm('status', e.target.value)}
+            required
           >
             <option>Applied</option>
             <option>Interviewed</option>

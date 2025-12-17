@@ -2,10 +2,10 @@ import { createContext, useContext, useEffect, useState } from "react";
 import { defaultJobs } from "../data/defaultJobs";
 
 const initialForm = {
-  date: new Date(),
-  status: "Applied",
   position: "",
+  status: "Applied",
   company: "",
+  date: new Date(),
   notes: "",
   applicationLink: "",
 };
@@ -14,7 +14,16 @@ const JobContext = createContext();
 
 function JobProvider({ children }) {
   const [showModal, setShowModal] = useState(false);
-  const [jobData, setJobData] = useState(defaultJobs);
+  // const [jobData, setJobData] = useState(defaultJobs);
+  const [jobData, setJobData] = useState(() => {
+    const saved = localStorage.getItem("jobItems");
+    return saved ? JSON.parse(saved) : [];
+  });
+
+  // Save to localStorage
+  useEffect(() => {
+    localStorage.setItem("jobItems", JSON.stringify(jobData));
+  }, [jobData]);
 
   // Form states
   const [jobForm, setJobForm] = useState(initialForm);
@@ -35,14 +44,15 @@ function JobProvider({ children }) {
 
   // Function to add new job when save job is clicked
   const handleAddJob = () => {
-    const newJob = { ...jobForm, id: Date.now() };
+    const newJob = {
+      ...jobForm,
+      id: Date.now(),
+      date: jobForm.date.toISOString(),
+    };
 
     setJobData((prev) => [newJob, ...prev]);
     setJobForm(initialForm);
     setShowModal(false);
-
-    console.log("New job added:", newJob);
-    console.log("Updated jobData:", jobData);
   };
 
   //prevent body scroll when modal is open

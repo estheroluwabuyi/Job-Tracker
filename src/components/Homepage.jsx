@@ -1,5 +1,6 @@
 import { FaEdit, FaLink, FaTrashAlt } from "react-icons/fa";
 import { useJob } from "../contexts/JobContext";
+import { formatDateForDisplay } from "../helper/formatDate";
 
 function Homepage() {
   const { jobData } = useJob();
@@ -33,7 +34,7 @@ function Homepage() {
 
           <div className="text-text/70 flex flex-col gap-2 my-4">
             <h3>{job.company}</h3>
-            <h3>{job.dateApplied}</h3>
+            <h3>{formatDateForDisplay(job.date)}</h3>
           </div>
 
           <div className=" bg-gray/20 rounded-xl  p-4 my-4">
@@ -46,7 +47,11 @@ function Homepage() {
           </div>
 
           <div className="flex justify-between">
-            <a href={job.link} target="_blank" rel="noopener noreferrer">
+            <a
+              href={job.applicationLink}
+              target="_blank"
+              rel="noopener noreferrer"
+            >
               <button>
                 <FaLink size={17} />
               </button>
