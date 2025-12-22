@@ -13,19 +13,62 @@ const JobContext = createContext();
 
 function JobProvider({ children }) {
   const [showModal, setShowModal] = useState(false);
+  const [isEditing, setIsEditing] = useState(false);
+  const [jobForm, setJobForm] = useState(initialForm);
 
   const [jobData, setJobData] = useState(() => {
     const saved = localStorage.getItem("jobItems");
     return saved ? JSON.parse(saved) : [];
   });
 
+  // Function to handle both add and update
+  const handleAddJob = () => {
+    if (isEditing) {
+      // Update existing job
+      setJobData((prev) =>
+        prev.map((job) => (job.id === jobForm.id ? { ...jobForm } : job)),
+      );
+      setIsEditing(false);
+    } else {
+      // Add new job
+      const newJob = {
+        ...jobForm,
+        id: Date.now(),
+        date: jobForm.date.toISOString(),
+      };
+      setJobData((prev) => [newJob, ...prev]);
+    }
+
+    setJobForm(initialForm);
+    setShowModal(false);
+  };
+
+  // Function to cancel edit
+  const cancelEdit = () => {
+    setIsEditing(false);
+    setJobForm(initialForm);
+    setShowModal(false);
+  };
+
+  // Function to start editing a job
+  const startEditJob = (job) => {
+    setJobForm({
+      id: job.id,
+      date: new Date(job.date),
+      status: job.status,
+      position: job.position,
+      company: job.company,
+      notes: job.notes || "",
+      applicationLink: job.applicationLink || "",
+    });
+    setIsEditing(true);
+    setShowModal(true);
+  };
+
   // Save to localStorage
   useEffect(() => {
     localStorage.setItem("jobItems", JSON.stringify(jobData));
   }, [jobData]);
-
-  // Form states
-  const [jobForm, setJobForm] = useState(initialForm);
 
   // Function to update field in form
   const updateJobForm = (field, value) => {
@@ -39,19 +82,6 @@ function JobProvider({ children }) {
   const handleCloseModal = () => {
     setShowModal(false);
     setJobForm(initialForm);
-  };
-
-  // Function to add new job when save job is clicked
-  const handleAddJob = () => {
-    const newJob = {
-      ...jobForm,
-      id: Date.now(),
-      date: jobForm.date.toISOString(),
-    };
-
-    setJobData((prev) => [newJob, ...prev]);
-    setJobForm(initialForm);
-    setShowModal(false);
   };
 
   // Function to delete job
@@ -109,9 +139,12 @@ function JobProvider({ children }) {
         handleCloseModal,
         handleAddJob,
         jobForm,
+        isEditing,
         setJobForm,
         updateJobForm,
         handleDeleteJob,
+        cancelEdit,
+        startEditJob,
       }}
     >
       {children}

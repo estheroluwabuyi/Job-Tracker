@@ -7,9 +7,10 @@ function AddJobModal() {
     handleOutsideClick,
     handleAddJob,
     jobForm,
-    updateJobForm
+    updateJobForm,
+    isEditing,
+    cancelEdit,
   } = useJob();
-
 
   return (
     <div
@@ -39,8 +40,8 @@ function AddJobModal() {
             placeholder="e.g. Frontend Developer"
             className=" w-[65%] p-3 rounded-xl border border-gray/30 focus:outline-none focus:ring-2 focus:ring-blue"
             value={jobForm.position}
-           onChange={(e) => updateJobForm('position', e.target.value)}
-           required
+            onChange={(e) => updateJobForm("position", e.target.value)}
+            required
           />
         </div>
 
@@ -52,7 +53,7 @@ function AddJobModal() {
             placeholder="e.g. Google"
             className="w-[65%] p-3 rounded-xl border border-gray/30 focus:outline-none focus:ring-2 focus:ring-blue"
             value={jobForm.company}
-            onChange={(e) => updateJobForm('company', e.target.value)}
+            onChange={(e) => updateJobForm("company", e.target.value)}
             required
           />
         </div>
@@ -67,7 +68,7 @@ function AddJobModal() {
             placeholder="https://..."
             className="w-[65%] p-3 rounded-xl border border-gray/30 focus:outline-none focus:ring-2 focus:ring-blue"
             value={jobForm.applicationLink}
-           onChange={(e) => updateJobForm('applicationLink', e.target.value)}
+            onChange={(e) => updateJobForm("applicationLink", e.target.value)}
           />
         </div>
 
@@ -80,9 +81,8 @@ function AddJobModal() {
             type="date"
             className="w-[65%] p-3 rounded-xl border border-gray/30 focus:outline-none focus:ring-2 focus:ring-blue"
             value={formatDateForInput(jobForm.date)}
-            onChange={(e) => updateJobForm('date', new Date(e.target.value))}
+            onChange={(e) => updateJobForm("date", new Date(e.target.value))}
           />
-                  
         </div>
 
         {/* Status */}
@@ -91,7 +91,7 @@ function AddJobModal() {
           <select
             className="w-[65%] p-3 rounded-xl border border-gray/30 bg-white focus:outline-none focus:ring-2 focus:ring-blue"
             value={jobForm.status}
-            onChange={(e) => updateJobForm('status', e.target.value)}
+            onChange={(e) => updateJobForm("status", e.target.value)}
             required
           >
             <option>Applied</option>
@@ -110,7 +110,7 @@ function AddJobModal() {
             placeholder="Optional notes..."
             className="p-3 rounded-xl border border-gray/30 resize-none focus:outline-none focus:ring-2 focus:ring-blue"
             value={jobForm.notes}
-            onChange={(e) => updateJobForm('notes', e.target.value)}
+            onChange={(e) => updateJobForm("notes", e.target.value)}
           />
         </div>
 
@@ -119,7 +119,7 @@ function AddJobModal() {
           <button
             type="button"
             className="px-6 py-3 rounded-xl border border-gray text-gray hover:bg-gray/10 transition"
-            onClick={handleCloseModal}
+            onClick={isEditing ? cancelEdit : handleCloseModal}
           >
             Cancel
           </button>
@@ -127,7 +127,7 @@ function AddJobModal() {
             type="submit"
             className="px-6 py-3 rounded-xl bg-blue text-white font-semibold hover:bg-blue/90 transition"
           >
-            Save Job
+            {isEditing ? "Update Job" : "Save Job"}
           </button>
         </div>
       </form>

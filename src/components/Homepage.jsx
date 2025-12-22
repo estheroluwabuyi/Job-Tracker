@@ -3,8 +3,7 @@ import { useJob } from "../contexts/JobContext";
 import { formatDateForDisplay } from "../helper/formatDate";
 
 function Homepage() {
-  const { jobData, handleDeleteJob } = useJob();
-  console.log(jobData[0].applicationLink.length);
+  const { jobData, handleDeleteJob, startEditJob } = useJob();
 
   const statusStyles = {
     Applied: "bg-blue-500 text-background",
@@ -65,7 +64,7 @@ function Homepage() {
             )}
 
             <div className="flex justify-end items-center gap-7">
-              <button>
+              <button onClick={() => startEditJob(job)}>
                 <FaEdit size={17} />
               </button>
 
