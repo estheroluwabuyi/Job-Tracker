@@ -4,6 +4,7 @@ import { formatDateForDisplay } from "../helper/formatDate";
 
 function Homepage() {
   const { jobData, handleDeleteJob } = useJob();
+  console.log(jobData[0].applicationLink.length);
 
   const statusStyles = {
     Applied: "bg-blue-500 text-background",
@@ -46,18 +47,24 @@ function Homepage() {
             </p>
           </div>
 
-          <div className="flex justify-between">
-            <a
-              href={job.applicationLink}
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              <button>
-                <FaLink size={17} />
-              </button>
-            </a>
+          <div
+            className={
+              job.applicationLink ? "flex justify-between mt-10" : "mt-10"
+            }
+          >
+            {job.applicationLink && (
+              <a
+                href={job.applicationLink}
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                <button>
+                  <FaLink size={17} />
+                </button>
+              </a>
+            )}
 
-            <div className="flex justify-center items-center gap-7">
+            <div className="flex justify-end items-center gap-7">
               <button>
                 <FaEdit size={17} />
               </button>
