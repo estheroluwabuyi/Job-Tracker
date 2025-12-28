@@ -1,9 +1,11 @@
 import { FaEdit, FaLink, FaTrashAlt } from "react-icons/fa";
 import { useJob } from "../contexts/JobContext";
 import { formatDateForDisplay } from "../helper/formatDate";
+import { useFilter } from "../contexts/FilterContext";
 
 function Homepage() {
-  const { jobData, handleDeleteJob, startEditJob } = useJob();
+  const { handleDeleteJob, startEditJob } = useJob();
+  const { filteredJobs } = useFilter();
 
   const statusStyles = {
     Applied: "bg-blue-500 text-background",
@@ -16,9 +18,9 @@ function Homepage() {
   return (
     // <div className="mt-15 flex gap-6 overflow-x-auto pb-4 scrollbar-hide">
     <div className="mt-20  pb-4 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-10 place-items-center">
-      {jobData.map((job, i) => (
+      {filteredJobs.map((job) => (
         <div
-          key={i}
+          key={job.id}
           className="min-w-[280px] max-w-[320px]  shadow-xl bg-white rounded-3xl p-8"
         >
           <div>
