@@ -1,4 +1,4 @@
-import { createContext, useContext, useState } from "react";
+import { createContext, useContext, useEffect, useState } from "react";
 import { useJob } from "./JobContext";
 const STATUSES = [
   "All Jobs",
@@ -12,13 +12,27 @@ const STATUSES = [
 const FilterContext = createContext();
 
 function FilterProvider({ children }) {
+  // const [jobData, setJobData] = useState(() => {
+  //   const saved = localStorage.getItem("jobItems");
+  //   return saved ? JSON.parse(saved) : [];
+  // });
+
   const { jobData } = useJob();
-  const [statusFilter, setStatusFilter] = useState("All Jobs");
+  // const [statusFilter, setStatusFilter] = useState("All Jobs");
+  const [statusFilter, setStatusFilter] = useState(() => {
+    const saved = localStorage.getItem("filterItems");
+    return saved ? JSON.parse(saved) : "All Jobs";
+  });
 
   const filteredJobs =
     statusFilter === "All Jobs"
       ? jobData
       : jobData.filter((job) => job.status === statusFilter);
+
+  // Save to localStorage
+  useEffect(() => {
+    localStorage.setItem("filterItems", JSON.stringify(statusFilter));
+  }, [statusFilter]);
 
   return (
     <FilterContext.Provider
