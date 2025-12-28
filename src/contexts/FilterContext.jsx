@@ -12,13 +12,7 @@ const STATUSES = [
 const FilterContext = createContext();
 
 function FilterProvider({ children }) {
-  // const [jobData, setJobData] = useState(() => {
-  //   const saved = localStorage.getItem("jobItems");
-  //   return saved ? JSON.parse(saved) : [];
-  // });
-
   const { jobData } = useJob();
-  // const [statusFilter, setStatusFilter] = useState("All Jobs");
   const [statusFilter, setStatusFilter] = useState(() => {
     const saved = localStorage.getItem("filterItems");
     return saved ? JSON.parse(saved) : "All Jobs";
