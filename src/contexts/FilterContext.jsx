@@ -13,20 +13,21 @@ const FilterContext = createContext();
 
 function FilterProvider({ children }) {
   const { jobData } = useJob();
-  const [statusFilter, setStatusFilter] = useState(() => {
-    const saved = localStorage.getItem("filterItems");
-    return saved ? JSON.parse(saved) : "All Jobs";
-  });
+  // const [statusFilter, setStatusFilter] = useState(() => {
+  //   const saved = localStorage.getItem("filterItems");
+  //   return saved ? JSON.parse(saved) : "All Jobs";
+  // });
+  const [statusFilter, setStatusFilter] = useState("All Jobs");
 
   const filteredJobs =
     statusFilter === "All Jobs"
       ? jobData
       : jobData.filter((job) => job.status === statusFilter);
 
-  // Save to localStorage
-  useEffect(() => {
-    localStorage.setItem("filterItems", JSON.stringify(statusFilter));
-  }, [statusFilter]);
+  // // Save to localStorage
+  // useEffect(() => {
+  //   localStorage.setItem("filterItems", JSON.stringify(statusFilter));
+  // }, [statusFilter]);
 
   return (
     <FilterContext.Provider

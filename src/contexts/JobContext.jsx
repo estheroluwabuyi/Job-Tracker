@@ -108,6 +108,8 @@ function JobProvider({ children }) {
   const handleOutsideClick = (e) => {
     if (e.target === e.currentTarget) {
       setShowModal(false);
+      setIsEditing(false);
+      setJobForm(initialForm);
     }
   };
 

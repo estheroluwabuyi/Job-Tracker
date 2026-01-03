@@ -4,6 +4,10 @@ import { formatDateForDisplay } from "../helper/formatDate";
 import { useFilter } from "../contexts/FilterContext";
 import { HiOutlineInbox } from "react-icons/hi2";
 
+import { supabase } from "../lib/supabase";
+
+console.log(supabase);
+
 function Homepage() {
   const { handleDeleteJob, startEditJob } = useJob();
   const { filteredJobs, statusFilter } = useFilter();
