@@ -21,7 +21,7 @@ function JobProvider({ children }) {
   const [jobData, setJobData] = useState([]);  
   const [loading, setLoading] = useState(true);  
 
-  // ========== FETCH JOBS FROM SUPABASE ==========
+  // FETCH JOBS FROM SUPABASE
   useEffect(() => {
     if (user) {
       fetchJobs();
@@ -29,7 +29,7 @@ function JobProvider({ children }) {
       setJobData([]);  // Clear data if no user
       setLoading(false);
     }
-  }, [user]);  // ← RE-FETCH WHEN USER CHANGES
+  }, [user]);  // fetch again when user changes
 
   const fetchJobs = async () => {
     if (!user) return;
@@ -38,20 +38,20 @@ function JobProvider({ children }) {
     const { data, error } = await supabase
       .from('jobs')
       .select('*')
-      .eq('user_id', user.id)  // ← ONLY GET CURRENT USER'S JOBS
-      .order('date', { ascending: false });  // ← NEWEST FIRST
+      .eq('user_id', user.id)  // get only jobs for the logged-in user
+      .order('date', { ascending: false });  // most recent first
     
     if (error) {
       console.error('Error fetching jobs:', error);
-      // Optional: Show error to user
+      
     } else {
       setJobData(data || []);
     }
     setLoading(false);
   };
 
-  // ========== HANDLE ADD/UPDATE JOB ==========
-  const handleAddJob = async () => {  // ← MAKE ASYNC
+  // HANDLE ADD/UPDATE JOB
+  const handleAddJob = async () => {  //  MAKE ASYNC
     if (!user) {
       console.error('No user logged in');
       return;
@@ -62,10 +62,10 @@ function JobProvider({ children }) {
       position: jobForm.position,
       status: jobForm.status,
       company: jobForm.company,
-      date: jobForm.date.toISOString().split('T')[0],  // Format as YYYY-MM-DD
+      date: jobForm.date.toISOString().split('T')[0],  // Format to YYYY-MM-DD
       notes: jobForm.notes,
-      application_link: jobForm.applicationLink,  // ← Note: underscore for Supabase column
-      user_id: user.id  // ← ASSOCIATE WITH USER
+      application_link: jobForm.applicationLink,  // underscore for Supabase column
+      user_id: user.id  //  ASSOCIATE WITH USER
     };
 
     try {
@@ -75,7 +75,7 @@ function JobProvider({ children }) {
           .from('jobs')
           .update(jobToSave)
           .eq('id', jobForm.id)
-          .eq('user_id', user.id);  // ← SECURITY: Only update user's own jobs
+          .eq('user_id', user.id);  // Only update user's own jobs
         
         if (error) throw error;
       } else {
@@ -102,8 +102,8 @@ function JobProvider({ children }) {
     }
   };
 
-  // ========== HANDLE DELETE JOB ==========
-  const handleDeleteJob = async (id) => {  // ← MAKE ASYNC
+  // HANDLE DELETE JOB
+  const handleDeleteJob = async (id) => {
     if (!user) return;
     
     if (window.confirm("Are you sure you want to delete this job?")) {
@@ -112,7 +112,7 @@ function JobProvider({ children }) {
           .from('jobs')
           .delete()
           .eq('id', id)
-          .eq('user_id', user.id);  // ← SECURITY: Only delete user's own jobs
+          .eq('user_id', user.id);  //  Only delete user's own jobs
         
         if (error) throw error;
         
@@ -126,7 +126,7 @@ function JobProvider({ children }) {
     }
   };
 
-  // ========== START EDITING JOB ==========
+  // START EDITING JOB
   const startEditJob = (job) => {
     setJobForm({
       id: job.id,
@@ -135,20 +135,20 @@ function JobProvider({ children }) {
       company: job.company,
       date: new Date(job.date),
       notes: job.notes || "",
-      applicationLink: job.application_link || "",  // ← Note: application_link from Supabase
+      applicationLink: job.application_link || "",  // application_link from Supabase
     });
     setIsEditing(true);
     setShowModal(true);
   };
 
-  // ========== CANCEL EDIT ==========
+  // CANCEL EDIT
   const cancelEdit = () => {
     setIsEditing(false);
     setJobForm(initialForm);
     setShowModal(false);
   };
 
-  // ========== UPDATE FORM FIELD ==========
+  // UPDATE FORM FIELD
   const updateJobForm = (field, value) => {
     setJobForm((prev) => ({
       ...prev,
@@ -156,14 +156,14 @@ function JobProvider({ children }) {
     }));
   };
 
-  // ========== CLOSE MODAL ==========
+  // CLOSE MODAL
   const handleCloseModal = () => {
     setShowModal(false);
     setJobForm(initialForm);
     setIsEditing(false);
   };
 
-  // ========== PREVENT BODY SCROLL ==========
+  // PREVENT BODY SCROLL
   useEffect(() => {
     if (showModal) {
       document.body.style.overflow = "hidden";
@@ -176,7 +176,7 @@ function JobProvider({ children }) {
     };
   }, [showModal]);
 
-  // ========== HANDLE OUTSIDE CLICK ==========
+  // HANDLE OUTSIDE CLICK
   const handleOutsideClick = (e) => {
     if (e.target === e.currentTarget) {
       setShowModal(false);
@@ -185,7 +185,7 @@ function JobProvider({ children }) {
     }
   };
 
-  // ========== HANDLE ESCAPE KEY ==========
+  // HANDLE ESCAPE KEY
   useEffect(() => {
     const handleEscape = (e) => {
       if (e.key === "Escape") {
@@ -202,7 +202,7 @@ function JobProvider({ children }) {
     };
   }, [showModal, setShowModal]);
 
-  // ========== PROVIDER VALUE ==========
+  // PROVIDER VALUE
   return (
     <JobContext.Provider
       value={{
@@ -210,7 +210,7 @@ function JobProvider({ children }) {
         setShowModal,
         jobData,
         setJobData,
-        loading,  // ← ADD LOADING TO CONTEXT
+        loading,  
         handleOutsideClick,
         handleCloseModal,
         handleAddJob,

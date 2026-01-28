@@ -39,7 +39,7 @@ function Homepage() {
         filteredJobs.map((job) => (
           <div
             key={job.id}
-            className="min-w-[280px] max-w-[320px]  shadow-xl bg-white rounded-3xl p-8"
+            className="min-w-[280px] max-w-[320px]   shadow-xl bg-white rounded-3xl p-8"
           >
             <div>
               <h2 className="mb-3 text-[1.8rem] font-monda font-bold tracking-wide">
@@ -72,12 +72,12 @@ function Homepage() {
 
             <div
               className={
-                job.applicationLink ? "flex justify-between mt-10" : "mt-10"
+                job.application_link ? "flex justify-between mt-10" : "mt-10"
               }
             >
-              {job.applicationLink && (
+              {job.application_link && (
                 <a
-                  href={job.applicationLink}
+                  href={job.application_link}
                   target="_blank"
                   rel="noopener noreferrer"
                 >
