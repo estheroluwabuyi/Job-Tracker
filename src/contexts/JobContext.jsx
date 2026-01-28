@@ -1,4 +1,6 @@
 import { createContext, useContext, useEffect, useState } from "react";
+import { supabase } from "../../lib/supabase";
+import { useAuth } from "./AuthContext";
 
 const initialForm = {
   position: "",
@@ -12,65 +14,141 @@ const initialForm = {
 const JobContext = createContext();
 
 function JobProvider({ children }) {
+  const { user } = useAuth();  
   const [showModal, setShowModal] = useState(false);
   const [isEditing, setIsEditing] = useState(false);
   const [jobForm, setJobForm] = useState(initialForm);
+  const [jobData, setJobData] = useState([]);  
+  const [loading, setLoading] = useState(true);  
 
-  const [jobData, setJobData] = useState(() => {
-    const saved = localStorage.getItem("jobItems");
-    return saved ? JSON.parse(saved) : [];
-  });
-
-  // Function to handle both add and update
-  const handleAddJob = () => {
-    if (isEditing) {
-      // Update existing job
-      setJobData((prev) =>
-        prev.map((job) => (job.id === jobForm.id ? { ...jobForm } : job)),
-      );
-      setIsEditing(false);
+  // ========== FETCH JOBS FROM SUPABASE ==========
+  useEffect(() => {
+    if (user) {
+      fetchJobs();
     } else {
-      // Add new job
-      const newJob = {
-        ...jobForm,
-        id: Date.now(),
-        date: jobForm.date.toISOString(),
-      };
-      setJobData((prev) => [newJob, ...prev]);
+      setJobData([]);  // Clear data if no user
+      setLoading(false);
     }
+  }, [user]);  // ← RE-FETCH WHEN USER CHANGES
 
-    setJobForm(initialForm);
-    setShowModal(false);
+  const fetchJobs = async () => {
+    if (!user) return;
+    
+    setLoading(true);
+    const { data, error } = await supabase
+      .from('jobs')
+      .select('*')
+      .eq('user_id', user.id)  // ← ONLY GET CURRENT USER'S JOBS
+      .order('date', { ascending: false });  // ← NEWEST FIRST
+    
+    if (error) {
+      console.error('Error fetching jobs:', error);
+      // Optional: Show error to user
+    } else {
+      setJobData(data || []);
+    }
+    setLoading(false);
   };
 
-  // Function to cancel edit
+  // ========== HANDLE ADD/UPDATE JOB ==========
+  const handleAddJob = async () => {  // ← MAKE ASYNC
+    if (!user) {
+      console.error('No user logged in');
+      return;
+    }
+
+    // Prepare job data for Supabase
+    const jobToSave = {
+      position: jobForm.position,
+      status: jobForm.status,
+      company: jobForm.company,
+      date: jobForm.date.toISOString().split('T')[0],  // Format as YYYY-MM-DD
+      notes: jobForm.notes,
+      application_link: jobForm.applicationLink,  // ← Note: underscore for Supabase column
+      user_id: user.id  // ← ASSOCIATE WITH USER
+    };
+
+    try {
+      if (isEditing) {
+        // UPDATE EXISTING JOB
+        const { error } = await supabase
+          .from('jobs')
+          .update(jobToSave)
+          .eq('id', jobForm.id)
+          .eq('user_id', user.id);  // ← SECURITY: Only update user's own jobs
+        
+        if (error) throw error;
+      } else {
+        // ADD NEW JOB
+        const { error } = await supabase
+          .from('jobs')
+          .insert([jobToSave]);
+        
+        if (error) throw error;
+      }
+
+      // Refresh jobs from database
+      await fetchJobs();
+      
+      // Reset form and close modal
+      setJobForm(initialForm);
+      setIsEditing(false);
+      setShowModal(false);
+      
+    } catch (error) {
+      console.error('Error saving job:', error);
+      // Optional: Show error message to user
+      alert(`Error saving job: ${error.message}`);
+    }
+  };
+
+  // ========== HANDLE DELETE JOB ==========
+  const handleDeleteJob = async (id) => {  // ← MAKE ASYNC
+    if (!user) return;
+    
+    if (window.confirm("Are you sure you want to delete this job?")) {
+      try {
+        const { error } = await supabase
+          .from('jobs')
+          .delete()
+          .eq('id', id)
+          .eq('user_id', user.id);  // ← SECURITY: Only delete user's own jobs
+        
+        if (error) throw error;
+        
+        // Refresh jobs from database
+        await fetchJobs();
+        
+      } catch (error) {
+        console.error('Error deleting job:', error);
+        alert(`Error deleting job: ${error.message}`);
+      }
+    }
+  };
+
+  // ========== START EDITING JOB ==========
+  const startEditJob = (job) => {
+    setJobForm({
+      id: job.id,
+      position: job.position,
+      status: job.status,
+      company: job.company,
+      date: new Date(job.date),
+      notes: job.notes || "",
+      applicationLink: job.application_link || "",  // ← Note: application_link from Supabase
+    });
+    setIsEditing(true);
+    setShowModal(true);
+  };
+
+  // ========== CANCEL EDIT ==========
   const cancelEdit = () => {
     setIsEditing(false);
     setJobForm(initialForm);
     setShowModal(false);
   };
 
-  // Function to start editing a job
-  const startEditJob = (job) => {
-    setJobForm({
-      id: job.id,
-      date: new Date(job.date),
-      status: job.status,
-      position: job.position,
-      company: job.company,
-      notes: job.notes || "",
-      applicationLink: job.applicationLink || "",
-    });
-    setIsEditing(true);
-    setShowModal(true);
-  };
-
-  // Save to localStorage
-  useEffect(() => {
-    localStorage.setItem("jobItems", JSON.stringify(jobData));
-  }, [jobData]);
-
-  // Function to update field in form
+  // ========== UPDATE FORM FIELD ==========
   const updateJobForm = (field, value) => {
     setJobForm((prev) => ({
       ...prev,
@@ -78,20 +156,14 @@ function JobProvider({ children }) {
     }));
   };
 
-  // Function to close modal when cancel is clicked
+  // ========== CLOSE MODAL ==========
   const handleCloseModal = () => {
     setShowModal(false);
     setJobForm(initialForm);
+    setIsEditing(false);
   };
 
-  // Function to delete job
-  const handleDeleteJob = (id) => {
-    if (window.confirm("Are you sure you want to delete this job?")) {
-      setJobData((job) => job.filter((item) => item.id !== id));
-    }
-  };
-
-  //prevent body scroll when modal is open
+  // ========== PREVENT BODY SCROLL ==========
   useEffect(() => {
     if (showModal) {
       document.body.style.overflow = "hidden";
@@ -104,7 +176,7 @@ function JobProvider({ children }) {
     };
   }, [showModal]);
 
-  // Handle outside click
+  // ========== HANDLE OUTSIDE CLICK ==========
   const handleOutsideClick = (e) => {
     if (e.target === e.currentTarget) {
       setShowModal(false);
@@ -113,7 +185,7 @@ function JobProvider({ children }) {
     }
   };
 
-  // Handle Escape key press
+  // ========== HANDLE ESCAPE KEY ==========
   useEffect(() => {
     const handleEscape = (e) => {
       if (e.key === "Escape") {
@@ -130,6 +202,7 @@ function JobProvider({ children }) {
     };
   }, [showModal, setShowModal]);
 
+  // ========== PROVIDER VALUE ==========
   return (
     <JobContext.Provider
       value={{
@@ -137,12 +210,12 @@ function JobProvider({ children }) {
         setShowModal,
         jobData,
         setJobData,
+        loading,  // ← ADD LOADING TO CONTEXT
         handleOutsideClick,
         handleCloseModal,
         handleAddJob,
         jobForm,
         isEditing,
-        setJobForm,
         updateJobForm,
         handleDeleteJob,
         cancelEdit,
