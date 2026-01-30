@@ -4,8 +4,6 @@ import { formatDateForDisplay } from "../helper/formatDate";
 import { useFilter } from "../contexts/FilterContext";
 import { HiOutlineInbox } from "react-icons/hi2";
 
-
-
 function Homepage() {
   const { handleDeleteJob, startEditJob } = useJob();
   const { filteredJobs, statusFilter } = useFilter();
@@ -22,18 +20,31 @@ function Homepage() {
     // <div className="mt-15 flex gap-6 overflow-x-auto pb-4 scrollbar-hide">
     <div className="mt-20  pb-4 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-10 place-items-center">
       {filteredJobs.length === 0 ? (
-        <div className="col-span-full flex flex-col items-center justify-center text-center mt-20 text-text/70 ">
-          <HiOutlineInbox size={64} className="mb-4 text-text/40" />
-
-          <h3 className="text-[1.8rem] font-semibold mb-2">No jobs found</h3>
-
-          <p className="text-[1.5rem] max-w-[320px]">
-            You don’t have any{" "}
-            <span className="font-semibold">{statusFilter}</span> jobs yet.
+        // No jobs message
+        <div className="col-span-full flex flex-col items-center justify-center text-center mt-20">
+          <HiOutlineInbox size={64} className="mb-4 text-blue-300" />
+          <h3 className="text-[1.8rem] font-semibold mb-2 text-gray-800">
+            No {statusFilter.toLowerCase()} jobs yet
+          </h3>
+          <p className="text-[1.4rem] text-gray-600 max-w-[320px] mb-4">
+            This filter is empty, but that's okay!
           </p>
-          <p className="mt-2 text-text/50 tracking-wide">
-            Try switching filters or add a new job.
-          </p>
+
+          <div className="bg-gradient-to-r from-blue-50 to-indigo-50 p-4 rounded-xl border border-blue-100 max-w-md">
+            <p className="text-gray-700 text-lg">
+              {statusFilter === "Applied" &&
+                "Your first application is waiting to be added!"}
+              {statusFilter === "Interviewed" &&
+                "Interviews will appear here once scheduled."}
+              {statusFilter === "Offered" &&
+                "Offers will show up here when they arrive!"}
+              {statusFilter === "Rejected" &&
+                "Rejections are just redirections. Keep going!"}
+              {!["Applied", "Interviewed", "Offered", "Rejected"].includes(
+                statusFilter,
+              ) && "Try a different filter or add a new job."}
+            </p>
+          </div>
         </div>
       ) : (
         filteredJobs.map((job) => (
