@@ -1,39 +1,42 @@
-import { useState } from 'react'
-import { useAuth } from '../contexts/AuthContext'
+import { useState } from "react";
+import { useAuth } from "../contexts/AuthContext";
 
 function LoginForm({ onSwitchToSignup }) {
-  const [email, setEmail] = useState('')
-  const [password, setPassword] = useState('')
-  const [loading, setLoading] = useState(false)
-  const [error, setError] = useState('')
-  
-  const { signIn } = useAuth()
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const [loading, setLoading] = useState(false);
+  const [error, setError] = useState("");
+
+  const { signIn } = useAuth();
 
   const handleSubmit = async (e) => {
-    e.preventDefault()
-    setLoading(true)
-    setError('')
+    e.preventDefault();
+    setLoading(true);
+    setError("");
 
-    const { error } = await signIn(email, password)
-    
+    const { error } = await signIn(email, password);
+
     if (error) {
-      setError(error.message)
+      // setError(error.message)
+      setError("Check your internet connection");
     }
-    
-    setLoading(false)
-  }
+
+    setLoading(false);
+  };
 
   return (
-    <div className="min-h-screen flex items-center justify-center bg-gradient-to-br from-blue-50 to-purple-50 p-4">
+    <div className="min-h-screen flex items-center justify-center bg-linear-to-br absolute inset-0 from-blue-50 to-purple-50 p-4">
       <div className="bg-white rounded-3xl shadow-2xl p-8 w-full max-w-md">
         <div className="text-center mb-8">
           <h1 className="text-3xl font-bold text-gray-800">Welcome Back</h1>
-          <p className="text-gray-600 mt-2">Sign in to your Job Tracker account</p>
+          <p className="text-gray-600 mt-2">
+            Sign in to your Job Tracker account
+          </p>
         </div>
 
         <form onSubmit={handleSubmit} className="space-y-6">
           <div>
-            <label className="block text-sm font-medium text-gray-700 mb-2">
+            <label className="block text-[1.1rem] font-semibold text-gray-700 mb-2">
               Email Address
             </label>
             <input
@@ -47,7 +50,7 @@ function LoginForm({ onSwitchToSignup }) {
           </div>
 
           <div>
-            <label className="block text-sm font-medium text-gray-700 mb-2">
+            <label className="block text-[1.1rem] font-semibold text-gray-700 mb-2">
               Password
             </label>
             <input
@@ -71,13 +74,13 @@ function LoginForm({ onSwitchToSignup }) {
             disabled={loading}
             className="w-full bg-blue-600 text-white p-3 rounded-xl font-semibold hover:bg-blue-700 transition disabled:opacity-50"
           >
-            {loading ? 'Signing in...' : 'Sign In'}
+            {loading ? "Signing in..." : "Sign In"}
           </button>
         </form>
 
         <div className="mt-6 text-center">
           <p className="text-gray-600">
-            Don't have an account?{' '}
+            Don't have an account?{" "}
             <button
               onClick={onSwitchToSignup}
               className="text-blue-600 font-semibold hover:underline"
@@ -88,7 +91,7 @@ function LoginForm({ onSwitchToSignup }) {
         </div>
       </div>
     </div>
-  )
+  );
 }
 
-export default LoginForm
+export default LoginForm;

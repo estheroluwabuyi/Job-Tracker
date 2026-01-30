@@ -5,6 +5,7 @@ import AddJob from "./AddJob";
 import { useJob } from "../contexts/JobContext";
 import Homepage from "./Homepage";
 import AddJobModal from "./AddJobModal";
+import WelcomeBanner from "./WelcomeBanner";
 
 function AppContent() {
   const { jobData, showModal } = useJob();
@@ -18,7 +19,9 @@ function AppContent() {
           <EmptyHomepage />
         ) : (
           <>
-            <StatusBar /> <Homepage />
+            <WelcomeBanner />
+            <StatusBar />
+            <Homepage />
           </>
         )}
 
