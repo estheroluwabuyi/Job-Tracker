@@ -1,7 +1,7 @@
 import { useAuth } from "../contexts/AuthContext";
 import { useJob } from "../contexts/JobContext";
 import { getGreeting, getUserFirstName } from "../helper/getGreeting";
-import { getThirdStat } from "../helper/getThirdStat";
+import { getThirdStat } from "../helper/JobStats";
 
 function WelcomeBanner() {
   const { user } = useAuth();

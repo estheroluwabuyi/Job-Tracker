@@ -1,75 +1,76 @@
-import { useState } from 'react'
-import { supabase } from '../../lib/supabase'
-import { useAuth } from '../contexts/AuthContext'
-import { AiFillEdit } from 'react-icons/ai'
-import { MdEdit } from 'react-icons/md'
-
+import { useState } from "react";
+import { supabase } from "../../lib/supabase";
+import { useAuth } from "../contexts/AuthContext";
+import { AiFillEdit } from "react-icons/ai";
+import { MdEdit } from "react-icons/md";
 
 function Header() {
-  const { user, signOut } = useAuth()
-  const [showEditModal, setShowEditModal] = useState(false)
-  const [newName, setNewName] = useState(user?.user_metadata?.name || '')
-  const [loading, setLoading] = useState(false)
+  const { user, signOut } = useAuth();
+  const [showEditModal, setShowEditModal] = useState(false);
+  const [newName, setNewName] = useState(user?.user_metadata?.name || "");
+  const [loading, setLoading] = useState(false);
 
   const handleLogout = async () => {
-    await signOut()
-  }
+    await signOut();
+  };
 
   const updateName = async () => {
-    if (!newName.trim()) return
-    
-    setLoading(true)
+    if (!newName.trim()) return;
+
+    setLoading(true);
     try {
-     const { error } = await supabase.auth.updateUser({
-        data: { name: newName.trim() }
-      })
-      
-      if (error) throw error
-      
-      alert('Name updated successfully!')
-      setShowEditModal(false)
+      const { error } = await supabase.auth.updateUser({
+        data: { name: newName.trim() },
+      });
+
+      if (error) throw error;
+
+      alert("Name updated successfully!");
+      setShowEditModal(false);
     } catch (error) {
-      alert(`Error updating name: ${error.message}`)
+      alert(`Error updating name: ${error.message}`);
     } finally {
-      setLoading(false)
+      setLoading(false);
     }
-  }
+  };
 
   return (
     <>
-      <section className="bg-blue flex justify-between items-center p-8 rounded-t-3xl">
+      <section className="bg-blue flex justify-between items-center p-8 rounded-t-3xl relative z-1000">
         <h1 className="text-[2rem] font-semibold tracking-wide uppercase font-monda">
-             <span className="xs:hidden">Tracker</span>
+          <span className="xs:hidden">Tracker</span>
           <span className="hidden xs:inline sm:hidden">Job Tracker</span>
           <span className="hidden sm:inline">Job Application Tracker</span>
         </h1>
 
         <div className="flex items-center gap-4">
           <div className="hidden sm:flex items-center gap-3">
-   
-            <div 
+            <div
               className="flex items-center gap-3 group cursor-pointer"
               onClick={() => {
-                setNewName(user?.user_metadata?.name || '')
-                setShowEditModal(true)
+                setNewName(user?.user_metadata?.name || "");
+                setShowEditModal(true);
               }}
             >
               <div className="w-10.5 h-1.50 bg-white rounded-full grid place-items-center group-hover:bg-blue-100 transition relative">
                 <span className="text-blue font-bold group-hover:text-blue-600 text-[1.7rem]">
-                  {user?.user_metadata?.name?.[0]?.toUpperCase() || 'U'}
+                  {user?.user_metadata?.name?.[0]?.toUpperCase() || "U"}
                 </span>
-               <div className='opacity-0 group-hover:opacity-100 transition absolute bottom-px right-0 text-black/70'> <MdEdit /></div>
+                <div className="opacity-0 group-hover:opacity-100 transition absolute bottom-px right-0 text-black/70">
+                  {" "}
+                  <MdEdit />
+                </div>
               </div>
-               </div>
+            </div>
           </div>
-          
+
           <button
             onClick={handleLogout}
             className="px-4 py-2 bg-white/20 text-white rounded-xl hover:bg-white/30 transition uppercase text-[1rem]  font-semibold"
           >
             Logout
           </button>
-          
+
           <button className="relative w-18 h-10 bg-gray rounded-3xl flex items-center shrink-0">
             <div className="w-9 h-9 bg-background rounded-full absolute right-0 mx-1"></div>
           </button>
@@ -78,16 +79,18 @@ function Header() {
 
       {/* Edit Name Modal */}
       {showEditModal && (
-        <div 
+        <div
           className="fixed inset-0 bg-black/40  backdrop-blur-xs z-500 flex items-center justify-center p-4"
           onClick={() => setShowEditModal(false)}
         >
-          <div 
+          <div
             className="bg-white rounded-2xl p-6 w-full max-w-md shadow-2xl"
             onClick={(e) => e.stopPropagation()}
           >
-            <h3 className="text-xl font-bold mb-4 text-gray-800">Edit Your Name</h3>
-            
+            <h3 className="text-xl font-bold mb-4 text-gray-800">
+              Edit Your Name
+            </h3>
+
             <div className="space-y-4">
               <div>
                 <label className="block text-sm font-medium text-gray-700 mb-2">
@@ -118,7 +121,7 @@ function Header() {
                   disabled={loading || !newName.trim()}
                   className="px-4 py-2 bg-blue-500 text-white rounded-lg hover:bg-blue-600 disabled:opacity-50 transition font-medium"
                 >
-                  {loading ? 'Saving...' : 'Save Changes'}
+                  {loading ? "Saving..." : "Save Changes"}
                 </button>
               </div>
             </div>
@@ -126,7 +129,7 @@ function Header() {
         </div>
       )}
     </>
-  )
+  );
 }
 
-export default Header
+export default Header;

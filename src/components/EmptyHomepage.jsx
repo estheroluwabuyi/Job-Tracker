@@ -8,7 +8,7 @@ function EmptyHomepage() {
   const firstName = getUserFirstName(user);
 
   return (
-    <section className=" absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 flex flex-col items-center justify-center gap-4 ">
+    <section className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full max-w-[90vw] px-4 flex flex-col items-center justify-center">
       <div>
         <CgNotes className="text-[20rem] text-blue " />
       </div>
@@ -20,7 +20,7 @@ function EmptyHomepage() {
           Ready to begin your journey?
         </h2>
 
-        <div className="bg-linear-to-r from-blue-50 to-indigo-50 p-6 rounded-2xl border border-blue-100 my-4">
+        <div className="bg-linear-to-r from-blue-50 to-indigo-50 p-3 rounded-2xl border border-blue-100 my-4">
           <p className="text-gray-700 text-[1.4rem] font-medium italic">
             "Your dream job is waiting."
           </p>
