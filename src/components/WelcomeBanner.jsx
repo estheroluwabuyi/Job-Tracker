@@ -27,7 +27,8 @@ function WelcomeBanner() {
           {getGreeting()}, <span className="text-blue-600">{firstName}</span>
         </h1>
         <p className="text-gray-600 text-lg">
-          {`Tracking ${stats.total} job${stats.total !== 1 ? "s" : ""} • ${stats.active} active`}
+          {`Tracking ${stats.total} job${stats.total !== 1 ? "s" : ""}`}
+          <span className="ml-2 text-green-500 font-medium">{` • ${stats.active} active`}</span>
         </p>
       </div>
 

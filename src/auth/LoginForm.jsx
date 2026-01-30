@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { useAuth } from "../contexts/AuthContext";
+import { getLoginErrorMessage } from "../helper/authError";
 
 function LoginForm({ onSwitchToSignup }) {
   const [email, setEmail] = useState("");
@@ -16,9 +17,13 @@ function LoginForm({ onSwitchToSignup }) {
 
     const { error } = await signIn(email, password);
 
+    // if (error) {
+    //   // setError(error.message)
+    //   setError("Check your internet connection");
+    // }
+
     if (error) {
-      // setError(error.message)
-      setError("Check your internet connection");
+      setError(getLoginErrorMessage(error));
     }
 
     setLoading(false);
