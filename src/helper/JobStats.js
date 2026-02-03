@@ -14,8 +14,8 @@ export function getThirdStat(stats) {
       return {
         value: `${stats.interviews}`,
         label: `Interview${stats.interviews !== 1 ? 's' : '' }`,
-        
-        subtext: `${interviewRate}% interview rate`,
+       // subtext: `${interviewRate}% interview rate`,
+        subtext: `Progress happening!`,
         color: 'purple',
              }
     }
