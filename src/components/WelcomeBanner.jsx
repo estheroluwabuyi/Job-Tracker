@@ -42,7 +42,7 @@ function WelcomeBanner() {
                 {stats.total}
               </div>
             </div>
-            <div className="text-gray-700 font-medium text-lg">Total {`Job${stats.total !== 1 ? "s" : ""}`}</div>
+            <div className="text-gray-700 font-medium text-lg">{`Total Job${stats.total !== 1 ? "s" : ""}`}</div>
             <div className="text-sm text-gray-500 mt-1">
               Applications tracked
             </div>
