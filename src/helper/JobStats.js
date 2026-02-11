@@ -23,7 +23,8 @@ export function getThirdStat(stats) {
     return {
       value: `${stats.applied}`,
       label: 'Applied',
-      subtext: 'Applications submitted',
+      //subtext: 'Applications submitted',
+        subtext:`Application${stats.applied !== 1 ? 's' : ''} submitted`,
       color: 'blue',
       }
   }
