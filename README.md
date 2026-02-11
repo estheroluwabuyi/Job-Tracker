@@ -1,16 +1,122 @@
-# React + Vite
+# 🧭 Job Application Tracker
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+A full-stack job tracking web application that helps users manage and monitor their job applications with clear status tracking, authentication, and persistent cloud storage.
 
-Currently, two official plugins are available:
+Built with React and Supabase, the application focuses on usability, structured state management, and secure data handling.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+---
 
-## React Compiler
+## 🚀 Live Demo
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+🔗 [https://url-shortener.me/BLBO](https://url-shortener.me/BLBO)
 
-## Expanding the ESLint configuration
+## 📂 Repository
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+🔗 [https://github.com/estheroluwabuyi/Job-Tracker](https://github.com/estheroluwabuyi/Job-Tracker)
+
+---
+
+# ✨ Features
+
+* 🔐 User authentication (Sign up / Log in)
+* 📌 Create, edit, and delete job applications
+* 🏷 Filter jobs by status:
+
+  * Applied
+  * Interviewed
+  * Offered
+  * Rejected
+  * Ignored
+* 📝 Optional notes per job entry
+* 🔗 Optional application link field
+* 📅 Date tracking for submissions
+* 🔔 Toast notifications for user feedback
+* 🎨 Clean, responsive UI (mobile-first)
+* ☁️ Persistent cloud-based storage
+
+---
+
+# 🛠 Tech Stack
+
+## Frontend
+
+* React
+* Context API (global state management)
+* Tailwind CSS
+* React Icons
+
+## Backend / Database
+
+* Supabase
+* PostgreSQL
+* Supabase Authentication
+* Row Level Security (RLS)
+
+---
+
+# 🔐 Security & Data Handling
+
+* Secure authentication using Supabase Auth
+* Row Level Security (RLS) ensures users can only access their own data
+* Persistent cloud database storage with PostgreSQL
+
+---
+
+# 🧠 Architecture & Implementation
+
+* Component-based structure for maintainability
+* Context API used for centralized state management
+* Controlled forms for input handling
+* Conditional rendering for UI states
+* Modular folder structure for scalability
+
+---
+
+# 📱 Responsive Design
+
+The application follows a mobile-first approach and is optimized for:
+
+* Mobile devices
+* Tablets
+* Desktop screens
+
+Tailwind CSS utility classes were used to ensure consistent spacing, layout balance, and visual clarity across breakpoints.
+
+---
+
+# 🎯 Key Focus Areas
+
+* Clean UI and intuitive user flows
+* Clear feedback through toast notifications
+* Maintainable and readable code structure
+* Secure data access and user isolation
+
+---
+
+# 🔧 Installation
+
+```bash
+git clone https://github.com/estheroluwabuyi/Job-Tracker.git
+cd Job-Tracker
+npm install
+npm start
+```
+
+---
+
+# 📌 Future Improvements
+
+* Advanced filtering and sorting options
+* Search functionality
+* Analytics dashboard
+* Export (CSV/PDF) functionality
+* Performance optimization
+
+---
+
+# 👩🏽‍💻 Author
+
+Esther Oluwabuyi
+Frontend Developer
+
+Portfolio: [https://esther-oluwabuyi-portfolio.vercel.app](https://esther-oluwabuyi-portfolio.vercel.app)
