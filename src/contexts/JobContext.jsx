@@ -20,8 +20,7 @@ function JobProvider({ children }) {
   const [jobForm, setJobForm] = useState(initialForm);
   const [jobData, setJobData] = useState([]);
   const [loading, setLoading] = useState(true);
-  const [isUpdating, setIsUpdating] = useState(false);
-  const [isSaving, setIsSaving] = useState(false);
+  const [isSubmitting, setIsSubmitting] = useState(false);
 
   // FETCH JOBS FROM SUPABASE
   useEffect(() => {
@@ -56,7 +55,7 @@ function JobProvider({ children }) {
     //  MAKE ASYNC
     if (!user) return;
 
-    // Prepare job data for Supabase
+    // to prepare job data for Supabase
     const jobToSave = {
       position: jobForm.position,
       status: jobForm.status,
@@ -68,9 +67,8 @@ function JobProvider({ children }) {
     };
 
     try {
+      setIsSubmitting(true);
       if (isEditing) {
-        setIsUpdating(true);
-
         // UPDATE EXISTING JOB
         const { error } = await supabase
           .from("jobs")
@@ -81,7 +79,6 @@ function JobProvider({ children }) {
         if (error) throw error;
       } else {
         // ADD NEW JOB
-        setIsSaving(true);
         const { error } = await supabase.from("jobs").insert([jobToSave]);
 
         if (error) throw error;
@@ -89,15 +86,16 @@ function JobProvider({ children }) {
 
       // Refresh jobs from database
       await fetchJobs();
-
       // Reset form and close modal
       setJobForm(initialForm);
       setIsEditing(false);
       setShowModal(false);
-      setIsUpdating(false);
-      setIsSaving(false);
     } catch (error) {
       console.error("Error saving job:", error);
+
+      alert(`Failed to ${isEditing ? "update" : "save"} job: ${error.message}`);
+    } finally {
+      setIsSubmitting(false);
     }
   };
 
@@ -179,7 +177,7 @@ function JobProvider({ children }) {
     if (e.target === e.currentTarget) {
       setShowModal(false);
       setIsEditing(false);
-      setIsUpdating(false);
+      // setIsUpdating(false);
       setJobForm(initialForm);
     }
   };
@@ -219,8 +217,7 @@ function JobProvider({ children }) {
         handleDeleteJob,
         cancelEdit,
         startEditJob,
-        isUpdating,
-        isSaving,
+        isSubmitting,
       }}
     >
       {children}
