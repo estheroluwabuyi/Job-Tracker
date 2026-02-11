@@ -1,10 +1,10 @@
-
 import { AuthProvider } from "./contexts/AuthContext";
 import { JobProvider } from "./contexts/JobContext";
 import { FilterProvider } from "./contexts/FilterContext";
 import { useAuth } from "./contexts/AuthContext";
 import AppContent from "./components/AppContent";
 import AuthWrapper from "./auth/AuthWrapper";
+import { Toaster } from "react-hot-toast";
 
 function ProtectedApp() {
   const { user, loading } = useAuth();
@@ -27,6 +27,7 @@ function ProtectedApp() {
   return (
     <JobProvider>
       <FilterProvider>
+        <Toaster position="top-right" />
         <div className="relative w-full min-h-[calc(100vh-50px)] bg-background shadow-2xl rounded-3xl">
           <AppContent />
         </div>

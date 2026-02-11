@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { useAuth } from "../contexts/AuthContext";
 import { getLoginErrorMessage } from "../helper/authError";
+import toast from "react-hot-toast";
 
 function LoginForm({ onSwitchToSignup }) {
   const [email, setEmail] = useState("");
@@ -15,12 +16,9 @@ function LoginForm({ onSwitchToSignup }) {
     setLoading(true);
     setError("");
 
-    const { error } = await signIn(email, password);
+    toast.success("Successfully signed in!", { id: "login", duration: 2000 });
 
-    // if (error) {
-    //   // setError(error.message)
-    //   setError("Check your internet connection");
-    // }
+    const { error } = await signIn(email, password);
 
     if (error) {
       setError(getLoginErrorMessage(error));

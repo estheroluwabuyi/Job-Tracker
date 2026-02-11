@@ -9,6 +9,7 @@ function AddJobModal() {
     jobForm,
     updateJobForm,
     isEditing,
+    isUpdating,
     cancelEdit,
   } = useJob();
 
@@ -118,16 +119,21 @@ function AddJobModal() {
         <div className="flex justify-end gap-4 pt-4">
           <button
             type="button"
-            className="px-6 py-3 rounded-xl border border-gray text-gray hover:bg-gray/10 transition"
+            disabled={isUpdating}
+            className="px-6 py-3 rounded-xl border border-gray text-gray hover:bg-gray/10 transition disabled:opacity-50"
             onClick={isEditing ? cancelEdit : handleCloseModal}
           >
             Cancel
           </button>
           <button
             type="submit"
-            className="px-6 py-3 rounded-xl bg-blue text-white font-semibold hover:bg-blue/90 transition"
+            disabled={isUpdating}
+            className="px-6 py-3 rounded-xl bg-blue text-white font-semibold hover:bg-blue/90 transition disabled:opacity-50"
           >
-            {isEditing ? "Update Job" : "Save Job"}
+            {/* {isEditing ? "Update Job" : "Save Job"} */}
+            {isEditing
+              ? `${isUpdating ? "Updating..." : "Update Job"}`
+              : "Save Job"}
           </button>
         </div>
       </form>
