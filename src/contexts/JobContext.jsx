@@ -1,6 +1,7 @@
 import { createContext, useContext, useEffect, useState } from "react";
 import { supabase } from "../../lib/supabase";
 import { useAuth } from "./AuthContext";
+import toast from "react-hot-toast";
 
 const initialForm = {
   position: "",
@@ -24,6 +25,7 @@ function JobProvider({ children }) {
 
   const [showDeleteModal, setShowDeleteModal] = useState(false);
   const [jobToDelete, setJobToDelete] = useState(null);
+  const [isDeleting, setIsDeleting] = useState(false);
 
   // FETCH JOBS FROM SUPABASE
   useEffect(() => {
@@ -102,31 +104,50 @@ function JobProvider({ children }) {
     }
   };
 
-  // HANDLE DELETE JOB
+  // #####HANDLE DELETE JOB#######
+  // OPEN DELETE MODAL
   const handleDeleteClick = (job) => {
     setJobToDelete(job);
     setShowDeleteModal(true);
   };
 
+  // CANCEL DELETE
+  const cancelDelete = () => {
+    setShowDeleteModal(false);
+    setJobToDelete(null);
+    setIsDeleting(false);
+  };
+
+  // Handle the actual delete logic
   const handleDeleteJob = async (id) => {
     if (!user) return;
 
-    if (window.confirm("Are you sure you want to delete this job?")) {
-      try {
-        const { error } = await supabase
-          .from("jobs")
-          .delete()
-          .eq("id", id)
-          .eq("user_id", user.id); //  Only delete user's own jobs
+    try {
+      setIsDeleting(true);
+      const { error } = await supabase
+        .from("jobs")
+        .delete()
+        .eq("id", id)
+        .eq("user_id", user.id);
 
-        if (error) throw error;
+      if (error) throw error;
 
-        // Refresh jobs from database
-        await fetchJobs();
-      } catch (error) {
-        console.error("Error deleting job:", error);
-        alert(`Error deleting job: ${error.message}`);
-      }
+      // Refresh jobs from database
+      await fetchJobs();
+      setShowDeleteModal(false);
+      setJobToDelete(null);
+    } catch (error) {
+      // use toast
+      toast.error(`Failed to delete job: ${error.message}`);
+    } finally {
+      setIsDeleting(false);
+    }
+  };
+
+  // CONFIRM DELETE
+  const confirmDelete = () => {
+    if (jobToDelete) {
+      handleDeleteJob(jobToDelete.id);
     }
   };
 
@@ -230,6 +251,9 @@ function JobProvider({ children }) {
         setShowDeleteModal,
         handleDeleteClick,
         jobToDelete,
+        cancelDelete,
+        confirmDelete,
+        isDeleting,
       }}
     >
       {children}

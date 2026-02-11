@@ -52,7 +52,7 @@ function Homepage() {
         filteredJobs.map((job) => (
           <div
             key={job.id}
-            className="min-w-[280px] max-w-[320px] shadow-xl bg-white rounded-3xl p-8 flex flex-col h-full"
+            className="w-full xs:min-w-[280px] max-w-[320px] shadow-xl bg-white rounded-3xl p-8 flex flex-col h-full"
           >
             <div>
               <h2 className="mb-3 text-[1.8rem] font-monda font-bold tracking-wide">
@@ -105,9 +105,6 @@ function Homepage() {
                   <FaEdit size={17} />
                 </button>
 
-                {/* <button onClick={() => handleDeleteJob(job.id)}>
-                  <FaTrashAlt size={17} />
-                </button> */}
                 <button onClick={() => handleDeleteClick(job)}>
                   <FaTrashAlt size={17} />
                 </button>

@@ -1,3 +1,4 @@
+import { MdError } from "react-icons/md";
 import { useJob } from "../contexts/JobContext";
 
 function DeleteJobModal() {
@@ -6,10 +7,8 @@ function DeleteJobModal() {
     jobToDelete,
     confirmDelete,
     cancelDelete,
-    // isDeleting,
+    isDeleting,
   } = useJob();
-
-  // if (!showDeleteModal) return null;
 
   return (
     showDeleteModal && (
@@ -29,18 +28,23 @@ function DeleteJobModal() {
           {jobToDelete && (
             <div className="bg-gray-50 p-4 rounded-xl mb-6">
               <p className="font-semibold text-[1.2rem]">
-                {jobToDelete.position}
+                {jobToDelete.position} at{" "}
+                <span className="text-gray-600"> {jobToDelete.company}</span>
               </p>
-              <p className="text-gray-600">{jobToDelete.company}</p>
             </div>
           )}
 
-          <p className="text-gray-600 mb-8">This action cannot be undone.</p>
+          <p className="text-gray-600 mb-8 flex items-center gap-2">
+            <span className="text-red-600 text-[1.5rem]">
+              <MdError />
+            </span>
+            This action cannot be undone.
+          </p>
 
           <div className="flex justify-end gap-4">
             <button
               type="button"
-              // disabled={isDeleting}
+              disabled={isDeleting}
               className="px-6 py-3 rounded-xl border border-gray text-gray hover:bg-gray/10 transition disabled:opacity-50"
               onClick={cancelDelete}
             >
@@ -48,12 +52,11 @@ function DeleteJobModal() {
             </button>
             <button
               type="button"
-              // disabled={isDeleting}
+              disabled={isDeleting}
               className="px-6 py-3 rounded-xl bg-red-600 text-white font-semibold hover:bg-red-700 transition disabled:opacity-50 flex items-center gap-2"
               onClick={confirmDelete}
             >
-              Delete
-              {/* {isDeleting ? "Deleting..." : "Delete"} */}
+              {isDeleting ? "Deleting..." : "Delete"}
             </button>
           </div>
         </div>
