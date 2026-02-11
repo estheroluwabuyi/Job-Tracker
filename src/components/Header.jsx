@@ -1,7 +1,7 @@
 import { useState } from "react";
+import toast from "react-hot-toast";
 import { supabase } from "../../lib/supabase";
 import { useAuth } from "../contexts/AuthContext";
-import { AiFillEdit } from "react-icons/ai";
 import { MdEdit } from "react-icons/md";
 
 function Header() {
@@ -9,9 +9,18 @@ function Header() {
   const [showEditModal, setShowEditModal] = useState(false);
   const [newName, setNewName] = useState(user?.user_metadata?.name || "");
   const [loading, setLoading] = useState(false);
+  const [logoutLoading, setLogoutLoading] = useState(false);
 
   const handleLogout = async () => {
-    await signOut();
+    setLogoutLoading(true);
+    try {
+      await signOut();
+    } catch (error) {
+      console.error("Logout error:", error);
+      toast.error("Error logging out. Please try again.");
+    } finally {
+      setLogoutLoading(false);
+    }
   };
 
   const updateName = async () => {
@@ -67,10 +76,18 @@ function Header() {
           </div>
 
           <button
+            disabled={logoutLoading}
             onClick={handleLogout}
             className="px-4 py-2 bg-white/20 text-white rounded-xl hover:bg-white/30 transition uppercase text-[1rem]  font-semibold"
           >
-            Logout
+            {logoutLoading ? (
+              <>
+                <span className="inline-block h-4 w-4 border-2 border-white border-t-transparent rounded-full animate-spin"></span>
+                Logging out...
+              </>
+            ) : (
+              "Logout"
+            )}
           </button>
 
           <button className="relative w-18 h-10 bg-gray rounded-3xl flex items-center shrink-0">
