@@ -21,6 +21,7 @@ function JobProvider({ children }) {
   const [jobData, setJobData] = useState([]);
   const [loading, setLoading] = useState(true);
   const [isUpdating, setIsUpdating] = useState(false);
+  // const [isUpdating, setIsUpdating] = useState(false);
 
   // FETCH JOBS FROM SUPABASE
   useEffect(() => {
