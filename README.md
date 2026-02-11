@@ -1,4 +1,4 @@
-# 🧭 Job Application Tracker
+# Job Application Tracker
 
 A full-stack job tracking web application that helps users manage and monitor their job applications with clear status tracking, authentication, and persistent cloud storage.
 
