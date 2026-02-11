@@ -17,8 +17,7 @@ function Homepage() {
   };
 
   return (
-    // <div className="mt-15 flex gap-6 overflow-x-auto pb-4 scrollbar-hide">
-    <div className="mt-20  pb-4 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-10 place-items-center">
+    <div className="mt-20 pb-4 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-10 auto-rows-fr">
       {filteredJobs.length === 0 ? (
         // No jobs message
         <div className="col-span-full flex flex-col items-center justify-center text-center mt-20">
@@ -50,7 +49,7 @@ function Homepage() {
         filteredJobs.map((job) => (
           <div
             key={job.id}
-            className="min-w-[280px] max-w-[320px]   shadow-xl bg-white rounded-3xl p-8"
+            className="min-w-[280px] max-w-[320px] shadow-xl bg-white rounded-3xl p-8 flex flex-col h-full"
           >
             <div>
               <h2 className="mb-3 text-[1.8rem] font-monda font-bold tracking-wide">
@@ -68,7 +67,7 @@ function Homepage() {
               <h3>{formatDateForDisplay(job.date)}</h3>
             </div>
 
-            <div className=" bg-gray/20 rounded-xl  p-4 my-4">
+            <div className=" bg-gray/20 rounded-xl  p-4 my-4 grow">
               <h4 className="uppercase text-[1.05rem] tracking-wider text-text/60 font-medium">
                 Notes
               </h4>
@@ -83,7 +82,7 @@ function Homepage() {
 
             <div
               className={
-                job.application_link ? "flex justify-between mt-10" : "mt-10"
+                job.application_link ? "flex justify-between mt-10" : "mt-auto"
               }
             >
               {job.application_link && (
@@ -98,7 +97,7 @@ function Homepage() {
                 </a>
               )}
 
-              <div className="flex justify-end items-center gap-7">
+              <div className="flex justify-end items-center gap-7 ml-auto">
                 <button onClick={() => startEditJob(job)}>
                   <FaEdit size={17} />
                 </button>
