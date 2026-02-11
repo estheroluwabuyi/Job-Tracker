@@ -21,7 +21,7 @@ function JobProvider({ children }) {
   const [jobData, setJobData] = useState([]);
   const [loading, setLoading] = useState(true);
   const [isUpdating, setIsUpdating] = useState(false);
-  // const [isUpdating, setIsUpdating] = useState(false);
+  const [isSaving, setIsSaving] = useState(false);
 
   // FETCH JOBS FROM SUPABASE
   useEffect(() => {
@@ -81,6 +81,7 @@ function JobProvider({ children }) {
         if (error) throw error;
       } else {
         // ADD NEW JOB
+        setIsSaving(true);
         const { error } = await supabase.from("jobs").insert([jobToSave]);
 
         if (error) throw error;
@@ -94,6 +95,7 @@ function JobProvider({ children }) {
       setIsEditing(false);
       setShowModal(false);
       setIsUpdating(false);
+      setIsSaving(false);
     } catch (error) {
       console.error("Error saving job:", error);
     }
@@ -218,6 +220,7 @@ function JobProvider({ children }) {
         cancelEdit,
         startEditJob,
         isUpdating,
+        isSaving,
       }}
     >
       {children}
