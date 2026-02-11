@@ -4,8 +4,11 @@ import { formatDateForDisplay } from "../helper/formatDate";
 import { useFilter } from "../contexts/FilterContext";
 import { HiOutlineInbox } from "react-icons/hi2";
 
+import DeleteJobModal from "./DeleteJobModal";
+
 function Homepage() {
-  const { handleDeleteJob, startEditJob } = useJob();
+  const { startEditJob, handleDeleteClick } = useJob();
+
   const { filteredJobs, statusFilter } = useFilter();
 
   const statusStyles = {
@@ -102,7 +105,10 @@ function Homepage() {
                   <FaEdit size={17} />
                 </button>
 
-                <button onClick={() => handleDeleteJob(job.id)}>
+                {/* <button onClick={() => handleDeleteJob(job.id)}>
+                  <FaTrashAlt size={17} />
+                </button> */}
+                <button onClick={() => handleDeleteClick(job)}>
                   <FaTrashAlt size={17} />
                 </button>
               </div>
@@ -110,6 +116,8 @@ function Homepage() {
           </div>
         ))
       )}
+
+      <DeleteJobModal />
     </div>
   );
 }

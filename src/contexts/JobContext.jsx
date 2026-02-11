@@ -22,6 +22,9 @@ function JobProvider({ children }) {
   const [loading, setLoading] = useState(true);
   const [isSubmitting, setIsSubmitting] = useState(false);
 
+  const [showDeleteModal, setShowDeleteModal] = useState(false);
+  const [jobToDelete, setJobToDelete] = useState(null);
+
   // FETCH JOBS FROM SUPABASE
   useEffect(() => {
     if (user) {
@@ -100,6 +103,11 @@ function JobProvider({ children }) {
   };
 
   // HANDLE DELETE JOB
+  const handleDeleteClick = (job) => {
+    setJobToDelete(job);
+    setShowDeleteModal(true);
+  };
+
   const handleDeleteJob = async (id) => {
     if (!user) return;
 
@@ -218,6 +226,10 @@ function JobProvider({ children }) {
         cancelEdit,
         startEditJob,
         isSubmitting,
+        showDeleteModal,
+        setShowDeleteModal,
+        handleDeleteClick,
+        jobToDelete,
       }}
     >
       {children}
