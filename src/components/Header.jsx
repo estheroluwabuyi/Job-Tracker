@@ -34,10 +34,13 @@ function Header() {
 
       if (error) throw error;
 
-      alert("Name updated successfully!");
+      //alert("Name updated successfully!");
+toast.success("Name updated successfully!")
+      
       setShowEditModal(false);
     } catch (error) {
-      alert(`Error updating name: ${error.message}`);
+      //alert(`Error updating name: ${error.message}`);
+      toast.error(`Error updating name: ${error.message}`);
     } finally {
       setLoading(false);
     }
