@@ -199,7 +199,7 @@ function JobProvider({ children }) {
     return () => {
       document.body.style.overflow = "auto";
     };
-  }, [showModal]);
+  }, [showModal, showDeleteModal]);
 
   // HANDLE OUTSIDE CLICK
   const handleOutsideClick = (e) => {
