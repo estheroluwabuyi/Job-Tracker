@@ -190,7 +190,7 @@ function JobProvider({ children }) {
 
   // PREVENT BODY SCROLL
   useEffect(() => {
-    if (showModal) {
+    if (showModal || ShowDeleteModal) {
       document.body.style.overflow = "hidden";
     } else {
       document.body.style.overflow = "auto";
@@ -206,7 +206,7 @@ function JobProvider({ children }) {
     if (e.target === e.currentTarget) {
       setShowModal(false);
       setIsEditing(false);
-      // setIsUpdating(false);
+      setShowDeleteModal(false);
       setJobForm(initialForm);
     }
   };
