@@ -1,4 +1,5 @@
 import { useState } from 'react'
+import toast from "react-hot-toast";
 import { useAuth } from '../contexts/AuthContext'
 
 function SignupForm({ onSwitchToLogin }) {
@@ -32,7 +33,8 @@ function SignupForm({ onSwitchToLogin }) {
     if (error) {
       setError(error.message)
     } else {
-      alert('Account created successfully! You can now sign in.')
+      //alert('Account created successfully! You can now sign in.')
+      toast.success("Account created successfully! You can now sign in.")
       onSwitchToLogin()
     }
     
