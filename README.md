@@ -6,17 +6,17 @@ Built with React and Supabase, the application focuses on usability, structured 
 
 ---
 
-## 🚀 Live Demo
+## Live Demo
 
 🔗 [https://url-shortener.me/BLBO](https://url-shortener.me/BLBO)
 
-## 📂 Repository
+## Repository
 
 🔗 [https://github.com/estheroluwabuyi/Job-Tracker](https://github.com/estheroluwabuyi/Job-Tracker)
 
 ---
 
-# ✨ Features
+# Features
 
 * 🔐 User authentication (Sign up / Log in)
 * 📌 Create, edit, and delete job applications
@@ -36,7 +36,7 @@ Built with React and Supabase, the application focuses on usability, structured 
 
 ---
 
-# 🛠 Tech Stack
+# Tech Stack
 
 ## Frontend
 
@@ -54,7 +54,7 @@ Built with React and Supabase, the application focuses on usability, structured 
 
 ---
 
-# 🔐 Security & Data Handling
+# Security & Data Handling
 
 * Secure authentication using Supabase Auth
 * Row Level Security (RLS) ensures users can only access their own data
@@ -62,7 +62,7 @@ Built with React and Supabase, the application focuses on usability, structured 
 
 ---
 
-# 🧠 Architecture & Implementation
+# Architecture & Implementation
 
 * Component-based structure for maintainability
 * Context API used for centralized state management
@@ -72,7 +72,7 @@ Built with React and Supabase, the application focuses on usability, structured 
 
 ---
 
-# 📱 Responsive Design
+# Responsive Design
 
 The application follows a mobile-first approach and is optimized for:
 
@@ -84,7 +84,7 @@ Tailwind CSS utility classes were used to ensure consistent spacing, layout bala
 
 ---
 
-# 🎯 Key Focus Areas
+# Key Focus Areas
 
 * Clean UI and intuitive user flows
 * Clear feedback through toast notifications
@@ -93,7 +93,7 @@ Tailwind CSS utility classes were used to ensure consistent spacing, layout bala
 
 ---
 
-# 🔧 Installation
+# Installation
 
 ```bash
 git clone https://github.com/estheroluwabuyi/Job-Tracker.git
@@ -104,7 +104,7 @@ npm start
 
 ---
 
-# 📌 Future Improvements
+# Future Improvements
 
 * Advanced filtering and sorting options
 * Search functionality
@@ -114,7 +114,7 @@ npm start
 
 ---
 
-# 👩🏽‍💻 Author
+# Author
 
 Esther Oluwabuyi
 Frontend Developer
