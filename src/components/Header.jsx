@@ -15,6 +15,7 @@ function Header() {
     setLogoutLoading(true);
     try {
       await signOut();
+      toast.success("Logout successful!");
     } catch (error) {
       console.error("Logout error:", error);
       toast.error("Error logging out. Please try again.");
