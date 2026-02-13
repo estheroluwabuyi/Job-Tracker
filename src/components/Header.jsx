@@ -1,5 +1,4 @@
 import { useState } from "react";
-import toast from "react-hot-toast";
 import { supabase } from "../../lib/supabase";
 import { useAuth } from "../contexts/AuthContext";
 import { MdEdit } from "react-icons/md";
@@ -15,10 +14,8 @@ function Header() {
     setLogoutLoading(true);
     try {
       await signOut();
-      toast.success("Logout successful!");
     } catch (error) {
       console.error("Logout error:", error);
-      toast.error("Error logging out. Please try again.");
     } finally {
       setLogoutLoading(false);
     }
@@ -35,13 +32,10 @@ function Header() {
 
       if (error) throw error;
 
-      //alert("Name updated successfully!");
-toast.success("Name updated successfully!")
-      
+      alert("Name updated successfully!");
       setShowEditModal(false);
     } catch (error) {
-      //alert(`Error updating name: ${error.message}`);
-      toast.error(`Error updating name: ${error.message}`);
+      alert(`Error updating name: ${error.message}`);
     } finally {
       setLoading(false);
     }

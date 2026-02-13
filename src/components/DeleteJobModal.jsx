@@ -38,7 +38,7 @@ function DeleteJobModal() {
             <span className="text-red-600 text-[1.5rem]">
               <MdError />
             </span>
-            This action cannot be undone.
+            This action cannot be undone
           </p>
 
           <div className="flex justify-end gap-4">
