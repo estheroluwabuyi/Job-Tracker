@@ -16,28 +16,26 @@ function SignupForm({ onSwitchToLogin }) {
     setLoading(true);
     setError("");
 
-    if (password !== confirmPassword) {
-      setError("Passwords don't match");
-      setLoading(false);
-      return;
-    }
+    try {
+      if (password !== confirmPassword) {
+        throw new Error("Your passwords don’t match yet.");
+      }
 
-    if (password.length < 6) {
-      setError("Password must be at least 6 characters");
-      setLoading(false);
-      return;
-    }
+      if (password.length < 6) {
+        throw new Error("Your password needs at least 6 characters.");
+      }
 
-    const { error } = await signUp(email, password, name);
+      const { error } = await signUp(email, password, name);
 
-    if (error) {
-      setError(error.message);
-    } else {
-      toast.success("Account created successfully! You can now sign in.");
+      if (error) throw error;
+
+      toast.success("You’re all set. Welcome aboard!");
       onSwitchToLogin();
+    } catch (err) {
+      setError(err.message);
+    } finally {
+      setLoading(false);
     }
-
-    setLoading(false);
   };
 
   return (
