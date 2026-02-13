@@ -82,23 +82,27 @@ function JobProvider({ children }) {
           .eq("user_id", user.id); // Only update user's own jobs
 
         if (error) throw error;
+        toast.success("Job updated successfully 🎉");
       } else {
         // ADD NEW JOB
         const { error } = await supabase.from("jobs").insert([jobToSave]);
 
         if (error) throw error;
+        toast.success("Job added successfully 🎉");
       }
 
       // Refresh jobs from database
       await fetchJobs();
-      // Reset form and close modal
+
       setJobForm(initialForm);
       setIsEditing(false);
       setShowModal(false);
     } catch (error) {
       console.error("Error saving job:", error);
 
-      alert(`Failed to ${isEditing ? "update" : "save"} job: ${error.message}`);
+      toast.error(
+        `Failed to ${isEditing ? "update" : "save"} job. Please try again.`,
+      );
     } finally {
       setIsSubmitting(false);
     }
@@ -134,10 +138,10 @@ function JobProvider({ children }) {
 
       // Refresh jobs from database
       await fetchJobs();
+      toast.success("Job deleted successfully 🎉", { id: "delete-job" });
       setShowDeleteModal(false);
       setJobToDelete(null);
     } catch (error) {
-      // use toast
       toast.error(`Failed to delete job: ${error.message}`);
     } finally {
       setIsDeleting(false);

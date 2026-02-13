@@ -1,56 +1,59 @@
-import { useState } from 'react'
+import { useState } from "react";
 import toast from "react-hot-toast";
-import { useAuth } from '../contexts/AuthContext'
+import { useAuth } from "../contexts/AuthContext";
 
 function SignupForm({ onSwitchToLogin }) {
-  const [email, setEmail] = useState('');
-  const [password, setPassword] = useState('');
-  const [name, setName] = useState('');
-  const [confirmPassword, setConfirmPassword] = useState('')
-  const [loading, setLoading] = useState(false)
-  const [error, setError] = useState('')
-  const { signUp } = useAuth()
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const [name, setName] = useState("");
+  const [confirmPassword, setConfirmPassword] = useState("");
+  const [loading, setLoading] = useState(false);
+  const [error, setError] = useState("");
+  const { signUp } = useAuth();
 
   const handleSubmit = async (e) => {
-    e.preventDefault()
-    setLoading(true)
-    setError('')
+    e.preventDefault();
+    setLoading(true);
+    setError("");
 
     if (password !== confirmPassword) {
-      setError("Passwords don't match")
-      setLoading(false)
-      return
+      setError("Passwords don't match");
+      setLoading(false);
+      return;
     }
 
     if (password.length < 6) {
-      setError("Password must be at least 6 characters")
-      setLoading(false)
-      return
+      setError("Password must be at least 6 characters");
+      setLoading(false);
+      return;
     }
 
-    const { error } = await signUp(email, password, name)
-    
+    const { error } = await signUp(email, password, name);
+
     if (error) {
-      setError(error.message)
+      setError(error.message);
     } else {
-      //alert('Account created successfully! You can now sign in.')
-      toast.success("Account created successfully! You can now sign in.")
-      onSwitchToLogin()
+      toast.success("Account created successfully! You can now sign in.");
+      onSwitchToLogin();
     }
-    
-    setLoading(false)
-  }
+
+    setLoading(false);
+  };
 
   return (
     <div className="min-h-screen flex items-center justify-center from-blue-50 to-purple-50 p-4 bg-linear-to-br">
       <div className="bg-white rounded-3xl shadow-2xl p-8 w-full max-w-md">
         <div className="text-center mb-8">
-          <h1 className="text-[1.7rem] font-bold text-gray-800">Create Account</h1>
-          <p className="text-gray-600 mt-2 font-medium">Get started with your Job Tracker</p>
+          <h1 className="text-[1.7rem] font-bold text-gray-800">
+            Create Account
+          </h1>
+          <p className="text-gray-600 mt-2 font-medium">
+            Get started with your Job Tracker
+          </p>
         </div>
 
         <form onSubmit={handleSubmit} className="space-y-6">
-           <div>
+          <div>
             <label className="block text-[1.1rem] font-semibold text-gray-700 mb-2">
               Name
             </label>
@@ -116,13 +119,13 @@ function SignupForm({ onSwitchToLogin }) {
             disabled={loading}
             className="w-full bg-blue-600 text-white p-3 rounded-xl font-semibold hover:bg-blue-700 transition disabled:opacity-50"
           >
-            {loading ? 'Creating account...' : 'Sign Up'}
+            {loading ? "Creating account..." : "Sign Up"}
           </button>
         </form>
 
         <div className="mt-6 text-center">
           <p className="text-gray-600">
-            Already have an account?{' '}
+            Already have an account?{" "}
             <button
               onClick={onSwitchToLogin}
               className="text-blue-600 font-semibold hover:underline"
@@ -133,7 +136,7 @@ function SignupForm({ onSwitchToLogin }) {
         </div>
       </div>
     </div>
-  )
+  );
 }
 
-export default SignupForm
+export default SignupForm;

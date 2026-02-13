@@ -16,7 +16,7 @@ function LoginForm({ onSwitchToSignup }) {
     setLoading(true);
     setError("");
 
-    toast.success("Successfully signed in!", { id: "login", duration: 2000 });
+    toast.success("Successfully signed in 🎉", { id: "login", duration: 2000 });
 
     const { error } = await signIn(email, password);
 
