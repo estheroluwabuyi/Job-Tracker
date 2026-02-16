@@ -14,7 +14,7 @@ function AddJob() {
       onClick={handleShowModal}
       disabled={showModal}
     >
-      {/* <FaPlus className="text-[3rem] rounded-full p/-1 " /> */}
+      <FaPlus className="text-[3rem] rounded-full p/-1 " />
     </button>
   );
 }
