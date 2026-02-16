@@ -55,6 +55,18 @@ function JobProvider({ children }) {
     setLoading(false);
   };
 
+  // Job > 30
+  const updateJobStatus = (jobId, newStatus) => {
+    setJobData((prev) =>
+      prev.map((job) =>
+        job.id === jobId ? { ...job, status: newStatus } : job,
+      ),
+    );
+
+    // If using Supabase/localStorage, update there too
+    // updateJobInStorage(jobId, { status: newStatus });
+  };
+
   // HANDLE ADD/UPDATE JOB
   const handleAddJob = async () => {
     //  MAKE ASYNC
@@ -259,6 +271,7 @@ function JobProvider({ children }) {
         cancelDelete,
         confirmDelete,
         isDeleting,
+        updateJobStatus,
       }}
     >
       {children}

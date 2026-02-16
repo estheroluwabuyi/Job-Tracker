@@ -3,11 +3,13 @@ import { useJob } from "../contexts/JobContext";
 import { formatDateForDisplay } from "../helper/formatDate";
 import { useFilter } from "../contexts/FilterContext";
 import { HiOutlineInbox } from "react-icons/hi2";
+import { useEffect } from "react";
 
 import DeleteJobModal from "./DeleteJobModal";
 
 function Homepage() {
-  const { startEditJob, handleDeleteClick } = useJob();
+  const { jobData, startEditJob, handleDeleteClick, updateJobStatus } =
+    useJob();
 
   const { filteredJobs, statusFilter } = useFilter();
 
@@ -15,9 +17,30 @@ function Homepage() {
     Applied: "bg-blue-500 text-background",
     Interviewed: "bg-amber-500 text-background",
     Offered: "bg-green-500 text-background",
-    Rejected: "bg-red-600 text-background",
-    Ignored: "bg-gray-400 text-background",
+    Rejected: "bg-stone-500 text-background",
+    "No Response": "bg-slate-400 text-background",
   };
+
+  // Check for stale applications on component mount and when jobs update
+  useEffect(() => {
+    const checkStaleApplications = () => {
+      const today = new Date();
+      const thirtyDaysAgo = new Date(today.setDate(today.getDate() - 30));
+
+      jobData.forEach((job) => {
+        // Only check jobs that are still in "Applied" status
+        if (job.status === "Applied") {
+          const appliedDate = new Date(job.date);
+          if (appliedDate < thirtyDaysAgo) {
+            // Move to "No Response"
+            updateJobStatus(job.id, "No Response");
+          }
+        }
+      });
+    };
+
+    checkStaleApplications();
+  }, [jobData, updateJobStatus]);
 
   return (
     <div className="mt-20 pb-4 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-10 auto-rows-fr">
@@ -42,9 +65,16 @@ function Homepage() {
                 "Offers will show up here when they arrive!"}
               {statusFilter === "Rejected" &&
                 "Rejections are just redirections. Keep going!"}
-              {!["Applied", "Interviewed", "Offered", "Rejected"].includes(
-                statusFilter,
-              ) && "Try a different filter or add a new job."}
+              {statusFilter === "No Response" &&
+                "No news yet. Follow up if it's been a while!"}
+              {![
+                "Applied",
+                "Interviewed",
+                "Offered",
+                "Rejected",
+                "No Response",
+              ].includes(statusFilter) &&
+                "Try a different filter or add a new job."}
             </p>
           </div>
         </div>
@@ -59,7 +89,9 @@ function Homepage() {
                 {job.position}
               </h2>
               <span
-                className={`px-3 py-1 rounded-lg text-[1.1rem] uppercase font-semibold ${statusStyles[job.status]}`}
+                className={`px-3 py-1 rounded-lg text-[1.1rem] uppercase font-semibold ${
+                  statusStyles[job.status] || "bg-gray-400 text-background"
+                }`}
               >
                 {job.status}
               </span>
@@ -68,9 +100,15 @@ function Homepage() {
             <div className="text-text/70 flex flex-col gap-2 my-4">
               <h3>{job.company}</h3>
               <h3>{formatDateForDisplay(job.date)}</h3>
+              {/* Optional: Show days since applied */}
+              {job.status === "No Response" && (
+                <p className="text-xs text-amber-600 mt-1">
+                  ⏳ No response after 30+ days
+                </p>
+              )}
             </div>
 
-            <div className=" bg-gray/20 rounded-xl  p-4 my-4 grow">
+            <div className="bg-gray/20 rounded-xl p-4 my-4 grow">
               <h4 className="uppercase text-[1.05rem] tracking-wider text-text/60 font-medium">
                 Notes
               </h4>

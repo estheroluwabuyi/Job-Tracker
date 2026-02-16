@@ -18,21 +18,21 @@ Built with React and Supabase, the application focuses on usability, structured 
 
 # Features
 
-* 🔐 User authentication (Sign up / Log in)
-* 📌 Create, edit, and delete job applications
-* 🏷 Filter jobs by status:
+- 🔐 User authentication (Sign up / Log in)
+- 📌 Create, edit, and delete job applications
+- 🏷 Filter jobs by status:
+  - Applied
+  - Interviewed
+  - Offered
+  - Rejected
+  - No Response
 
-  * Applied
-  * Interviewed
-  * Offered
-  * Rejected
-  * Ignored
-* 📝 Optional notes per job entry
-* 🔗 Optional application link field
-* 📅 Date tracking for submissions
-* 🔔 Toast notifications for user feedback
-* 🎨 Clean, responsive UI (mobile-first)
-* ☁️ Persistent cloud-based storage
+- 📝 Optional notes per job entry
+- 🔗 Optional application link field
+- 📅 Date tracking for submissions
+- 🔔 Toast notifications for user feedback
+- 🎨 Clean, responsive UI (mobile-first)
+- ☁️ Persistent cloud-based storage
 
 ---
 
@@ -40,35 +40,35 @@ Built with React and Supabase, the application focuses on usability, structured 
 
 ## Frontend
 
-* React
-* Context API (global state management)
-* Tailwind CSS
-* React Icons
+- React
+- Context API (global state management)
+- Tailwind CSS
+- React Icons
 
 ## Backend / Database
 
-* Supabase
-* PostgreSQL
-* Supabase Authentication
-* Row Level Security (RLS)
+- Supabase
+- PostgreSQL
+- Supabase Authentication
+- Row Level Security (RLS)
 
 ---
 
 # Security & Data Handling
 
-* Secure authentication using Supabase Auth
-* Row Level Security (RLS) ensures users can only access their own data
-* Persistent cloud database storage with PostgreSQL
+- Secure authentication using Supabase Auth
+- Row Level Security (RLS) ensures users can only access their own data
+- Persistent cloud database storage with PostgreSQL
 
 ---
 
 # Architecture & Implementation
 
-* Component-based structure for maintainability
-* Context API used for centralized state management
-* Controlled forms for input handling
-* Conditional rendering for UI states
-* Modular folder structure for scalability
+- Component-based structure for maintainability
+- Context API used for centralized state management
+- Controlled forms for input handling
+- Conditional rendering for UI states
+- Modular folder structure for scalability
 
 ---
 
@@ -76,9 +76,9 @@ Built with React and Supabase, the application focuses on usability, structured 
 
 The application follows a mobile-first approach and is optimized for:
 
-* Mobile devices
-* Tablets
-* Desktop screens
+- Mobile devices
+- Tablets
+- Desktop screens
 
 Tailwind CSS utility classes were used to ensure consistent spacing, layout balance, and visual clarity across breakpoints.
 
@@ -86,10 +86,10 @@ Tailwind CSS utility classes were used to ensure consistent spacing, layout bala
 
 # Key Focus Areas
 
-* Clean UI and intuitive user flows
-* Clear feedback through toast notifications
-* Maintainable and readable code structure
-* Secure data access and user isolation
+- Clean UI and intuitive user flows
+- Clear feedback through toast notifications
+- Maintainable and readable code structure
+- Secure data access and user isolation
 
 ---
 
@@ -106,11 +106,11 @@ npm start
 
 # Future Improvements
 
-* Advanced filtering and sorting options
-* Search functionality
-* Analytics dashboard
-* Export (CSV/PDF) functionality
-* Performance optimization
+- Advanced filtering and sorting options
+- Search functionality
+- Analytics dashboard
+- Export (CSV/PDF) functionality
+- Performance optimization
 
 ---
 

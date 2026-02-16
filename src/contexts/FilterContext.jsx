@@ -1,4 +1,4 @@
-import { createContext, useContext, useEffect, useState } from "react";
+import { createContext, useContext, useState } from "react";
 import { useJob } from "./JobContext";
 const STATUSES = [
   "All Jobs",
@@ -6,14 +6,14 @@ const STATUSES = [
   "Interviewed",
   "Offered",
   "Rejected",
-  "Ignored",
+  "No Response",
 ];
 
 const FilterContext = createContext();
 
 function FilterProvider({ children }) {
   const { jobData } = useJob();
-   const [statusFilter, setStatusFilter] = useState("All Jobs");
+  const [statusFilter, setStatusFilter] = useState("All Jobs");
 
   const filteredJobs =
     statusFilter === "All Jobs"

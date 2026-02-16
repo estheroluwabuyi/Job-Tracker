@@ -99,7 +99,7 @@ function AddJobModal() {
             <option>Interviewed</option>
             <option>Offered</option>
             <option>Rejected</option>
-            <option>Ignored</option>
+            <option>No Response</option>
           </select>
         </div>
 
