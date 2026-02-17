@@ -34,10 +34,6 @@
   --blue: #2563eb;
   --text: #111111;
   --gray: #6b7280;
-  /* --gray: #9ca3af;
-  --text: #111111;
-  --blue: #2563eb;
-  --brown: #7b3f00; */
 }
 
 .dark {
@@ -103,15 +99,3 @@ a {
   color: inherit;
   font-size: inherit;
 }
-
-/* .btn-icon {
-  padding: 0.5rem 0.75rem;
-  border-radius: 0.75rem;
-  transition: all 0.5s ease-in-out;
-}
-
-.btn-icon:hover {
-  background-color: var(--color-background);
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-  backdrop-filter: blur(0.375rem);
-} */
