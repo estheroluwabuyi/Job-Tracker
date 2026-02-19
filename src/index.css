@@ -4,20 +4,38 @@
 @import "tailwindcss";
 
 @theme {
-  /* fonts */
-  --font-monda: "Monda", sans-serif;
-  --font-inter: "Inter", sans-serif;
+  /* ====  BRAND ===== */
+  --color-primary: #0f766e;
+  --color-primary-hover: #115e59;
+  --color-primary-light: #ccfbf1;
+  --color-primary-subtle: #99f6e4;
+  --color-primary-dark: #134e4a;
 
-  /* colors  */
-  --color-background: var(--background);
-  --color-text: var(--text);
-  --color-blue: var(--blue);
-  --color-gray: var(--gray);
-  /* 
-  --color-gray-muted: var(--gray-muted);
-  --color-text: var(--text);
-  --color-accent-blue: var(--blue);
-  --color-accent-brown: var(--brown); */
+  /* ====== BACKGROUNDS ======== */
+  --color-bg: #f8fafc;
+  --color-bg-card: #ffffff;
+  --color-bg-muted: #f1f5f9;
+
+  /* ==== TEXT ====== */
+  --color-text: #0f172a;
+  --color-text-secondary: #475569;
+  --color-text-muted: #94a3b8;
+
+  /* ===== BORDERS ====== */
+  --color-border: #e2e8f0;
+
+  /* ===== STATUS ======= */
+  --color-success-bg: #ecfdf5;
+  --color-success-text: #166534;
+
+  --color-warning-bg: #fffbeb;
+  --color-warning-text: #92400e;
+
+  --color-offer-bg: #dcfce7;
+  --color-offer-text: #14532d;
+
+  --color-danger-bg: #fef2f2;
+  --color-danger-text: #7f1d1d;
 
   /*  *Breakpoints */
   --breakpoint-xs: 340px;
@@ -29,18 +47,58 @@
   --breakpoint-2xl: 1680px;
 }
 
-:root {
-  --background: #ecf3f9;
-  --blue: #2563eb;
-  --text: #111111;
-  --gray: #6b7280;
+.dark {
+  /* ==== BACKGROUNDS ===== */
+  --color-bg: #0F172A;
+  --color-bg-card: #1E293B;
+  --color-bg-muted: #243041;
+
+  /* ==== TEXT === */
+  --color-text: #F1F5F9;
+  --color-text-secondary: #CBD5E1;
+  --color-text-muted: #64748B;
+
+  /* ==== BORDER ==== */
+  --color-border: #334155;
+
+  
+  --color-primary-hover: #0D5F58;
 }
 
-.dark {
-  /* --background: #1e293b;
-  --text: #f1f5f9;
-  --blue: #3b82f6;
-  --brown: #d97706; */
+
+:root {
+  /* === BRAND === */
+  --color-primary: 15 118 110; /* #0F766E */
+  --color-primary-hover: 17 94 89; /* #115E59 */
+  --color-primary-light: 204 251 241; /* #CCFBF1 */
+  --color-primary-subtle: 153 246 228; /* #99F6E4 */
+  --color-primary-dark: 19 78 74; /* #134E4A */
+
+  /* === BACKGROUNDS === */
+  --color-bg: 248 250 252; /* #F8FAFC */
+  --color-bg-card: 255 255 255; /* #FFFFFF */
+  --color-bg-muted: 241 245 249; /* #F1F5F9 */
+
+  /* === TEXT === */
+  --color-text: 15 23 42; /* #0F172A */
+  --color-text-secondary: 71 85 105; /* #475569 */
+  --color-text-muted: 148 163 184; /* #94A3B8 */
+
+  /* === BORDERS === */
+  --color-border: 226 232 240; /* #E2E8F0 */
+
+  /* === STATUS === */
+  --color-success-bg: 236 253 245; /* Applied */
+  --color-success-text: 22 101 52;
+
+  --color-warning-bg: 255 251 235; /* Interview */
+  --color-warning-text: 146 64 14;
+
+  --color-offer-bg: 220 252 231;
+  --color-offer-text: 20 83 45;
+
+  --color-danger-bg: 254 242 242;
+  --color-danger-text: 127 29 29;
 }
 
 /* Global Reset  */
@@ -75,6 +133,7 @@ textarea:-webkit-autofill {
 
 body {
   font-size: 1.3rem;
+
   /* font-family: var(--font-inter);
   background: var(--color-background);
   color: var(--color-text);
