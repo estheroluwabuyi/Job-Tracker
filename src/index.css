@@ -16,6 +16,10 @@
   --color-bg-card: #ffffff;
   --color-bg-muted: #f1f5f9;
 
+  /* FONTS */
+  --font-roboto: "Roboto", sans-serif;
+  --font-permanent: "Permanent Marker", cursive;
+
   /* ==== TEXT ====== */
   --color-text: #0f172a;
   --color-text-secondary: #475569;
@@ -48,57 +52,47 @@
 }
 
 .dark {
-  /* ==== BACKGROUNDS ===== */
-  --color-bg: #0F172A;
-  --color-bg-card: #1E293B;
+  --color-bg: #0f172a;
+  --color-bg-card: #1e293b;
   --color-bg-muted: #243041;
 
-  /* ==== TEXT === */
-  --color-text: #F1F5F9;
-  --color-text-secondary: #CBD5E1;
-  --color-text-muted: #64748B;
+  --color-text: #f1f5f9;
+  --color-text-secondary: #cbd5e1;
+  --color-text-muted: #64748b;
 
-  /* ==== BORDER ==== */
   --color-border: #334155;
 
-  
-  --color-primary-hover: #0D5F58;
+  --color-primary-hover: #0d5f58;
 }
 
-
 :root {
-  /* === BRAND === */
-  --color-primary: 15 118 110; /* #0F766E */
-  --color-primary-hover: 17 94 89; /* #115E59 */
-  --color-primary-light: 204 251 241; /* #CCFBF1 */
-  --color-primary-subtle: 153 246 228; /* #99F6E4 */
-  --color-primary-dark: 19 78 74; /* #134E4A */
+  --color-primary: #0f766e;
+  --color-primary-hover: #115e59;
+  --color-primary-light: #ccfbf1;
+  --color-primary-subtle: #99f6e4;
+  --color-primary-dark: #134e4a;
 
-  /* === BACKGROUNDS === */
-  --color-bg: 248 250 252; /* #F8FAFC */
-  --color-bg-card: 255 255 255; /* #FFFFFF */
-  --color-bg-muted: 241 245 249; /* #F1F5F9 */
+  --color-bg: #f8fafc;
+  --color-bg-card: #ffffff;
+  --color-bg-muted: #f1f5f9;
 
-  /* === TEXT === */
-  --color-text: 15 23 42; /* #0F172A */
-  --color-text-secondary: 71 85 105; /* #475569 */
-  --color-text-muted: 148 163 184; /* #94A3B8 */
+  --color-text: #0f172a;
+  --color-text-secondary: #475569;
+  --color-text-muted: #94a3b8;
 
-  /* === BORDERS === */
-  --color-border: 226 232 240; /* #E2E8F0 */
+  --color-border: #e2e8f0;
 
-  /* === STATUS === */
-  --color-success-bg: 236 253 245; /* Applied */
-  --color-success-text: 22 101 52;
+  --color-success-bg: #ecfdf5;
+  --color-success-text: #166534;
 
-  --color-warning-bg: 255 251 235; /* Interview */
-  --color-warning-text: 146 64 14;
+  --color-warning-bg: #fffbeb;
+  --color-warning-text: #92400e;
 
-  --color-offer-bg: 220 252 231;
-  --color-offer-text: 20 83 45;
+  --color-offer-bg: #dcfce7;
+  --color-offer-text: #14532d;
 
-  --color-danger-bg: 254 242 242;
-  --color-danger-text: 127 29 29;
+  --color-danger-bg: #fef2f2;
+  --color-danger-text: #7f1d1d;
 }
 
 /* Global Reset  */
