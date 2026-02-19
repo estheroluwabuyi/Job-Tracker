@@ -2,7 +2,7 @@ import Logo from "./Logo";
 
 function NavBar() {
   return (
-    <div>
+    <div className="bg-primary">
       <div>
         <Logo />
         <h1 className="text-[">JobLog</h1>
