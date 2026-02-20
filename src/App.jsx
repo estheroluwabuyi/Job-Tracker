@@ -4,6 +4,7 @@ import { JobProvider } from "./contexts/JobContext";
 import { FilterProvider } from "./contexts/FilterContext";
 import { AuthProvider } from "./contexts/AuthContext";
 import NoPageFound from "./pages/NoPageFound";
+import Features from "./pages/Features";
 
 function App() {
   return (
@@ -13,6 +14,7 @@ function App() {
           <BrowserRouter>
             <Routes>
               <Route path="/" element={<HomePage />} />
+              <Route path="/features" element={<Features />} />
               <Route path="*" element={<NoPageFound />} />
             </Routes>
           </BrowserRouter>
