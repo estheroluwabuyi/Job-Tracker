@@ -1,45 +1,45 @@
-@import url("https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Monda:wght@400..700&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Rubik:ital,wght@0,300..900;1,300..900&display=swap");
 
 @custom-variant dark (&:where(.dark, .dark *));
 @import "tailwindcss";
 
 @theme {
   /* ====  BRAND ===== */
-  --color-primary: #0f766e;
-  --color-primary-hover: #115e59;
-  --color-primary-light: #ccfbf1;
-  --color-primary-subtle: #99f6e4;
-  --color-primary-dark: #134e4a;
+  --color-primary: var(--color-primary);
+  --color-primary-hover: var(--color-primary-hover);
+  --color-primary-light: var(--color-primary-light);
+  --color-primary-subtle: var(--color-primary-subtle);
+  --color-primary-dark: var(--color-primary-dark);
 
   /* ====== BACKGROUNDS ======== */
-  --color-bg: #f8fafc;
-  --color-bg-card: #ffffff;
-  --color-bg-muted: #f1f5f9;
+  --color-bg: var(--color-bg);
+  --color-bg-card: var(--color-bg-card);
+  --color-bg-muted: var(--color-bg-muted);
 
   /* FONTS */
-  --font-roboto: "Roboto", sans-serif;
-  --font-permanent: "Permanent Marker", cursive;
+  --font-inter: "Inter", sans-serif;
+  --font-space: "Rubik", sans-serif;
 
   /* ==== TEXT ====== */
-  --color-text: #0f172a;
-  --color-text-secondary: #475569;
-  --color-text-muted: #94a3b8;
+  --color-text: var(--color-text);
+  --color-text-secondary: var(--color-text-secondary);
+  --color-text-muted: var(--color-text-muted);
 
   /* ===== BORDERS ====== */
-  --color-border: #e2e8f0;
+  --color-border: var(--color-border);
 
   /* ===== STATUS ======= */
-  --color-success-bg: #ecfdf5;
-  --color-success-text: #166534;
+  --color-success-bg: var(--color-success-bg);
+  --color-success-text: var(--color-success-text);
 
-  --color-warning-bg: #fffbeb;
-  --color-warning-text: #92400e;
+  --color-warning-bg: var(--color-warning-bg);
+  --color-warning-text: var(--color-warning-text);
 
-  --color-offer-bg: #dcfce7;
-  --color-offer-text: #14532d;
+  --color-offer-bg: var(--color-offer-bg);
+  --color-offer-text: var(--color-offer-text);
 
-  --color-danger-bg: #fef2f2;
-  --color-danger-text: #7f1d1d;
+  --color-danger-bg: var(--color-danger-bg);
+  --color-danger-text: var(--color-danger-text);
 
   /*  *Breakpoints */
   --breakpoint-xs: 340px;
@@ -127,7 +127,7 @@ textarea:-webkit-autofill {
 
 body {
   font-size: 1.3rem;
-
+  font-family: var(--font-inter);
   /* font-family: var(--font-inter);
   background: var(--color-background);
   color: var(--color-text);
@@ -149,6 +149,6 @@ button:disabled {
 
 a {
   text-decoration: none;
-  color: inherit;
+  /* color: inherit; */
   font-size: inherit;
 }
