@@ -1,5 +1,5 @@
 function Features() {
-  return <div>jjjjjjjj</div>;
+  return null;
 }
 
 export default Features;

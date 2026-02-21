@@ -6,7 +6,7 @@ import { useEffect, useState } from "react";
 const links = [
   { label: "Features", to: "/features" },
   { label: "How It Works", to: "/how-it-works" },
-  { label: "Pricing", to: "/pricing" },
+  { label: "Why JobLog", to: "/why-job-log" },
 ];
 
 function NavBar() {
@@ -43,7 +43,7 @@ function NavBar() {
     <motion.nav
       initial={{ y: 0 }}
       animate={{ y: show ? 0 : -100 }}
-      transition={{ duration: 0.35, ease: "easeInOut" }}
+      transition={{ duration: 0.3, ease: "easeInOut" }}
       className={`sticky top-0 z-50 transition-all duration-300 ${
         scrolled
           ? "bg-white/95 shadow-md border-b border-border"
@@ -73,7 +73,7 @@ function NavBar() {
                   initial={false}
                   whileHover="hover"
                   animate={isActive ? "active" : "rest"}
-                  className="relative"
+                  className="relative tracking-wide"
                 >
                   {link.label}
 
@@ -84,7 +84,7 @@ function NavBar() {
                       active: { scaleX: 1 },
                     }}
                     transition={{ duration: 0.3 }}
-                    className="absolute left-0 -bottom-1 h-[2px] w-full bg-primary origin-left"
+                    className="absolute left-0 -bottom-1 h-0.5 w-full bg-primary origin-left"
                   />
                 </motion.div>
               )}
@@ -96,7 +96,7 @@ function NavBar() {
         <div className="flex items-center gap-6">
           <Link
             to="/login"
-            className="text-[1.4rem] font-medium text-primary hover:text-text/80 transition-colors font-monda duration-300"
+            className="text-[1.4rem] font-medium text-primary hover:text-text/80 transition-colors font-monda duration-300 tracking-wide"
           >
             Log In
           </Link>
@@ -108,7 +108,7 @@ function NavBar() {
           >
             <Link
               to="/signup"
-              className="bg-primary text-bg text-[1.4rem] font-semibold px-7 py-2.5 rounded-xl shadow-sm font-monda"
+              className="bg-primary text-bg text-[1.4rem] font-semibold px-7 py-3 rounded-xl shadow-sm font-monda tracking-wide"
             >
               Get Started
             </Link>
