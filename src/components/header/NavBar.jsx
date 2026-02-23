@@ -41,12 +41,23 @@ function NavBar() {
 
   return (
     <motion.nav
-      initial={{ y: 0 }}
-      animate={{ y: show ? 0 : -100 }}
-      transition={{ duration: 0.3, ease: "easeInOut" }}
+      initial={{ y: 0, opacity: 1 }}
+      animate={{
+        y: show ? 0 : -100,
+        opacity: show ? 1 : 0,
+      }}
+      transition={{
+        y: {
+          type: "spring",
+          stiffness: 400,
+          damping: 35,
+          mass: 0.8,
+        },
+        opacity: { duration: 0.2 },
+      }}
       className={`sticky top-0 z-50 transition-all duration-300 ${
         scrolled
-          ? "bg-white/95 shadow-md border-b border-border"
+          ? "bg-white/80 shadow-md border-b border-border backdrop-blur-md"
           : "bg-transparent"
       }`}
     >
