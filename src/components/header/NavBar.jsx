@@ -41,7 +41,7 @@ function NavBar() {
 
   return (
     <motion.nav
-      initial={{ y: 0, opacity: 1 }}
+      initial={{ y: -100, opacity: 0 }}
       animate={{
         y: show ? 0 : -100,
         opacity: show ? 1 : 0,
@@ -52,13 +52,12 @@ function NavBar() {
           stiffness: 400,
           damping: 35,
           mass: 0.8,
+          delay: 0.1,
         },
-        opacity: { duration: 0.2 },
+        opacity: { duration: 0.3, delay: 0.2 },
       }}
       className={`sticky top-0 z-50 transition-all duration-300 ${
-        scrolled
-          ? "bg-white/80 shadow-md border-b border-border backdrop-blur-md"
-          : "bg-transparent"
+        scrolled ? "bg-white/80 shadow-md backdrop-blur-md" : "bg-transparent"
       }`}
     >
       <div className="flex items-center justify-between max-w-[1200px] mx-auto pl-3 pr-7 py-2">
@@ -94,7 +93,7 @@ function NavBar() {
                       hover: { scaleX: 1 },
                       active: { scaleX: 1 },
                     }}
-                    transition={{ duration: 0.3 }}
+                    transition={{ duration: 0.5, delay: 0.1 }}
                     className="absolute left-0 -bottom-1 h-0.5 w-full bg-primary origin-left"
                   />
                 </motion.div>
@@ -104,22 +103,22 @@ function NavBar() {
         </div>
 
         {/* Right Side */}
-        <div className="flex items-center gap-6">
+        <div className="flex items-center gap-8">
           <Link
             to="/login"
-            className="text-[1.4rem] font-medium text-primary hover:text-text/80 transition-colors font-monda duration-300 tracking-wide"
+            className="text-[1.4rem] font-medium text-primary hover:text-text/80 transition-colors font-monda duration-500 tracking-wide"
           >
             Log In
           </Link>
 
           <motion.div
-            whileHover={{ y: -2, scale: 1.02 }}
+            whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.95 }}
-            transition={{ type: "spring", stiffness: 200 }}
+            transition={{ duration: 0.5, delay: 0.1 }}
           >
             <Link
               to="/signup"
-              className="bg-primary text-bg text-[1.4rem] font-semibold px-7 py-3 rounded-xl shadow-sm font-monda tracking-wide"
+              className="bg-primary text-bg px-8 py-4 rounded-xl text-[1.4rem] font-semibold shadow-md"
             >
               Get Started
             </Link>
