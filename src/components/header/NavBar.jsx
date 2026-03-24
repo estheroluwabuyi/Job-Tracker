@@ -52,7 +52,7 @@ function NavBar() {
           stiffness: 400,
           damping: 35,
           mass: 0.8,
-          delay: 0.1,
+          delay: 0.3,
         },
         opacity: { duration: 0.3, delay: 0.2 },
       }}
