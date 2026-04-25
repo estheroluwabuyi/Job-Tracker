@@ -35,7 +35,6 @@ function FormFields({
             onChange={(e) => setName(e.target.value)}
             className="w-full p-4 rounded-[5px] h-17 border border-border focus:outline-none focus:ring-2 focus:ring-primary/50 focus:border-transparent transition-all duration-300"
             placeholder="Enter your name"
-            required
           />
         </motion.div>
       )}
@@ -55,7 +54,6 @@ function FormFields({
           onChange={(e) => setEmail(e.target.value)}
           className="w-full p-4 rounded-[5px] h-17 border border-border focus:outline-none focus:ring-2 focus:ring-primary/50 focus:border-transparent transition-all duration-300"
           placeholder="Enter your email address"
-          required
         />
       </motion.div>
 
@@ -75,7 +73,6 @@ function FormFields({
             onChange={(e) => setPassword(e.target.value)}
             className="w-full p-4 pr-12 rounded-[5px] h-17 border border-border focus:outline-none focus:ring-2 focus:ring-primary/50 focus:border-transparent transition-all duration-300"
             placeholder={isLogin ? "Enter your password" : "Create a password"}
-            required
           />
           <button
             type="button"

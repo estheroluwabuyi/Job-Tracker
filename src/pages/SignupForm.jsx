@@ -22,9 +22,14 @@ function SignupForm() {
     setLoading(true);
     setError("");
 
-    // Validation
     if (!name.trim()) {
       setError("Please enter your full name");
+      setLoading(false);
+      return;
+    }
+
+    if (!email.trim()) {
+      setError("Please enter a valid email address");
       setLoading(false);
       return;
     }
@@ -165,7 +170,6 @@ function SignupForm() {
                 onChange={(e) => setConfirmPassword(e.target.value)}
                 className="w-full p-4 pr-12 rounded-[5px] h-17 border border-border focus:outline-none focus:ring-2 focus:ring-primary/50 focus:border-transparent transition-all duration-300"
                 placeholder="Confirm your password"
-                required
               />
             </div>
           </motion.div>
