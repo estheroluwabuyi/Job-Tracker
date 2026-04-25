@@ -1,10 +1,20 @@
 import logo from "/images/logo.png";
 
-function Logo() {
+function Logo({
+  logoHeight = "h-17 xs:h-27",
+  textSize = "text-[1.3rem] xs:text-[2.3rem]",
+  marginLeft = "-ml-6",
+}) {
   return (
-    <div className="flex items-center">
-      <img src={logo} alt="Logo" className="h-20 xs:h-30 w-auto rounded-2xl" />
-      <h1 className="text-primary text-[1.5rem] xs:text-[2.5rem] -ml-3 -mb-2 font-semibold font-space tracking-tight ">
+    <div className={`flex items-center ${marginLeft}`}>
+      <img
+        src={logo}
+        alt="Logo"
+        className={`w-auto rounded-2xl ${logoHeight}`}
+      />
+      <h1
+        className={`text-primary ${textSize} ${marginLeft} -mb-2 font-bold font-rubik tracking-tight`}
+      >
         JobLog
       </h1>
     </div>

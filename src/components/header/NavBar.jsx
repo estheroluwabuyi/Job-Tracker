@@ -60,7 +60,7 @@ function NavBar() {
         scrolled ? "bg-white/80 shadow-md backdrop-blur-md" : "bg-transparent"
       }`}
     >
-      <div className="flex items-center justify-between max-w-[1200px] mx-auto pl-3 pr-7 py-2">
+      <div className="flex items-center justify-between max-w-[1200px] mx-auto px-6 py-2">
         {/* Logo */}
         <Link to="/" className="flex items-center">
           <Logo />

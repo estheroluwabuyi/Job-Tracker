@@ -5,6 +5,10 @@ import { FilterProvider } from "./contexts/FilterContext";
 import { AuthProvider } from "./contexts/AuthContext";
 import NoPageFound from "./pages/NoPageFound";
 import Features from "./pages/Features";
+import SignupForm from "./pages/SignupForm";
+import LoginForm from "./pages/LoginForm";
+import Dashboard from "./pages/Dashboard";
+import ProtectedRoute from "./components/auth/ProtectedRoute";
 
 function App() {
   return (
@@ -15,6 +19,19 @@ function App() {
             <Routes>
               <Route path="/" element={<HomePage />} />
               <Route path="/features" element={<Features />} />
+              <Route path="/signup" element={<SignupForm />} />
+              <Route path="/login" element={<LoginForm />} />
+
+              {/* Protected Dashboard Route */}
+              <Route
+                path="/dashboard"
+                element={
+                  <ProtectedRoute>
+                    <Dashboard />
+                  </ProtectedRoute>
+                }
+              />
+
               <Route path="*" element={<NoPageFound />} />
             </Routes>
           </BrowserRouter>
