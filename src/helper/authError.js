@@ -1,46 +1,37 @@
-export function getLoginErrorMessage(error) {
-  const errorStr = error?.message?.toLowerCase() || "";
-
+export const getAuthErrorMessage = (error) => {
   const errorMap = {
-    // Invalid credentials
-    "invalid login credentials": {
-      message: "The email or password you entered is incorrect.",
-      suggestion: "Please check your details and try again.",
-      showResetLink: true,
-    },
-    // Email not confirmed
-    "email not confirmed": {
-      message: "Please confirm your email address first.",
-      suggestion: "Check your inbox for the confirmation link.",
-      showResendButton: true,
-    },
-    // Network issues
-    network: {
-      message: "Connection issue detected.",
-      suggestion: "Please check your internet connection.",
-      showRetry: true,
-    },
-    // Rate limiting
-    "rate limit": {
-      message: "Too many attempts.",
-      suggestion: "Please wait a moment before trying again.",
-      emoji: "⏳",
-      showTimer: true,
-    },
-    // User doesn't exist
-    "user not found": {
-      message: "No account found with this email.",
-      suggestion: "Would you like to create an account instead?",
-      showSignupLink: true,
-    },
+    // Login & Signup common errors
+    "Invalid login credentials": "Invalid email or password. Please try again.",
+    "Email not confirmed":
+      "Please verify your email before logging in. Check your inbox!",
+    "User is blocked": "Your account has been blocked. Please contact support.",
+    "Failed to fetch":
+      "Unable to connect to server. Check your internet connection.",
+    "rate limit":
+      "Too many attempts. Please wait a moment before trying again.",
+    NetworkError: "Connection issue. Please check your internet and try again.",
+    timeout: "Request timed out. Please check your connection.",
+
+    // Signup specific errors
+    "User already registered":
+      "An account with this email already exists. Sign in instead.",
+    "Password should be at least 6 characters":
+      "Password must be at least 6 characters long.",
+    "Invalid email": "Please enter a valid email address.",
+    "Signups not allowed":
+      "Signups are currently disabled. Please try again later.",
+
+    // Generic fallback
+    "Database error": "Server issue. Please try again in a few moments.",
   };
 
-  // Find matching error
-  for (const [key, value] of Object.entries(errorMap)) {
-    if (errorStr.includes(key)) {
-      return `${value.message} ${value.suggestion}`;
+  // Check for specific error messages
+  for (const [key, message] of Object.entries(errorMap)) {
+    if (error.message?.toLowerCase().includes(key.toLowerCase())) {
+      return message;
     }
   }
 
-  return "We couldn't sign you in right now. Please try again in a moment.";
-}
+  // Return original message or generic fallback
+  return error.message || "Something went wrong. Please try again.";
+};

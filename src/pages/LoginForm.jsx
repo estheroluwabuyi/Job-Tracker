@@ -5,6 +5,8 @@ import toast from "react-hot-toast";
 import { useAuth } from "../contexts/AuthContext";
 import Logo from "../components/header/Logo";
 import FormFields from "../components/auth/FormFields";
+import { getAuthErrorMessage } from "../helper/authError";
+import FormLogoHeading from "../components/auth/FormLogoHeading";
 
 function LoginForm() {
   const navigate = useNavigate();
@@ -36,18 +38,24 @@ function LoginForm() {
     try {
       const { data, error } = await signIn(email, password);
 
+      // if (error) {
+      //   if (error.message === "Invalid login credentials") {
+      //     setError("Invalid email or password. Please try again.");
+      //   }
+      //   setLoading(false);
+      //   return;
+      // }
+
       if (error) {
-        if (error.message === "Invalid login credentials") {
-          setError("Invalid email or password. Please try again.");
-        } else {
-          setError(error.message);
-        }
+        setError(getAuthErrorMessage(error));
         setLoading(false);
         return;
       }
 
       if (data?.user) {
-        toast.success("Welcome back! 🎉");
+        toast.success("Welcome back!", {
+          duration: 2000,
+        });
         navigate("/dashboard");
       }
     } catch (err) {
@@ -85,42 +93,13 @@ function LoginForm() {
           className="min-h-screen bg-bg flex flex-col justify-center max-w-[500px] mx-auto p-10"
           onSubmit={handleSubmit}
         >
-          {/* Form logo */}
-          <motion.div
-            className="flex justify-between items-center w-full"
-            initial={{ y: -20, opacity: 0 }}
-            animate={{ y: 0, opacity: 1 }}
-            transition={{ duration: 0.5, delay: 0.3 }}
-          >
-            <Link to="/">
-              <Logo
-                logoHeight="h-22"
-                textSize="text-[2rem]"
-                marginLeft="-ml-5"
-              />
-            </Link>
-            <Link
-              to="/signup"
-              className="font-bold underline! underline-offset-2 text-primary hover:text-primary-dark transition-colors"
-            >
-              Sign up instead?
-            </Link>
-          </motion.div>
-
-          {/* Form Heading */}
-          <motion.div
-            className="mt-10 mb-5"
-            initial={{ y: -20, opacity: 0 }}
-            animate={{ y: 0, opacity: 1 }}
-            transition={{ duration: 0.5, delay: 0.4 }}
-          >
-            <h1 className="text-[2rem] font-semibold text-text">
-              Welcome Back
-            </h1>
-            <p className="text-text-secondary mt-2">
-              Sign in to continue your job search journey
-            </p>
-          </motion.div>
+          {/* Form logo and heading */}
+          <FormLogoHeading
+            title="Welcome Back"
+            subtitle="Sign in to continue your job search journey"
+            link="/signup"
+            linkText="Sign up instead?"
+          />
 
           {/* Form Fields */}
           <FormFields

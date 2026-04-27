@@ -5,6 +5,8 @@ import toast from "react-hot-toast";
 import { useAuth } from "../contexts/AuthContext";
 import Logo from "../components/header/Logo";
 import FormFields from "../components/auth/FormFields";
+import { getAuthErrorMessage } from "../helper/authError";
+import FormLogoHeading from "../components/auth/FormLogoHeading";
 
 function SignupForm() {
   const navigate = useNavigate();
@@ -50,21 +52,15 @@ function SignupForm() {
       const { data, error } = await signUp(email, password, name);
 
       if (error) {
-        if (error.message.includes("already registered")) {
-          setError(
-            "An account with this email already exists. Please sign in instead.",
-          );
-        } else {
-          setError(error.message);
-        }
+        setError(getAuthErrorMessage(error));
         setLoading(false);
         return;
       }
 
       if (data?.user) {
-        toast.success(
-          "Account created successfully! Please check your email to verify your account.",
-        );
+        toast.success("Account created! You can now sign in.", {
+          duration: 3000,
+        });
         navigate("/login");
       }
     } catch (err) {
@@ -102,43 +98,13 @@ function SignupForm() {
           className="min-h-screen bg-bg flex flex-col justify-center max-w-[500px] mx-auto p-10"
           onSubmit={handleSubmit}
         >
-          {/* Form logo */}
-          <motion.div
-            className="flex justify-between items-center w-full"
-            initial={{ y: -20, opacity: 0 }}
-            animate={{ y: 0, opacity: 1 }}
-            transition={{ duration: 0.5, delay: 0.3 }}
-          >
-            <Link to="/">
-              <Logo
-                logoHeight="h-22"
-                textSize="text-[2rem]"
-                marginLeft="-ml-5"
-              />
-            </Link>
-            <Link
-              to="/login"
-              className="font-bold underline! underline-offset-2 text-primary hover:text-primary-dark transition-colors"
-            >
-              Sign in instead?
-            </Link>
-          </motion.div>
-
-          {/* Form Heading */}
-          <motion.div
-            className="mt-7 mb-2"
-            initial={{ y: -20, opacity: 0 }}
-            animate={{ y: 0, opacity: 1 }}
-            transition={{ duration: 0.5, delay: 0.4 }}
-          >
-            <h1 className="text-[2rem] font-semibold text-text">
-              Get Started Today
-            </h1>
-            <p className="text-text-secondary mt-2">
-              Track applications, stay organized, and land your next role with
-              ease.
-            </p>
-          </motion.div>
+          {/* Form logo and heading */}
+          <FormLogoHeading
+            title="Get Started Today"
+            subtitle="Track applications, stay organized, and land your next role with ease."
+            link="/login"
+            linkText="Sign in instead?"
+          />
 
           {/* Form Fields */}
           <FormFields
