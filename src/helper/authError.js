@@ -1,6 +1,6 @@
 export const getAuthErrorMessage = (error) => {
   const errorMap = {
-    // Login & Signup common errors
+    // Login & Signup
     "Invalid login credentials": "Invalid email or password. Please try again.",
     "Email not confirmed":
       "Please verify your email before logging in. Check your inbox!",
@@ -12,7 +12,7 @@ export const getAuthErrorMessage = (error) => {
     NetworkError: "Connection issue. Please check your internet and try again.",
     timeout: "Request timed out. Please check your connection.",
 
-    // Signup specific errors
+    // Signup
     "User already registered":
       "An account with this email already exists. Sign in instead.",
     "Password should be at least 6 characters":
@@ -21,17 +21,15 @@ export const getAuthErrorMessage = (error) => {
     "Signups not allowed":
       "Signups are currently disabled. Please try again later.",
 
-    // Generic fallback
+    // Default
     "Database error": "Server issue. Please try again in a few moments.",
   };
 
-  // Check for specific error messages
   for (const [key, message] of Object.entries(errorMap)) {
     if (error.message?.toLowerCase().includes(key.toLowerCase())) {
       return message;
     }
   }
 
-  // Return original message or generic fallback
   return error.message || "Something went wrong. Please try again.";
 };

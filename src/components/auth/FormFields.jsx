@@ -19,7 +19,6 @@ function FormFields({
       animate={{ y: 0, opacity: 1 }}
       transition={{ duration: 0.6, delay: 0.5 }}
     >
-      {/* Name Field - Only show for signup */}
       {!isLogin && (
         <motion.div
           initial={{ x: -20, opacity: 0 }}
@@ -39,7 +38,6 @@ function FormFields({
         </motion.div>
       )}
 
-      {/* Email Field */}
       <motion.div
         initial={{ x: -20, opacity: 0 }}
         animate={{ x: 0, opacity: 1 }}
@@ -57,7 +55,6 @@ function FormFields({
         />
       </motion.div>
 
-      {/* Password Field */}
       <motion.div
         initial={{ x: -20, opacity: 0 }}
         animate={{ x: 0, opacity: 1 }}
