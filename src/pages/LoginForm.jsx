@@ -7,6 +7,8 @@ import Logo from "../components/header/Logo";
 import FormFields from "../components/auth/FormFields";
 import { getAuthErrorMessage } from "../helper/authError";
 import FormLogoHeading from "../components/auth/FormLogoHeading";
+import FormSubmitButton from "../components/auth/FormSubmitButton";
+import FormErrorMessage from "../components/auth/FormErrorMessage";
 
 function LoginForm() {
   const navigate = useNavigate();
@@ -128,37 +130,14 @@ function LoginForm() {
           </motion.div>
 
           {/* Error Message */}
-          {error && (
-            <motion.div
-              className="mt-3 text-[1.2rem] text-red-600 "
-              initial={{ opacity: 0, scale: 0.95 }}
-              animate={{ opacity: 1, scale: 1 }}
-              transition={{ duration: 0.3 }}
-            >
-              {error}
-            </motion.div>
-          )}
+          <FormErrorMessage error={error} />
 
           {/* Submit Button */}
-          <motion.button
-            type="submit"
-            disabled={loading}
-            className="w-full bg-primary text-white py-5 rounded-xl font-semibold hover:bg-primary-hover transition-all duration-200 disabled:opacity-50 disabled:cursor-not-allowed mt-6"
-            whileHover={{ scale: loading ? 1 : 1.02 }}
-            whileTap={{ scale: loading ? 1 : 0.98 }}
-            initial={{ y: 20, opacity: 0 }}
-            animate={{ y: 0, opacity: 1 }}
-            transition={{ duration: 0.5, delay: 0.9 }}
-          >
-            {loading ? (
-              <div className="flex items-center justify-center gap-2">
-                <div className="animate-spin rounded-full h-5 w-5 border-b-2 border-white"></div>
-                Signing in...
-              </div>
-            ) : (
-              "Sign In"
-            )}
-          </motion.button>
+          <FormSubmitButton
+            loading={loading}
+            textA="Signing in..."
+            textB="Sign In"
+          />
         </form>
       </motion.div>
     </div>

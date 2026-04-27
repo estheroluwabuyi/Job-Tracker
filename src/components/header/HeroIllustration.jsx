@@ -36,7 +36,6 @@ export default function HeroIllustration() {
           {/* Screenshot */}
           <img
             src="/images/dashboard-preview.png"
-            path
             alt="JobLog Dashboard Preview"
             className="w-full object-cover"
           />

@@ -2,7 +2,12 @@ import { motion } from "framer-motion";
 import { Link } from "react-router-dom";
 import Logo from "../header/Logo";
 
-function FormLogoHeading({ title, subtitle, link, linkText }) {
+function FormLogoHeading({
+  title = "Welcome",
+  subtitle = "Please fill in the details below",
+  link = "/login",
+  linkText = "Go back",
+}) {
   return (
     <>
       <motion.div
