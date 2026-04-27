@@ -4,6 +4,7 @@ import { ImMenu } from "react-icons/im";
 import Logo from "./Logo";
 import { useEffect, useState } from "react";
 import { IoClose } from "react-icons/io5";
+import { IoIosRocket } from "react-icons/io";
 
 const links = [
   { label: "Features", to: "/features" },
@@ -149,9 +150,9 @@ function NavBar() {
             >
               <Link
                 to="/signup"
-                className="bg-primary text-bg px-8 py-4 rounded-xl text-[1.4rem] font-semibold shadow-md"
+                className="bg-primary text-bg px-8 py-4 rounded-xl text-[1.4rem] font-semibold shadow-md flex items-center justify-center gap-2"
               >
-                Get Started
+                Get Started <IoIosRocket size={18} />
               </Link>
             </motion.div>
           </div>
