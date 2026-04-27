@@ -23,7 +23,7 @@ export default function Hero() {
           </p>
 
           {/* Btns */}
-          <div className="flex flex-col s:flex-row justify-center md:justify-start gap-6 mt-6">
+          <div className="flex flex-col xs:flex-row justify-center md:justify-start gap-6 mt-6 w-full">
             <motion.div
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}

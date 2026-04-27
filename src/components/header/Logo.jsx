@@ -3,7 +3,7 @@ import logo from "/images/logo.png";
 function Logo({
   logoHeight = "h-17 xs:h-27",
   textSize = "text-[1.3rem] xs:text-[2.3rem]",
-  marginLeft = "-ml-6",
+  marginLeft = "-ml-3 xs:-ml-5",
 }) {
   return (
     <div className={`flex items-center ${marginLeft}`}>

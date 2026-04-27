@@ -198,7 +198,7 @@ function NavBar() {
                 </button>
 
                 <div className="mb-8">
-                  <Logo />
+                  <Logo marginLeft="-ml-3" />
                 </div>
 
                 <div className="flex flex-col gap-6">
