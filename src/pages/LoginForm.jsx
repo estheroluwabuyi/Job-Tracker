@@ -123,7 +123,7 @@ function LoginForm() {
           >
             <Link
               to="/forgot-password"
-              className="text-sm text-primary hover:text-primary-dark transition-colors"
+              className="text-[1.3rem] text-primary hover:text-primary-dark transition-colors"
             >
               Forgot password?
             </Link>

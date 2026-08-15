@@ -56,7 +56,6 @@ function NavBar() {
     };
   }, [mobileMenuOpen]);
 
-  // Close mobile menu when window resizes to desktop
   useEffect(() => {
     const handleResize = () => {
       if (window.innerWidth >= 768 && mobileMenuOpen) {
@@ -89,20 +88,22 @@ function NavBar() {
           scrolled ? "bg-white/80 shadow-md backdrop-blur-md" : "bg-transparent"
         }`}
       >
-        <div className="flex items-center justify-between max-w-[700px] lg:max-w-[1200px] mx-auto px-10 py-2">
+        <div className="flex items-center justify-between max-w-[700px] lg:max-w-[1300px] mx-auto px-10 py-2">
           {/* Logo */}
           <Link to="/" className="flex items-center">
-            <Logo />
+            <Logo
+              logoHeight="h-17 xs:h-27 lg:h-30 "
+              textSize="lg:text-[2.7rem] text-[1.5rem] xs:text-[2.5rem]"
+            />
           </Link>
 
-          {/* Desktop Links */}
           <div className="hidden lg:flex items-center gap-12">
             {links.map((link) => (
               <NavLink
                 key={link.label}
                 to={link.to}
                 className={({ isActive }) =>
-                  `relative font-monda text-[1.4rem] font-medium transition-colors duration-300 ${
+                  `relative font-monda text-[1.5rem] lg:text-[1.7rem] font-medium transition-colors duration-300 ${
                     isActive
                       ? "text-primary"
                       : "text-text/80 hover:text-primary"
@@ -133,11 +134,10 @@ function NavBar() {
             ))}
           </div>
 
-          {/* Desktop Right Side */}
           <div className="hidden lg:flex items-center gap-8">
             <Link
               to="/login"
-              className="text-[1.4rem] font-medium text-primary hover:text-text/80 transition-colors font-monda duration-500 tracking-wide"
+              className="text-[1.5rem] lg:text-[1.7rem] font-medium text-primary hover:text-text/80 transition-colors font-monda duration-500 tracking-wide"
             >
               Log In
             </Link>
@@ -149,7 +149,7 @@ function NavBar() {
             >
               <Link
                 to="/signup"
-                className="bg-primary text-bg px-8 py-4 rounded-xl text-[1.4rem] font-semibold shadow-md"
+                className="bg-primary text-bg px-8 py-4 rounded-xl text-[1.5rem] lg:text-[1.7rem] font-semibold shadow-md"
               >
                 Get Started
               </Link>
@@ -162,7 +162,7 @@ function NavBar() {
             className="lg:hidden text-text hover:text-primary transition-colors"
             aria-label="Open menu"
           >
-            <ImMenu size={24} />
+            <ImMenu size={28} />
           </button>
         </div>
       </motion.nav>
@@ -194,7 +194,7 @@ function NavBar() {
                   className="text-text hover:text-primary transition-colors flex self-end "
                   aria-label="Open menu"
                 >
-                  <IoClose size={30} />
+                  <IoClose size={34} />
                 </button>
 
                 <div className="mb-8">
@@ -208,7 +208,7 @@ function NavBar() {
                       to={link.to}
                       onClick={() => setMobileMenuOpen(false)}
                       className={({ isActive }) =>
-                        `text-[1.6rem] font-monda font-medium transition-colors duration-300 ${
+                        `text-[1.7rem] font-monda font-medium transition-colors duration-300 ${
                           isActive
                             ? "text-primary"
                             : "text-text/80 hover:text-primary"
@@ -228,7 +228,7 @@ function NavBar() {
                   <Link
                     to="/login"
                     onClick={() => setMobileMenuOpen(false)}
-                    className="text-[1.4rem] font-medium text-primary hover:text-text/80 transition-colors text-center py-3 border border-primary rounded-xl"
+                    className="text-[1.5rem] font-medium text-primary hover:text-text/80 transition-colors text-center py-3 border border-primary rounded-xl"
                   >
                     Log In
                   </Link>
@@ -236,7 +236,7 @@ function NavBar() {
                   <Link
                     to="/signup"
                     onClick={() => setMobileMenuOpen(false)}
-                    className="bg-primary text-bg px-8 py-3 rounded-xl text-[1.4rem] font-semibold text-center shadow-md hover:bg-primary-hover transition-colors"
+                    className="bg-primary text-bg px-8 py-3 rounded-xl text-[1.5rem] font-semibold text-center shadow-md hover:bg-primary-hover transition-colors"
                   >
                     Get Started
                   </Link>

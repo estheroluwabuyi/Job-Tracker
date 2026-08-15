@@ -9,7 +9,7 @@ function FormSubmitButton({
     <motion.button
       type="submit"
       disabled={loading}
-      className="w-full bg-primary text-white py-5 rounded-xl font-semibold hover:bg-primary-hover transition-all duration-200 disabled:opacity-50 disabled:cursor-not-allowed mt-6"
+      className="w-full bg-primary text-[1.5rem] text-white py-5 rounded-xl font-semibold hover:bg-primary-hover transition-all duration-200 disabled:opacity-50 disabled:cursor-not-allowed mt-6"
       whileHover={{ scale: loading ? 1 : 1.02 }}
       whileTap={{ scale: loading ? 1 : 0.98 }}
       initial={{ y: 20, opacity: 0 }}

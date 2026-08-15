@@ -1,7 +1,7 @@
 import logo from "/images/logo.png";
 
 function Logo({
-  logoHeight = "h-17 xs:h-27",
+  logoHeight = "h-20 xs:h-27",
   textSize = "text-[1.3rem] xs:text-[2.3rem]",
   marginLeft = "-ml-3 xs:-ml-5",
 }) {

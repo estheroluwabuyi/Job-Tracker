@@ -7,7 +7,7 @@ function FormErrorMessage({ error }) {
     <div>
       {error && (
         <motion.div
-          className="mt-3 text-[1.2rem] text-red-600 "
+          className="mt-3 text-[1.3rem] text-red-600 "
           initial={{ opacity: 0, scale: 0.95 }}
           animate={{ opacity: 1, scale: 1 }}
           transition={{ duration: 0.3 }}

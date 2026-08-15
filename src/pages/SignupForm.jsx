@@ -128,7 +128,7 @@ function SignupForm() {
             animate={{ x: 0, opacity: 1 }}
             transition={{ duration: 0.4, delay: 0.85 }}
           >
-            <label className="block text-[1.2rem] font-medium text-text-secondary mb-1.5">
+            <label className="block text-[1.3rem] font-medium text-text-secondary mb-1.5">
               Confirm Password
             </label>
             <div className="relative">

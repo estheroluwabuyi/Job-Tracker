@@ -25,7 +25,7 @@ function FormFields({
           animate={{ x: 0, opacity: 1 }}
           transition={{ duration: 0.4, delay: 0.6 }}
         >
-          <label className="block text-[1.2rem] font-medium text-text-secondary mb-1.5">
+          <label className="block text-[1.3rem] font-medium text-text-secondary mb-1.5">
             Full Name
           </label>
           <input
@@ -43,7 +43,7 @@ function FormFields({
         animate={{ x: 0, opacity: 1 }}
         transition={{ duration: 0.4, delay: isLogin ? 0.6 : 0.7 }}
       >
-        <label className="block text-[1.2rem] font-medium text-text-secondary mb-1.5">
+        <label className="block text-[1.3rem] font-medium text-text-secondary mb-1.5">
           Email Address
         </label>
         <input
@@ -60,7 +60,7 @@ function FormFields({
         animate={{ x: 0, opacity: 1 }}
         transition={{ duration: 0.4, delay: isLogin ? 0.7 : 0.8 }}
       >
-        <label className="block text-[1.2rem] font-medium text-text-secondary mb-1.5">
+        <label className="block text-[1.3rem] font-medium text-text-secondary mb-1.5">
           Password
         </label>
         <div className="relative">
@@ -79,11 +79,11 @@ function FormFields({
             {showPassword ? <PiEye size={20} /> : <PiEyeSlash size={20} />}
           </button>
         </div>
-        {!isLogin && (
+        {/* {!isLogin && (
           <p className="text-[1.1rem] font-medium text-text-secondary mt-1.5">
             Must be at least 6 characters
           </p>
-        )}
+        )} */}
       </motion.div>
     </motion.div>
   );

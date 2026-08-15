@@ -17,11 +17,11 @@ function FormLogoHeading({
         transition={{ duration: 0.5, delay: 0.3 }}
       >
         <Link to="/">
-          <Logo logoHeight="h-22" textSize="text-[2rem]" marginLeft="-ml-5" />
+          <Logo logoHeight="h-25" textSize="text-[2.5rem]" marginLeft="-ml-5" />
         </Link>
         <Link
           to={link}
-          className="font-bold underline! underline-offset-2 text-primary hover:text-primary-dark transition-colors"
+          className="font-bold underline! underline-offset-2 text-primary hover:text-primary-dark transition-colors text-[1.4rem]" 
         >
           {linkText}
         </Link>
@@ -33,7 +33,7 @@ function FormLogoHeading({
         transition={{ duration: 0.5, delay: 0.4 }}
       >
         <h1 className="text-[2rem] font-semibold text-text">{title}</h1>
-        <p className="text-text-secondary mt-2">{subtitle}</p>
+        <p className="text-text-secondary mt-2 text-[1.35rem]">{subtitle}</p>
       </motion.div>
     </>
   );
