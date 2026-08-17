@@ -1,6 +1,6 @@
 import { motion } from "framer-motion";
 import { Link } from "react-router-dom";
-import Logo from "../header/Logo";
+import Logo from "../hero/Logo";
 
 function FormLogoHeading({
   title = "Welcome",
@@ -21,7 +21,7 @@ function FormLogoHeading({
         </Link>
         <Link
           to={link}
-          className="font-bold underline! underline-offset-2 text-primary hover:text-primary-dark transition-colors text-[1.4rem]" 
+          className="font-bold underline! underline-offset-2 text-primary hover:text-primary-dark transition-colors text-[1.4rem]"
         >
           {linkText}
         </Link>

@@ -1,11 +1,11 @@
-import Header from "./Header";
-import StatusBar from "./StatusBar";
+import Header from "../Header";
+import StatusBar from "../hero/StatusBar";
 import EmptyHomepage from "./EmptyHomepage";
 import AddJob from "./AddJob";
-import { useJob } from "../contexts/JobContext";
+import { useJob } from "../../contexts/JobContext";
 import Homepage from "./Homepage";
 import AddJobModal from "./AddJobModal";
-import WelcomeBanner from "./WelcomeBanner";
+import WelcomeBanner from "../WelcomeBanner";
 
 function AppContent() {
   const { jobData, showModal } = useJob();

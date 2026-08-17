@@ -1,6 +1,6 @@
 import { CgNotes } from "react-icons/cg";
-import { useAuth } from "../contexts/AuthContext";
-import { getGreeting, getUserFirstName } from "../helper/getGreeting";
+import { useAuth } from "../../contexts/AuthContext";
+import { getGreeting, getUserFirstName } from "../../helper/getGreeting";
 
 function EmptyHomepage() {
   const { user } = useAuth();

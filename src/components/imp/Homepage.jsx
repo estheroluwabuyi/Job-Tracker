@@ -1,7 +1,7 @@
 import { FaEdit, FaLink, FaTrashAlt } from "react-icons/fa";
-import { useJob } from "../contexts/JobContext";
-import { formatDateForDisplay } from "../helper/formatDate";
-import { useFilter } from "../contexts/FilterContext";
+import { useJob } from "../../contexts/JobContext";
+import { formatDateForDisplay } from "../../helper/formatDate";
+import { useFilter } from "../../contexts/FilterContext";
 import { HiOutlineInbox } from "react-icons/hi2";
 import { useEffect } from "react";
 

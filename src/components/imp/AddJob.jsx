@@ -1,4 +1,4 @@
-import { useJob } from "../contexts/JobContext";
+import { useJob } from "../../contexts/JobContext";
 import { FaPlus } from "react-icons/fa";
 
 function AddJob() {

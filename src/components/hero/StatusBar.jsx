@@ -1,4 +1,4 @@
-import { useFilter } from "../contexts/FilterContext";
+import { useFilter } from "../../contexts/FilterContext";
 
 function StatusBar() {
   const { STATUSES, statusFilter, setStatusFilter } = useFilter();

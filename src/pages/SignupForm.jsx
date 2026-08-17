@@ -3,7 +3,7 @@ import { motion } from "framer-motion";
 import { useNavigate, Link } from "react-router-dom";
 import toast from "react-hot-toast";
 import { useAuth } from "../contexts/AuthContext";
-import Logo from "../components/header/Logo";
+import Logo from "../components/hero/Logo";
 import FormFields from "../components/auth/FormFields";
 import { getAuthErrorMessage } from "../helper/authError";
 import FormLogoHeading from "../components/auth/FormLogoHeading";

@@ -79,11 +79,6 @@ function FormFields({
             {showPassword ? <PiEye size={20} /> : <PiEyeSlash size={20} />}
           </button>
         </div>
-        {/* {!isLogin && (
-          <p className="text-[1.1rem] font-medium text-text-secondary mt-1.5">
-            Must be at least 6 characters
-          </p>
-        )} */}
       </motion.div>
     </motion.div>
   );
