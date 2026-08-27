@@ -26,7 +26,7 @@ export default function Sidebar() {
       <div className="flex flex-col items-center w-full p-5">
         <div className="w-[90px] h-[90px] rounded-full bg-gradient-to-r from-[#067368] to-[#00B69B] flex justify-center items-center shrink-0 p-2">
           <img
-            src="/images/avatar.jpg"
+            src="/images/avatar-2.svg"
             className=" rounded-full w-full h-full object-cover"
             alt="avatar"
           />
