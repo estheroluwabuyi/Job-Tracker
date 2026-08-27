@@ -9,7 +9,6 @@ export default function Sidebar() {
 
   const handleSignOut = async () => {
     await signOut();
-    // toast.success("Signed out successfully");
     navigate("/");
   };
 
@@ -24,7 +23,7 @@ export default function Sidebar() {
         </Link>
       </div>
 
-      <div className="flex flex-col items-center w-full p-5  ">
+      <div className="flex flex-col items-center w-full p-5">
         <div className="w-[90px] h-[90px] rounded-full bg-gradient-to-r from-[#067368] to-[#00B69B] flex justify-center items-center shrink-0 p-2">
           <img
             src="/images/avatar.jpg"
@@ -33,11 +32,17 @@ export default function Sidebar() {
           />
         </div>
 
-        <div className="inline-flex items-center gap-2 mt-3 px-3 py-1.5 rounded-full bg-primary/5 text-primary/80">
-          <LuMail size={15} strokeWidth={2} />
-          <span className="text-[1.2rem] font-manrope font-medium tracking-wide">
-            {user.user_metadata.email}
-          </span>
+        <div className="text-center mt-5 font">
+          <h3 className="text-[2.1rem] font-bold ">
+            {user.user_metadata.name}
+          </h3>
+
+          <div className="inline-flex items-center gap-2 mt-3 px-3 py-1.5 rounded-full bg-primary/5 text-primary/80">
+            <LuMail size={15} strokeWidth={2} />
+            <h4 className="text-[1.2rem] font-manrope font-medium tracking-wide">
+              {user.user_metadata.email}
+            </h4>
+          </div>
         </div>
       </div>
 
