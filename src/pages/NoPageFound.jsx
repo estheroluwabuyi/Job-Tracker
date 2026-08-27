@@ -7,12 +7,11 @@ export default function NoPageFound() {
   return (
     <div className="min-h-screen bg-bg text-text flex items-center justify-center px-6 w-full">
       <div className="max-w-[40rem] w-full text-center">
-        {/* Animated Icon */}
         <motion.div
           initial={{ scale: 0.8, opacity: 0 }}
           animate={{ scale: 1, opacity: 1 }}
           transition={{ duration: 1, delay: 0.2, ease: "easeOut" }}
-          className="mx-auto mb-12"
+          className="mx-auto mb-10"
         >
           <motion.div
             animate={{ rotate: [0, 5, -5, 0] }}
@@ -21,13 +20,14 @@ export default function NoPageFound() {
               duration: 6,
               ease: "easeInOut",
             }}
-            className="w-80 h-40 mx-auto rounded-2xl bg-primary-light flex items-center justify-center font-monda"
+            className="w-80 h-40 mx-auto rounded-2xl bg-primary-light flex items-center justify-center font-monda overflow-hidden"
           >
-            <span className="text-primary text-[10rem] font-bold">404</span>
+            <span className="text-primary text-[10rem] font-bold -ml-1.5">
+              404
+            </span>
           </motion.div>
         </motion.div>
 
-        {/* Heading */}
         <motion.h1
           initial={{ y: 20, opacity: 0 }}
           animate={{ y: 0, opacity: 1 }}
@@ -37,7 +37,6 @@ export default function NoPageFound() {
           This page isn’t available yet.
         </motion.h1>
 
-        {/* Description */}
         <motion.p
           initial={{ y: 20, opacity: 0 }}
           animate={{ y: 0, opacity: 1 }}
@@ -48,7 +47,6 @@ export default function NoPageFound() {
           Don’t worry, it’s coming soon.
         </motion.p>
 
-        {/* Buttons */}
         <motion.div
           initial={{ y: 20, opacity: 0 }}
           animate={{ y: 0, opacity: 1 }}
