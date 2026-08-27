@@ -56,15 +56,9 @@ function App() {
               <Route path="/signup" element={<SignupForm />} />
               <Route path="/login" element={<LoginForm />} />
 
-              {/* Protected Dashboard Route */}
-              <Route
-                path="/dashboard"
-                element={
-                  <ProtectedRoute>
-                    <Dashboard />
-                  </ProtectedRoute>
-                }
-              />
+              <Route element={<ProtectedRoute />}>
+                <Route path="/dashboard" element={<Dashboard />} />
+              </Route>
 
               <Route path="*" element={<NoPageFound />} />
             </Routes>
