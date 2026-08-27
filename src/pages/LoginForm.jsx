@@ -55,9 +55,6 @@ function LoginForm() {
       }
 
       if (data?.user) {
-        toast.success("Welcome back!", {
-          duration: 2000,
-        });
         navigate("/dashboard");
       }
     } catch (err) {

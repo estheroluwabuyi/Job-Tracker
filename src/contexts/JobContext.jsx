@@ -27,15 +27,14 @@ function JobProvider({ children }) {
   const [jobToDelete, setJobToDelete] = useState(null);
   const [isDeleting, setIsDeleting] = useState(false);
 
-  // FETCH JOBS FROM SUPABASE
   useEffect(() => {
     if (user) {
       fetchJobs();
     } else {
-      setJobData([]); // Clear data if no user
+      setJobData([]);
       setLoading(false);
     }
-  }, [user]); // fetch again when user changes
+  }, [user]);
 
   const fetchJobs = async () => {
     if (!user) return;

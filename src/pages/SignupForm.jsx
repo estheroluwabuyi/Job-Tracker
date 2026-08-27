@@ -60,9 +60,6 @@ function SignupForm() {
       }
 
       if (data?.user) {
-        toast.success("Account created! You can now sign in.", {
-          duration: 3000,
-        });
         navigate("/login");
       }
     } catch (err) {
