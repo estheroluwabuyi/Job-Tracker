@@ -1,6 +1,11 @@
 import Sidebar from "./sidebar/Sidebar";
+import { useJob } from "../../contexts/JobContext";
+import { useAuth } from "../../contexts/AuthContext";
 
 function DashboardLayout({ children }) {
+  const { jobData } = useJob();
+  const { user, signOut } = useAuth();
+
   return (
     <div className="grid grid-cols-[275px_1fr] 2xl:grid-cols-[336px_1fr] h-screen bg-bg-muted">
       <aside>
@@ -8,8 +13,7 @@ function DashboardLayout({ children }) {
       </aside>
 
       <main className="h-screen overflow-y-auto">
-        Navbar
-        <div className="p-6">{children}</div>
+        <div className="">{children}</div>
       </main>
     </div>
   );

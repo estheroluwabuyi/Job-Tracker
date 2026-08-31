@@ -1,4 +1,4 @@
-import { Link } from "react-router-dom";
+import { Link, Navigate } from "react-router-dom";
 import Logo from "../../hero/Logo";
 import { useAuth } from "../../../contexts/AuthContext";
 import SidebarLinks from "./SidebarLinks";
@@ -9,7 +9,7 @@ export default function Sidebar() {
 
   const handleSignOut = async () => {
     await signOut();
-    navigate("/");
+    Navigate("/");
   };
 
   return (

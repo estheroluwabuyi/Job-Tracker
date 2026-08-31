@@ -47,7 +47,7 @@ function SidebarLinks({ signOut }) {
             className={({ isActive }) =>
               `flex items-center gap-4 px-5 py-4 rounded-xl text-[1.4rem] font-medium transition-all ${
                 isActive
-                  ? "bg-primary text-white"
+                  ? "bg-primary text-bg "
                   : "text-text-secondary hover:bg-primary/10 hover:text-primary"
               }`
             }

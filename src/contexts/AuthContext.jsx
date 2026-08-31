@@ -46,13 +46,14 @@ export function AuthProvider({ children }) {
   //   await supabase.auth.signOut()
   // }
 
-  const signOut = () => {
-    setUser(null);
+  const signOut = async () => {
+    const { error } = await supabase.auth.signOut();
 
-    setTimeout(() => {
-      supabase.auth.signOut().catch(() => {});
-      localStorage.clear();
-    }, 0);
+    if (!error) {
+      setUser(null);
+    }
+
+    return { error };
   };
 
   return (
