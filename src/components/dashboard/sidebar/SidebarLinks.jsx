@@ -8,7 +8,7 @@ import {
   LuLogOut,
 } from "react-icons/lu";
 
-function SidebarLinks({ signOut }) {
+function SidebarLinks({ signOut, isLoggingOut }) {
   const links = [
     {
       name: "Dashboard",
@@ -63,7 +63,7 @@ function SidebarLinks({ signOut }) {
         className="flex items-center gap-4 px-5 py-4 mt-8 w-full rounded-xl text-[1.4rem] font-medium text-text-secondary hover:bg-red-500/10 hover:text-red-500 transition-all"
       >
         <LuLogOut size={22} strokeWidth={2} />
-        <span>Log out</span>
+        <span>{isLoggingOut ? "Logging out..." : "Log out"}</span>
       </button>
     </nav>
   );

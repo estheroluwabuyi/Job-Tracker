@@ -42,18 +42,13 @@ export function AuthProvider({ children }) {
     return { data, error };
   };
 
-  // const signOut = async () => {
-  //   await supabase.auth.signOut()
-  // }
+  const signOut = () => {
+    setUser(null);
 
-  const signOut = async () => {
-    const { error } = await supabase.auth.signOut();
-
-    if (!error) {
-      setUser(null);
-    }
-
-    return { error };
+    setTimeout(() => {
+      supabase.auth.signOut().catch(() => {});
+      localStorage.clear();
+    }, 0);
   };
 
   return (
