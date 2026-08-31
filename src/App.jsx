@@ -10,6 +10,10 @@ import LoginForm from "./pages/LoginForm";
 import Dashboard from "./pages/Dashboard";
 import ProtectedRoute from "./components/auth/ProtectedRoute";
 import { Toaster } from "react-hot-toast";
+import Applications from "./pages/Applications";
+import Analytics from "./pages/Analytics";
+import SavedJobs from "./pages/SavedJobs";
+import Settings from "./pages/Settings";
 
 function App() {
   return (
@@ -58,6 +62,10 @@ function App() {
 
               <Route element={<ProtectedRoute />}>
                 <Route path="/dashboard" element={<Dashboard />} />
+                <Route path="/applications" element={<Applications />} />
+                <Route path="/analytics" element={<Analytics />} />
+                <Route path="/saved-jobs" element={<SavedJobs />} />
+                <Route path="/settings" element={<Settings />} />
               </Route>
 
               <Route path="*" element={<NoPageFound />} />

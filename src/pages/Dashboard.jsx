@@ -7,7 +7,7 @@ function Dashboard() {
 
   return (
     <DashboardLayout>
-      <DashboardNavbar />
+    
     </DashboardLayout>
   );
 }

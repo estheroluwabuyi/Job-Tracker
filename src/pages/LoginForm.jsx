@@ -66,7 +66,6 @@ function LoginForm() {
 
   return (
     <div className="flex min-h-screen w-full overflow-hidden">
-      {/* Image Section */}
       <motion.div
         className="hidden lg:block w-1/2 h-screen"
         initial={{ x: -50, opacity: 0 }}
@@ -80,7 +79,6 @@ function LoginForm() {
         />
       </motion.div>
 
-      {/* Form Section */}
       <motion.div
         className="w-full lg:w-1/2 min-h-screen overflow-y-auto"
         initial={{ x: 50, opacity: 0 }}
@@ -91,7 +89,6 @@ function LoginForm() {
           className="min-h-screen bg-bg flex flex-col justify-center max-w-[500px] mx-auto p-10"
           onSubmit={handleSubmit}
         >
-          {/* Form logo and heading */}
           <FormLogoHeading
             title="Good to see you again"
             subtitle="Sign in to continue your job search journey"
@@ -99,7 +96,6 @@ function LoginForm() {
             linkText="Sign up instead?"
           />
 
-          {/* Form Fields */}
           <FormFields
             email={email}
             setEmail={setEmail}
@@ -110,7 +106,6 @@ function LoginForm() {
             isLogin={true}
           />
 
-          {/* Forgot Password Link */}
           <motion.div
             className="text-right mt-2"
             initial={{ opacity: 0 }}
@@ -125,10 +120,8 @@ function LoginForm() {
             </Link>
           </motion.div>
 
-          {/* Error Message */}
           <FormErrorMessage error={error} />
 
-          {/* Submit Button */}
           <FormSubmitButton
             loading={loading}
             textA="Signing in..."
