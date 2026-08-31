@@ -1,4 +1,4 @@
-import { Link, Navigate } from "react-router-dom";
+import { Link, Navigate, useNavigate } from "react-router-dom";
 import Logo from "../../hero/Logo";
 import { useAuth } from "../../../contexts/AuthContext";
 import SidebarLinks from "./SidebarLinks";
@@ -7,9 +7,11 @@ import { LuMail } from "react-icons/lu";
 export default function Sidebar() {
   const { user, signOut } = useAuth();
 
+  const navigate = useNavigate();
+
   const handleSignOut = async () => {
     await signOut();
-    Navigate("/");
+    navigate("/");
   };
 
   return (
