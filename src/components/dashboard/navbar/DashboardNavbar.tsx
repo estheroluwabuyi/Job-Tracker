@@ -23,11 +23,9 @@ export default function DashboardNavbar() {
         </h1>
 
         <p className="mt-2 text-[1.5rem] text-text-secondary/70">
-          {loading
-            ? "Getting your job search ready..."
-            : hasApplications
-              ? "Here's a quick look at your job search."
-              : "Let's get your job search organized."}
+          {hasApplications
+            ? "Here's a quick look at your job search."
+            : "Let's get your job search organized."}
         </p>
       </div>
 

@@ -24,7 +24,6 @@ function LoginForm() {
     setLoading(true);
     setError("");
 
-    // Validation
     if (!email.trim()) {
       setError("Please enter your email address");
       setLoading(false);
@@ -94,7 +93,7 @@ function LoginForm() {
         >
           {/* Form logo and heading */}
           <FormLogoHeading
-            title="Welcome Back"
+            title="Good to see you again"
             subtitle="Sign in to continue your job search journey"
             link="/signup"
             linkText="Sign up instead?"
