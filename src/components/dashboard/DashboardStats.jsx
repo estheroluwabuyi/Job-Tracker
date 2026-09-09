@@ -61,10 +61,9 @@ function DashboardStats() {
   console.log(defaultJobs);
 
   function getCount(status) {
-    // if (!status) return jobData.length;
-    if (!status) return defaultJobs.length;
+    if (!status) return jobData.length;
 
-    return defaultJobs.filter((job) => job.status === status).length;
+    return jobData.filter((job) => job.status === status).length;
   }
 
   return (
