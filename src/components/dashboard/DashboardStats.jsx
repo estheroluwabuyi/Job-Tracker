@@ -67,7 +67,7 @@ function DashboardStats() {
   }
 
   return (
-    <section className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-5 gap-7 p-6 max-w-[1300px]">
+    <section className="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-5 gap-7 p-6 max-w-[1300px]">
       {stats.map((stat) => {
         const Icon = stat.icon;
 
