@@ -8,19 +8,19 @@ import AddApplicationButton from "./AddApplicationButton";
 const pageContent = {
   "/applications": {
     title: "Your Applications",
-    subtitle: "Keep track of the jobs you've applied for.",
+    subtitle: "Keep track of the jobs you've applied for",
   },
   "/analytics": {
     title: "Your Analytics",
-    subtitle: "See how your job search is progressing.",
+    subtitle: "See how your job search is progressing",
   },
   "/saved-jobs": {
     title: "Saved Jobs",
-    subtitle: "Keep interesting opportunities in one place.",
+    subtitle: "Keep interesting opportunities in one place",
   },
   "/settings": {
     title: "Settings",
-    subtitle: "Manage your profile, preferences, and account.",
+    subtitle: "Manage your profile, preferences, and account",
   },
 };
 
@@ -45,13 +45,13 @@ export default function DashboardNavbar() {
 
         <p className="mt-2 text-[1.4rem] text-text-secondary/70">
           {hasApplications
-            ? "Here's a quick look at your job search."
-            : "Let's get your job search organized."}
+            ? "Here's a quick look at your job search"
+            : "Let's get your job search organized"}
         </p>
       </div>
 
       <div className="flex items-center gap-3">
-        <AddApplicationButton/>
+        <AddApplicationButton />
       </div>
     </nav>
   ) : (
