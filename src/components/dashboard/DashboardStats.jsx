@@ -1,60 +1,6 @@
-import {
-  LuBriefcaseBusiness,
-  LuCalendarCheck,
-  LuBadgeCheck,
-  LuCircleX,
-  LuClock3,
-} from "react-icons/lu";
 import { useJob } from "../../contexts/JobContext";
 import { defaultJobs } from "../../data/defaultJobs";
-
-const stats = [
-  {
-    label: "Applied",
-    status: null,
-    icon: LuBriefcaseBusiness,
-    bg: "bg-sky-500/5",
-    iconBg: "bg-sky-500/10",
-    iconColor: "text-sky-600",
-    gradient: "linear-gradient(45deg, #38bdf8, #0284c7)",
-  },
-  {
-    label: "Interviewed",
-    status: "Interviewed",
-    icon: LuCalendarCheck,
-    bg: "bg-violet-500/5",
-    iconBg: "bg-violet-500/10",
-    iconColor: "text-violet-600",
-    gradient: "linear-gradient(45deg, #a78bfa, #7c3aed)",
-  },
-  {
-    label: "Offered",
-    status: "Offered",
-    icon: LuBadgeCheck,
-    bg: "bg-primary/5",
-    iconBg: "bg-primary/10",
-    iconColor: "text-primary",
-    gradient: "linear-gradient(45deg, #2dd4bf, #0f766e)",
-  },
-  {
-    label: "Rejected",
-    status: "Rejected",
-    icon: LuCircleX,
-    bg: "bg-red-500/5",
-    iconBg: "bg-red-500/10",
-    iconColor: "text-red-500",
-    gradient: "linear-gradient(45deg, #fb7185, #dc2626)",
-  },
-  {
-    label: "No Response",
-    status: "No Response",
-    icon: LuClock3,
-    bg: "bg-amber-500/5",
-    iconBg: "bg-amber-500/10",
-    iconColor: "text-amber-600",
-    gradient: "linear-gradient(45deg, #fbbf24, #d97706)",
-  },
-];
+import { stats } from "../../data/stats";
 
 function DashboardStats() {
   const { jobData } = useJob();

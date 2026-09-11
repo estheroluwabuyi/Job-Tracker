@@ -9,13 +9,13 @@ function DashboardLayout({ children }) {
 
   return (
     <div
-      className={`grid h-screen bg-bg-muted  ${
+      className={`grid h-screen bg-bg-muted transition-[grid-template-columns] duration-500 ease-linear ${
         sidebarOpen
-          ? "grid-cols-[100%_1fr] md:grid-cols-[275px_1fr]"
+          ? "grid-cols-[100%_1fr] sm:grid-cols-[275px_1fr]"
           : "grid-cols-[64px_1fr]"
       }`}
     >
-      <aside>
+      <aside className="overflow-x-hidden">
         {sidebarOpen ? (
           <Sidebar onClose={() => setSidebarOpen(false)} />
         ) : (

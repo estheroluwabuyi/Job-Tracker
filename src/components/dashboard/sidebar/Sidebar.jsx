@@ -2,7 +2,7 @@ import { Link } from "react-router-dom";
 import Logo from "../../hero/Logo";
 import { useAuth } from "../../../contexts/AuthContext";
 import SidebarLinks from "./SidebarLinks";
-import { LuMail, LuPanelLeftClose } from "react-icons/lu";
+import { LuPanelLeftClose } from "react-icons/lu";
 
 export default function Sidebar({ onClose }) {
   const { user, signOut, handleSignOut } = useAuth();
@@ -19,7 +19,7 @@ export default function Sidebar({ onClose }) {
           className="p-2 rounded-lg text-text-secondary hover:bg-bg-muted hover:text-text transition-colors"
           aria-label="Collapse sidebar"
         >
-          <LuPanelLeftClose size={23} />
+          <LuPanelLeftClose size={24} />
         </button>
       </div>
 
@@ -38,14 +38,14 @@ export default function Sidebar({ onClose }) {
           <div className="inline-flex items-center gap-2 mt-3 px-3 py-1.5 rounded-full bg-primary/5 text-primary/80">
             <LuMail size={15} strokeWidth={2} />
 
-            <h4 className="text-[1.25rem] font-manrope font-medium tracking-wide">
+            <h4 className="text-[1.25rem] font-manrope font-medium tracking-wide ">
               {user.user_metadata.email}
             </h4>
           </div>
         </div>
       </div>
 
-      <div className="w-full max-w-[300px] md:max-w-[200px]">
+      <div className="w-full max-w-[300px] sm:max-w-[200px]">
         <SidebarLinks signOut={signOut} />
       </div>
     </div>

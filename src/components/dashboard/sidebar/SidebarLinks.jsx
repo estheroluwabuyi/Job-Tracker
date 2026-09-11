@@ -39,7 +39,7 @@ function SidebarLinks({ signOut, isLoggingOut }) {
 
   return (
     <nav className="w-full px-5">
-      <div className="flex flex-col gap-5 w-full">
+      <div className="flex flex-col gap-5 w-full text-nowrap">
         {links.map(({ name, path, icon: Icon }) => (
           <NavLink
             key={path}

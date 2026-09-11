@@ -36,14 +36,14 @@ export default function DashboardNavbar() {
   return pathname === "/dashboard" ? (
     <nav className="flex items-center justify-between py-6 px-8 bg-bg">
       <div>
-        <h1 className="text-[1.5rem] sm:text-[2.5rem] gap-5 font-manrope font-bold flex items-center">
+        <h1 className="text-[1.55rem] sm:text-[2.5rem] gap-5 font-manrope font-bold flex items-center">
           {hasApplications
             ? `Welcome back, ${user.user_metadata.name}`
             : `Welcome, ${user.user_metadata.name}`}
           <LuPartyPopper className="text-primary -mt-2 text-[20px] sm:text-[35px]" />
         </h1>
 
-        <p className="mt-2 text-[1.1rem] sm:text-[1.4rem] text-text-secondary/70">
+        <p className="mt-2 text-[1.2rem] sm:text-[1.4rem] text-text-secondary/70 xs:text-nowrap">
           {hasApplications
             ? "Here's a quick look at your job search"
             : "Let's get your job search organized"}
@@ -57,11 +57,11 @@ export default function DashboardNavbar() {
   ) : (
     <nav className="flex items-center justify-between py-6 px-8 bg-bg">
       <div>
-        <h1 className="text-[1.5rem] sm:text-[2.5rem] font-manrope font-bold">
+        <h1 className="text-[1.55rem] sm:text-[2.5rem] font-manrope font-bold">
           {page?.title}
         </h1>
 
-        <p className="mt-2 max-w-[300px] text-[1.1rem] sm:text-[1.4rem] text-text-secondary/70 ">
+        <p className="mt-2 max-w-[300px] text-[1.2rem] sm:text-[1.4rem] text-text-secondary/70 xs:text-nowrap">
           {page?.subtitle}
         </p>
       </div>

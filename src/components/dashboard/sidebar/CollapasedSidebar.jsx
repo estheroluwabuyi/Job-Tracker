@@ -42,10 +42,10 @@ export default function CollapsedSidebar({ onOpen }) {
   const { signOut } = useAuth();
 
   return (
-    <div className="h-full bg-bg flex flex-col items-center pt-4 gap-7">
+    <div className="h-full bg-bg flex flex-col items-center pt-4 gap-7 ">
       <Link
         to="/"
-        className=" flex items-center justify-center"
+        className="flex items-center justify-center"
         aria-label="Go to homepage"
       >
         <img
@@ -59,7 +59,7 @@ export default function CollapsedSidebar({ onOpen }) {
 
       <button
         onClick={onOpen}
-        className="p-3 rounded-xl text-text-secondary hover:bg-bg-muted hover:text-text transition-colors"
+        className="p-3 rounded-xl text-text-secondary hover:bg-bg-muted hover:text-text transition-colors mb-5"
         aria-label="Open sidebar"
       >
         <LuPanelLeftOpen size={25} />
@@ -86,6 +86,7 @@ export default function CollapsedSidebar({ onOpen }) {
         <button
           onClick={signOut}
           className="flex items-center gap-4  mt-10 w-full rounded-xl text-[1.4rem] font-medium text-text-secondary hover:bg-red-500/10 hover:text-red-500 transition-all p-1.5"
+          title="Log out"
         >
           <LuLogOut size={21} strokeWidth={2} />
         </button>
