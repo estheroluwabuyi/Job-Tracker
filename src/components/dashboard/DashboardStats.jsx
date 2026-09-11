@@ -4,7 +4,7 @@ import { stats } from "../../data/stats";
 
 function DashboardStats() {
   const { jobData } = useJob();
-
+  console.log(jobData);
   function getCount(status) {
     if (!status) return jobData.length;
 
