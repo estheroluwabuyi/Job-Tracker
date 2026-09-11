@@ -36,7 +36,7 @@ export default function DashboardNavbar() {
   const isDashboard = pathname === "/dashboard";
 
   return (
-    <nav className="flex items-center justify-between py-6 px-8 bg-bg">
+    <nav className="flex sticky top-0 z-500 items-center justify-between py-6 px-8 bg-bg">
       <AnimatePresence mode="wait">
         <motion.div
           key={pathname}
