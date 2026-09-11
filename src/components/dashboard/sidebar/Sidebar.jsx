@@ -2,7 +2,7 @@ import { Link } from "react-router-dom";
 import Logo from "../../hero/Logo";
 import { useAuth } from "../../../contexts/AuthContext";
 import SidebarLinks from "./SidebarLinks";
-import { LuPanelLeftClose } from "react-icons/lu";
+import { LuMail, LuPanelLeftClose } from "react-icons/lu";
 
 export default function Sidebar({ onClose }) {
   const { user, signOut, handleSignOut } = useAuth();
