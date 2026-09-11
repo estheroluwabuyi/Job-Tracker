@@ -1,10 +1,37 @@
+// import { FaPlus } from "react-icons/fa";
+
+// function AddApplicationButton() {
+//   return (
+//     <button className="flex items-center gap-3 px-5 py-3.5 rounded-xl bg-primary text-bg text-[1.4rem] font-medium hover:bg-primary/90 transition-colors">
+//       <FaPlus size={14} />
+//       Add Application
+//     </button>
+//   );
+// }
+
+// export default AddApplicationButton;
 import { FaPlus } from "react-icons/fa";
 
 function AddApplicationButton() {
   return (
-    <button className="flex items-center gap-3 px-5 py-3.5 rounded-xl bg-primary text-bg text-[1.4rem] font-medium hover:bg-primary/90 transition-colors">
+    <button
+      className="
+        flex items-center justify-center
+        w-12 h-12 sm:w-auto sm:h-auto
+        sm:px-5 sm:py-3.5
+        rounded-xl
+        bg-primary text-bg
+        text-[1.4rem] font-medium
+        hover:bg-primary/90
+        transition-colors
+        gap-3
+      "
+      aria-label="Add application"
+      title="Add application"
+    >
       <FaPlus size={14} />
-      Add Application
+
+      <span className="hidden sm:inline">Add Application</span>
     </button>
   );
 }

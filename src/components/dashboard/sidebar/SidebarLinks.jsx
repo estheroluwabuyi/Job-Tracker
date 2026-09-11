@@ -39,7 +39,7 @@ function SidebarLinks({ signOut, isLoggingOut }) {
 
   return (
     <nav className="w-full px-5">
-      <div className="flex flex-col gap-5">
+      <div className="flex flex-col gap-5 w-full">
         {links.map(({ name, path, icon: Icon }) => (
           <NavLink
             key={path}
@@ -60,7 +60,7 @@ function SidebarLinks({ signOut, isLoggingOut }) {
 
       <button
         onClick={signOut}
-        className="flex items-center gap-4 px-5 py-4 mt-8 w-full rounded-xl text-[1.4rem] font-medium text-text-secondary hover:bg-red-500/10 hover:text-red-500 transition-all"
+        className="flex items-center gap-4 px-5 py-4 mt-8 w-full rounded-xl text-[1.5rem] font-medium text-text-secondary hover:bg-red-500/10 hover:text-red-500 transition-all"
       >
         <LuLogOut size={22} strokeWidth={2} />
         <span>{isLoggingOut ? "Logging out..." : "Log out"}</span>
