@@ -89,7 +89,6 @@ function NavBar() {
         }`}
       >
         <div className="flex items-center justify-between max-w-[700px] lg:max-w-[1300px] mx-auto px-10 py-2">
-          {/* Logo */}
           <Link to="/" className="flex items-center">
             <Logo
               logoHeight="h-17 xs:h-27 lg:h-30 "

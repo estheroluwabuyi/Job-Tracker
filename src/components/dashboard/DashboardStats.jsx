@@ -4,7 +4,7 @@ import { stats } from "../../data/stats";
 
 function DashboardStats() {
   const { jobData } = useJob();
-  console.log(jobData);
+
   function getCount(status) {
     if (!status) return jobData.length;
 
@@ -12,7 +12,7 @@ function DashboardStats() {
   }
 
   return (
-    <section className="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-5 gap-7 p-8 max-w-[1300px]">
+    <section className="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-5 gap-7 py-8 max-w-[1300px]">
       {stats.map((stat) => {
         const Icon = stat.icon;
 
@@ -22,9 +22,7 @@ function DashboardStats() {
             className={`${stat.bg} border border-border rounded-2xl p-6  flex flex-col justify-center gap-5 relative overflow-hidden`}
           >
             <div className="relative z-10 flex items-center justify-between">
-              <p className="text-[1.8rem] font-manrope tracking-wide">
-                {stat.label}
-              </p>
+              <p className="text-[1.8rem] tracking-wide">{stat.label}</p>
 
               <div
                 className={`rounded-xl p-2 ${stat.iconBg} ${stat.iconColor} flex items-center justify-center`}

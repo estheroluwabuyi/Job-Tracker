@@ -50,7 +50,7 @@ export default function DashboardNavbar() {
         >
           {isDashboard ? (
             <>
-              <h1 className="text-[1.55rem] sm:text-[2.5rem] gap-5 font-manrope font-bold flex items-center">
+              <h1 className="text-[1.55rem] sm:text-[2.5rem] gap-5 font-bold flex items-center tracking-tight font-monda">
                 {hasApplications
                   ? `Welcome back, ${user.user_metadata.name}`
                   : `Welcome, ${user.user_metadata.name}`}
@@ -66,7 +66,7 @@ export default function DashboardNavbar() {
             </>
           ) : (
             <>
-              <h1 className="text-[1.55rem] sm:text-[2.5rem] font-manrope font-bold">
+              <h1 className="text-[1.55rem] sm:text-[2.5rem] font-bold tracking-tight font-monda">
                 {page?.title}
               </h1>
 

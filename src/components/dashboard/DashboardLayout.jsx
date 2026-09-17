@@ -15,7 +15,7 @@ function DashboardLayout({ children }) {
     <div
       className={`grid h-screen bg-bg-muted transition-[grid-template-columns] duration-500 ease-linear ${
         sidebarOpen
-          ? "grid-cols-[100%_1fr] sm:grid-cols-[275px_1fr]"
+          ? "grid-cols-[100%_1fr] sm:grid-cols-[270px_1fr]"
           : "grid-cols-[64px_1fr]"
       }`}
     >

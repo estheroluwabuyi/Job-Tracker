@@ -38,7 +38,7 @@ export default function Sidebar({ onClose }) {
           <div className="inline-flex items-center gap-2 mt-3 px-3 py-1.5 rounded-full bg-primary/5 text-primary/80">
             <LuMail size={15} strokeWidth={2} />
 
-            <h4 className="text-[1.25rem] font-manrope font-medium tracking-wide ">
+            <h4 className="text-[1.25rem] font-medium tracking-wide ">
               {user.user_metadata.email}
             </h4>
           </div>
