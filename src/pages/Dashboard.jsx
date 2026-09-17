@@ -11,7 +11,7 @@ function Dashboard() {
     <DashboardLayout>
       <div className="px-8">
         <DashboardStats />
-        {/* <div className="mt-4 h-px w-full bg-border" /> */}
+
         <RecentApplicationsTable />
       </div>
     </DashboardLayout>

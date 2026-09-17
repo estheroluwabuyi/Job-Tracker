@@ -16,7 +16,7 @@ function RecentApplicationsToolbar({
   onQueryChange,
 }) {
   return (
-    <div className="flex max-w-[300px] sm:max-w-[600px] gap-5 flex-col sm:flex-row ">
+    <div className="flex max-w-[300px] sm:max-w-[600px] gap-5 flex-col sm:flex-row mb-5">
       <div className="relative flex-1">
         <input
           type="text"

@@ -7,6 +7,7 @@ function RecentApplicationsTable() {
   const [query, setQuery] = useState("");
 
   const { jobData } = useJob();
+  console.log(jobData);
 
   const filteredJob = jobData.slice(0, 5).filter((job) => {
     const matchesFilter =
@@ -27,7 +28,7 @@ function RecentApplicationsTable() {
 
   return (
     <section className="py-4">
-      <h2 className="text-[2rem] font-medium tracking-tight mb-4">
+      <h2 className="text-[2rem] font-medium tracking-tight mb-7">
         Recent Applications
       </h2>
 
@@ -41,6 +42,12 @@ function RecentApplicationsTable() {
       {filteredJob.map((job) => (
         <div key={job.id}>{job.position}</div>
       ))}
+
+      {filteredJob.length === 0 && (
+        <p className="text-text-secondary/70">
+          No applications match your search.
+        </p>
+      )}
     </section>
   );
 }
