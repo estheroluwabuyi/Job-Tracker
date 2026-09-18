@@ -2,7 +2,7 @@ import { useJob } from "../../contexts/JobContext";
 import { stats } from "../../data/stats";
 
 function DashboardStats() {
-  const { jobData } = useJob();
+  const { jobData, loading } = useJob();
 
   function getCount(status) {
     if (status === "Applied") return jobData.length;
