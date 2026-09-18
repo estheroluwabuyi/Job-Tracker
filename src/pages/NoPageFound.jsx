@@ -20,7 +20,7 @@ export default function NoPageFound() {
               duration: 6,
               ease: "easeInOut",
             }}
-            className="w-80 h-40 mx-auto rounded-2xl bg-primary-light flex items-center justify-center font-monda overflow-hidden"
+            className="w-80 h-40 mx-auto rounded-2xl bg-primary-light flex items-center justify-center font-manrope overflow-hidden"
           >
             <span className="text-primary text-[10rem] font-bold -ml-1.5">
               404

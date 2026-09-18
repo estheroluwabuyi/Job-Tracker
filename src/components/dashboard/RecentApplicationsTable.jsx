@@ -1,53 +1,68 @@
-import { useState } from "react";
+import { Link } from "react-router-dom";
 import { useJob } from "../../contexts/JobContext";
-import RecentApplicationsToolbar from "./RecentApplicationsToolbar";
+import { formatDateForDisplay } from "../../helper/formatDate";
+import TableSkeleton from "../skeletons/TableSkeleton";
+import StatusBadge from "../ui/StatusBadge";
 
 function RecentApplicationsTable() {
-  const [filter, setFilter] = useState("All Applications");
-  const [query, setQuery] = useState("");
+  const { jobData, loading } = useJob();
 
-  const { jobData } = useJob();
   console.log(jobData);
 
-  const filteredJob = jobData.slice(0, 5).filter((job) => {
-    const matchesFilter =
-      filter === "All Applications" || job.status === filter;
-
-    const matchPosition = job.position
-      .trim()
-      .toLowerCase()
-      .includes(query.trim().toLowerCase());
-
-    const matchCompany = job.company
-      .trim()
-      .toLowerCase()
-      .includes(query.trim().toLowerCase());
-
-    return (matchPosition || matchCompany) && matchesFilter;
-  });
-
   return (
-    <section className="py-4">
-      <h2 className="text-[2rem] font-medium tracking-tight mb-7">
-        Recent Applications
-      </h2>
+    <section className="py-4 overflow-x-hidden">
+      <div className="flex items-center justify-between mb-4">
+        <h2 className="text-[1.5rem] sm:text-[2rem] font-medium tracking-tight font-manrope">
+          Recent Applications
+        </h2>
 
-      <RecentApplicationsToolbar
-        filter={filter}
-        onFilterChange={setFilter}
-        query={query}
-        onQueryChange={setQuery}
-      />
+        <Link
+          to="/applications"
+          className="rounded-lg px-8 py-3 sm:text-[1.5rem] font-medium text-primary transition-colors hover:bg-primary/10"
+        >
+          View All
+        </Link>
+      </div>
 
-      {filteredJob.map((job) => (
-        <div key={job.id}>{job.position}</div>
-      ))}
+      <table
+        className="w-full border-collapse bg-bg "
+        style={{ boxShadow: "rgba(0, 0, 0, 0.16) 0px 1px 4px" }}
+      >
+        <thead className="text-left text-text-secondary border-b border-border text-[1.3rem] sm:text-[1.7rem] table-fixed font-semibold font-manrope">
+          <tr>
+            <th className="w-[25%] px-8 py-6 ">Company</th>
+            <th className="w-[25%] px-8 py-6 ">Position</th>
+            <th className="w-[16.67%] px-8 py-6 ">Status</th>
+            <th className="w-[16.67%] px-8 py-6 ">Applied</th>
+            <th className="w-[16.67%] px-8 py-6">Added</th>
+          </tr>
+        </thead>
 
-      {filteredJob.length === 0 && (
-        <p className="text-text-secondary/70">
-          No applications match your search.
-        </p>
-      )}
+        <tbody className="text-[1rem] sm:text-[1.5rem]">
+          {loading ? (
+            <TableSkeleton />
+          ) : (
+            jobData.slice(0, 5).map((job) => (
+              <tr
+                key={job.id}
+                className="border-b border-border last:border-b-0"
+              >
+                <td className="px-8 py-5">{job.company}</td>
+                <td className="px-8 py-5">{job.position}</td>
+
+                <td className="px-8 py-5">
+                  <StatusBadge status={job.status} />
+                </td>
+
+                <td className="px-8 py-5">{formatDateForDisplay(job.date)}</td>
+                <td className="px-8 py-4">
+                  {formatDateForDisplay(job.created_at)}
+                </td>
+              </tr>
+            ))
+          )}
+        </tbody>
+      </table>
     </section>
   );
 }

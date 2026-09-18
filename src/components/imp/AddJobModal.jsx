@@ -27,7 +27,7 @@ function AddJobModal() {
         }}
       >
         {/* Title */}
-        <h2 className="text-[1.8rem] font-monda font-bold text-center">
+        <h2 className="text-[1.8rem] font-manrope font-bold text-center">
           {isEditing ? "Edit" : "Add"} Job Application
         </h2>
 

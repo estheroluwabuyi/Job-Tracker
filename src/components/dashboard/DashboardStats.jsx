@@ -1,12 +1,11 @@
 import { useJob } from "../../contexts/JobContext";
-import { defaultJobs } from "../../data/defaultJobs";
 import { stats } from "../../data/stats";
 
 function DashboardStats() {
   const { jobData } = useJob();
 
   function getCount(status) {
-    if (!status) return jobData.length;
+    if (status === "Applied") return jobData.length;
 
     return jobData.filter((job) => job.status === status).length;
   }
@@ -31,7 +30,7 @@ function DashboardStats() {
               </div>
             </div>
 
-            <h2 className="relative z-10 text-[2.7rem] font-monda font-bold">
+            <h2 className="relative z-10 text-[2.7rem] font-manrope font-bold">
               {getCount(stat.status)}
             </h2>
 

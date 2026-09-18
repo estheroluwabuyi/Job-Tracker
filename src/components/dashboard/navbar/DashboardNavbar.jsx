@@ -4,6 +4,7 @@ import { useJob } from "../../../contexts/JobContext";
 import { useLocation } from "react-router-dom";
 import { AnimatePresence, motion } from "framer-motion";
 import AddApplicationButton from "./AddApplicationButton";
+import DashboardHeaderSkeleton from "../../skeletons/DashboardHeaderSkeleton";
 
 const pageContent = {
   "/applications": {
@@ -26,7 +27,7 @@ const pageContent = {
 
 export default function DashboardNavbar() {
   const { user } = useAuth();
-  const { jobData } = useJob();
+  const { jobData, loading } = useJob();
 
   const hasApplications = jobData.length > 0;
 
@@ -49,24 +50,28 @@ export default function DashboardNavbar() {
           }}
         >
           {isDashboard ? (
-            <>
-              <h1 className="text-[1.55rem] sm:text-[2.5rem] gap-5 font-bold flex items-center tracking-tight font-monda">
-                {hasApplications
-                  ? `Welcome back, ${user.user_metadata.name}`
-                  : `Welcome, ${user.user_metadata.name}`}
+            loading ? (
+              <DashboardHeaderSkeleton />
+            ) : (
+              <>
+                <h1 className="text-[1.55rem] sm:text-[2.5rem] gap-5 font-bold flex items-center tracking-tight font-manrope">
+                  {hasApplications
+                    ? `Welcome back, ${user.user_metadata.name}`
+                    : `Welcome, ${user.user_metadata.name}`}
 
-                <LuPartyPopper className="text-primary -mt-2 text-[20px] sm:text-[35px]" />
-              </h1>
+                  <LuPartyPopper className="text-primary -mt-2 text-[20px] sm:text-[35px]" />
+                </h1>
 
-              <p className="mt-2 text-[1.2rem] sm:text-[1.4rem] text-text-secondary/70 xs:text-nowrap">
-                {hasApplications
-                  ? "Here's a quick look at your job search"
-                  : "Let's get your job search organized"}
-              </p>
-            </>
+                <p className="mt-2 text-[1.2rem] sm:text-[1.4rem] text-text-secondary/70 xs:text-nowrap">
+                  {hasApplications
+                    ? "Here's a quick look at your job search"
+                    : "Let's get your job search organized"}
+                </p>
+              </>
+            )
           ) : (
             <>
-              <h1 className="text-[1.55rem] sm:text-[2.5rem] font-bold tracking-tight font-monda">
+              <h1 className="text-[1.55rem] sm:text-[2.5rem] font-bold tracking-tight font-manrope">
                 {page?.title}
               </h1>
 

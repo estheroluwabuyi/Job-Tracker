@@ -1,7 +1,29 @@
-@import url("https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Monda:wght@400..700&family=Rubik:ital,wght@0,300..900;1,300..900&display=swap");
-
 @custom-variant dark (&:where(.dark, .dark *));
 @import "tailwindcss";
+
+@font-face {
+  font-family: "Inter";
+  src: url("/fonts/Inter/Inter-VariableFont_wght.ttf") format("truetype");
+  font-weight: 100 900;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Manrope";
+  src: url("/fonts/Manrope/Manrope-VariableFont_wght.ttf") format("truetype");
+  font-weight: 200 800;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Rubik";
+  src: url("/fonts/Rubik/Rubik-VariableFont_wght.ttf") format("truetype");
+  font-weight: 300 900;
+  font-style: normal;
+  font-display: swap;
+}
 
 @theme {
   /* ====  BRAND ===== */
@@ -20,6 +42,7 @@
   --font-inter: "Inter", sans-serif;
   --font-rubik: "Rubik", sans-serif;
   --font-monda: "Monda", sans-serif;
+  --font-manrope: "Manrope", sans-serif;
 
   /* ==== TEXT ====== */
   --color-text: var(--color-text);

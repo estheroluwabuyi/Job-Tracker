@@ -13,7 +13,7 @@ export default function Hero() {
           animate={{ x: 0, opacity: 1 }}
           transition={{ duration: 0.8, ease: "easeOut", delay: 0.2 }}
         >
-          <h1 className=" text-[2rem] ss:text-[2.5rem] sm:text-[3rem] md:text-[4rem] lg:text-[4.5rem] font-bold text-primary leading-tight capitalize font-monda">
+          <h1 className=" text-[2rem] ss:text-[2.5rem] sm:text-[3rem] md:text-[4rem] lg:text-[4.5rem] font-bold text-primary leading-tight capitalize font-manrope">
             Track every application. <br />
             Stay calm through the process.
           </h1>

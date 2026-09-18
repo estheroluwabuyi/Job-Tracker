@@ -9,7 +9,7 @@ import {
 export const stats = [
   {
     label: "Applied",
-    status: null,
+    status: "Applied",
     icon: LuBriefcaseBusiness,
     bg: "bg-sky-500/5",
     iconBg: "bg-sky-500/10",

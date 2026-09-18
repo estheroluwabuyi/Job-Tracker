@@ -102,7 +102,7 @@ function NavBar() {
                 key={link.label}
                 to={link.to}
                 className={({ isActive }) =>
-                  `relative font-monda text-[1.5rem] lg:text-[1.7rem] font-medium transition-colors duration-300 ${
+                  `relative font-manrope text-[1.5rem] lg:text-[1.7rem] font-medium transition-colors duration-300 ${
                     isActive
                       ? "text-primary"
                       : "text-text/80 hover:text-primary"
@@ -136,7 +136,7 @@ function NavBar() {
           <div className="hidden lg:flex items-center gap-8">
             <Link
               to="/login"
-              className="text-[1.5rem] lg:text-[1.7rem] font-medium text-primary hover:text-text/80 transition-colors font-monda duration-500 tracking-wide"
+              className="text-[1.5rem] lg:text-[1.7rem] font-medium text-primary hover:text-text/80 transition-colors font-manrope duration-500 tracking-wide"
             >
               Log In
             </Link>
@@ -207,7 +207,7 @@ function NavBar() {
                       to={link.to}
                       onClick={() => setMobileMenuOpen(false)}
                       className={({ isActive }) =>
-                        `text-[1.7rem] font-monda font-medium transition-colors duration-300 ${
+                        `text-[1.7rem] font-manrope font-medium transition-colors duration-300 ${
                           isActive
                             ? "text-primary"
                             : "text-text/80 hover:text-primary"

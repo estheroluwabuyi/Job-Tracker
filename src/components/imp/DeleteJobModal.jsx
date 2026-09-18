@@ -17,7 +17,7 @@ function DeleteJobModal() {
         onClick={(e) => e.target === e.currentTarget && cancelDelete()}
       >
         <div className="bg-white rounded-3xl p-8 shadow-2xl max-w-md w-full">
-          <h3 className="text-[1.8rem] font-monda font-bold mb-4">
+          <h3 className="text-[1.8rem] font-manrope font-bold mb-4">
             Delete Application
           </h3>
 

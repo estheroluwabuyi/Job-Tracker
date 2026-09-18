@@ -44,7 +44,7 @@ function Header() {
   return (
     <>
       <section className="bg-blue flex justify-between items-center p-8 rounded-t-3xl relative z-1000">
-        <h1 className="text-[2rem] font-semibold tracking-wide uppercase font-monda">
+        <h1 className="text-[2rem] font-semibold tracking-wide uppercase font-manrope">
           <span className="xs:hidden text-[1.5rem]">Tracker</span>
           <span className="hidden xs:inline sm:hidden text-[1.7rem] ss:text-[2rem]">
             Job Tracker

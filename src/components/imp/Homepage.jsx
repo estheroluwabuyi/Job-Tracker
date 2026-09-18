@@ -85,7 +85,7 @@ function Homepage() {
             className="w-full xs:min-w-[280px] max-w-[320px] shadow-xl bg-white rounded-3xl p-8 flex flex-col h-full"
           >
             <div>
-              <h2 className="mb-3 text-[1.8rem] font-monda font-bold tracking-wide">
+              <h2 className="mb-3 text-[1.8rem] font-manrope font-bold tracking-wide">
                 {job.position}
               </h2>
               <span

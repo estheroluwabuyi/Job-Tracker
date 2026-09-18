@@ -58,3 +58,52 @@ function RecentApplicationsToolbar({
 }
 
 export default RecentApplicationsToolbar;
+
+// const [filter, setFilter] = useState("All Applications");
+//   const [query, setQuery] = useState("");
+
+//  {filteredJob.length === 0 && (
+//         <div className="flex flex-col items-center justify-center px-6 py-12 text-center">
+//           <div className="mb-4 flex h-20 w-20 items-center justify-center rounded-full bg-muted">
+//             <svg
+//               xmlns="http://www.w3.org/2000/svg"
+//               fill="none"
+//               viewBox="0 0 24 24"
+//               strokeWidth={2}
+//               stroke="currentColor"
+//               className="h-[10rem] w-[10rem] text-text-secondary"
+//             >
+//               <path
+//                 strokeLinecap="round"
+//                 strokeLinejoin="round"
+//                 d="M19.5 14.25v-2.625a3.375 3.375 0 0 0-3.375-3.375h-1.5A3.375 3.375 0 0 1 11.25 4.875v-1.5A3.375 3.375 0 0 0 7.875 0H6.75A3.375 3.375 0 0 0 3.375 3.375v17.25A3.375 3.375 0 0 0 6.75 24h10.125a3.375 3.375 0 0 0 3.375-3.375v-1.5"
+//               />
+//             </svg>
+//           </div>
+
+//           <h3 className="mb-1 text-[2rem] font-medium">
+//             No applications found
+//           </h3>
+
+//           <p className="max-w-sm text-text-secondary/70">
+//             Try adjusting your search or filter to find what you're looking for.
+//           </p>
+//         </div>
+//       )}
+
+// const filteredJob = jobData.slice(0, 5).filter((job) => {
+//   const matchesFilter =
+//     filter === "All Applications" || job.status === filter;
+
+//   const matchPosition = job.position
+//     .trim()
+//     .toLowerCase()
+//     .includes(query.trim().toLowerCase());
+
+//   const matchCompany = job.company
+//     .trim()
+//     .toLowerCase()
+//     .includes(query.trim().toLowerCase());
+
+//   return (matchPosition || matchCompany) && matchesFilter;
+// });
