@@ -7,21 +7,27 @@ import { useJob } from "../contexts/JobContext";
 import DashboardEmptyState from "../components/dashboard/DashboardEmptyState";
 
 function Dashboard() {
-  const { user, signOut } = useAuth();
   const { jobData, loading } = useJob();
+
+  const hasApplications = jobData.length > 0;
 
   return (
     <DashboardLayout>
-      {jobData.length === 0 ? (
-        <div className="px-8">
+      <div className="px-8">
+        {loading ? (
+          <>
+            <DashboardStats />
+            <RecentApplicationsTable />
+          </>
+        ) : hasApplications ? (
+          <>
+            <DashboardStats />
+            <RecentApplicationsTable />
+          </>
+        ) : (
           <DashboardEmptyState />
-        </div>
-      ) : (
-        <div className="px-8">
-          <DashboardStats />
-          <RecentApplicationsTable />
-        </div>
-      )}
+        )}
+      </div>
     </DashboardLayout>
   );
 }
