@@ -21,7 +21,7 @@ function DashboardStats() {
             className={`${stat.bg} border border-border rounded-2xl p-6  flex flex-col justify-center gap-5 relative overflow-hidden`}
           >
             <div className="relative z-10 flex items-center justify-between">
-              <p className="text-[1.8rem] tracking-wide">{stat.label}</p>
+              <p className="text-[1.7rem] tracking-wide">{stat.label}</p>
 
               <div
                 className={`rounded-xl p-2 ${stat.iconBg} ${stat.iconColor} flex items-center justify-center`}
@@ -30,7 +30,7 @@ function DashboardStats() {
               </div>
             </div>
 
-            <h2 className="relative z-10 text-[2.7rem] font-manrope font-bold">
+            <h2 className="relative z-10 text-[2rem] sm:text-[2.5rem] font-manrope font-bold">
               {getCount(stat.status)}
             </h2>
 

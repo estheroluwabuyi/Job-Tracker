@@ -12,7 +12,7 @@ function RecentApplicationsTable() {
   return (
     <section className="py-4 overflow-x-hidden">
       <div className="flex items-center justify-between mb-4">
-        <h2 className="text-[1.5rem] sm:text-[2rem] font-medium tracking-tight font-manrope">
+        <h2 className="text-[1.5rem] sm:text-[1.8rem] font-medium tracking-tight font-manrope">
           Recent Applications
         </h2>
 
@@ -28,7 +28,7 @@ function RecentApplicationsTable() {
         className="w-full border-collapse bg-bg "
         style={{ boxShadow: "rgba(0, 0, 0, 0.16) 0px 1px 4px" }}
       >
-        <thead className="text-left text-text-secondary border-b border-border text-[1.3rem] sm:text-[1.7rem] table-fixed font-semibold font-manrope">
+        <thead className="text-left text-text-secondary border-b border-border sm:text-[1.5rem] table-fixed font-semibold font-manrope">
           <tr>
             <th className="w-[25%] px-8 py-6 ">Company</th>
             <th className="w-[25%] px-8 py-6 ">Position</th>
@@ -38,7 +38,7 @@ function RecentApplicationsTable() {
           </tr>
         </thead>
 
-        <tbody className="text-[1rem] sm:text-[1.5rem]">
+        <tbody className="text-[1rem] sm:text-[1.4rem]">
           {loading ? (
             <TableSkeleton />
           ) : (
