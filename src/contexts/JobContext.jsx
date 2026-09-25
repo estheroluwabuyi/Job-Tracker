@@ -15,7 +15,10 @@ const initialForm = {
 const JobContext = createContext();
 
 function JobProvider({ children }) {
-  const { user } = useAuth();
+  // const { user } = useAuth();
+  const { user, loading: authLoading } = useAuth();
+  const userId = user?.id;
+
   const [showModal, setShowModal] = useState(false);
   const [isEditing, setIsEditing] = useState(false);
   const [jobForm, setJobForm] = useState(initialForm);
@@ -27,30 +30,71 @@ function JobProvider({ children }) {
   const [jobToDelete, setJobToDelete] = useState(null);
   const [isDeleting, setIsDeleting] = useState(false);
 
+  // useEffect(() => {
+  //   if (user) {
+  //     fetchJobs();
+  //   } else {
+  //     setJobData([]);
+  //     setLoading(false);
+  //   }
+  // }, [user]);
+  // useEffect(() => {
+  //   if (authLoading) return;
+
+  //   if (user) {
+  //     fetchJobs();
+  //   } else {
+  //     setJobData([]);
+  //     setLoading(false);
+  //   }
+  // }, [user, authLoading]);
+
   useEffect(() => {
-    if (user) {
+    if (authLoading) return;
+
+    if (userId) {
       fetchJobs();
     } else {
       setJobData([]);
       setLoading(false);
     }
-  }, [user]);
+  }, [userId, authLoading]);
+
+  // const fetchJobs = async () => {
+  //   if (!user) return;
+
+  //   setLoading(true);
+  //   const { data, error } = await supabase
+  //     .from("jobs")
+  //     .select("*")
+  //     .eq("user_id", user.id) // get only jobs for the logged-in user
+  //     .order("date", { ascending: false }); // most recent first
+
+  //   if (error) {
+  //     console.error("Error fetching jobs:", error);
+  //   } else {
+  //     setJobData(data || []);
+  //   }
+  //   setLoading(false);
+  // };
 
   const fetchJobs = async () => {
-    if (!user) return;
+    if (!userId) return;
 
     setLoading(true);
+
     const { data, error } = await supabase
       .from("jobs")
       .select("*")
-      .eq("user_id", user.id) // get only jobs for the logged-in user
-      .order("date", { ascending: false }); // most recent first
+      .eq("user_id", userId)
+      .order("date", { ascending: false });
 
     if (error) {
       console.error("Error fetching jobs:", error);
     } else {
       setJobData(data || []);
     }
+
     setLoading(false);
   };
 

@@ -5,6 +5,7 @@ import DashboardStats from "../components/dashboard/DashboardStats";
 import RecentApplicationsTable from "../components/dashboard/RecentApplicationsTable";
 import { useJob } from "../contexts/JobContext";
 import DashboardEmptyState from "../components/dashboard/DashboardEmptyState";
+import Loader from "../components/ui/Loader";
 
 function Dashboard() {
   const { jobData, loading } = useJob();
@@ -15,10 +16,7 @@ function Dashboard() {
     <DashboardLayout>
       <div className="px-8">
         {loading ? (
-          <>
-            <DashboardStats />
-            <RecentApplicationsTable />
-          </>
+          <Loader />
         ) : hasApplications ? (
           <>
             <DashboardStats />

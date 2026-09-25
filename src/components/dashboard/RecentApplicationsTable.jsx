@@ -7,8 +7,6 @@ import StatusBadge from "../ui/StatusBadge";
 function RecentApplicationsTable() {
   const { jobData, loading } = useJob();
 
-  console.log(jobData);
-
   return (
     <section className="py-4 overflow-x-hidden">
       <div className="flex items-center justify-between mb-4">
