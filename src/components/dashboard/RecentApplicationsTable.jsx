@@ -3,9 +3,15 @@ import { useJob } from "../../contexts/JobContext";
 import { formatDateForDisplay } from "../../helper/formatDate";
 import TableSkeleton from "../skeletons/TableSkeleton";
 import StatusBadge from "../ui/StatusBadge";
+import { defaultJobs } from "../../data/defaultJobs";
 
 function RecentApplicationsTable() {
   const { jobData, loading } = useJob();
+  console.log("jobData in RecentApplicationsTable:", jobData);
+
+  const recentApplications = defaultJobs.slice(0, 5);
+
+  // const recentApplications = jobData.slice(0, 5);
 
   return (
     <section className="py-4 overflow-x-hidden">
@@ -40,21 +46,32 @@ function RecentApplicationsTable() {
           {loading ? (
             <TableSkeleton />
           ) : (
-            jobData.slice(0, 5).map((job) => (
+            recentApplications.map((job) => (
               <tr
                 key={job.id}
                 className="border-b border-border last:border-b-0"
               >
-                <td className="px-8 py-5">{job.company}</td>
+                {/* <td className="px-8 py-5">
+                  <span></span>
+                  <span> {job.company}</span>
+                </td> */}
+                <td className="px-8 py-5">
+                  <div className="flex items-center gap-4">
+                    {/* company logo */}
+                    <span>{job.company}</span>
+                  </div>
+                </td>
                 <td className="px-8 py-5">{job.position}</td>
 
                 <td className="px-8 py-5">
                   <StatusBadge status={job.status} />
                 </td>
 
-                <td className="px-8 py-5">{formatDateForDisplay(job.date)}</td>
+                <td className="px-8 py-5">
+                  {formatDateForDisplay(job.date) || "N/A"}
+                </td>
                 <td className="px-8 py-4">
-                  {formatDateForDisplay(job.created_at)}
+                  {formatDateForDisplay(job.created_at) || "N/A"}
                 </td>
               </tr>
             ))
