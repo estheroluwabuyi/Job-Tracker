@@ -66,7 +66,7 @@ export const defaultJobs = [
   },
   {
     position: "Web Engineer",
-    company: "Twitter",
+    company: "X",
     status: "No Response",
     dateApplied: "2023-05-01",
     notes: "Applied but never heard back. I've decided to move on.",

@@ -4,14 +4,11 @@ import { formatDateForDisplay } from "../../helper/formatDate";
 import TableSkeleton from "../skeletons/TableSkeleton";
 import StatusBadge from "../ui/StatusBadge";
 import { defaultJobs } from "../../data/defaultJobs";
+import CompanyLogo from "./applications/CompanyLogo";
 
 function RecentApplicationsTable() {
   const { jobData, loading } = useJob();
-  console.log("jobData in RecentApplicationsTable:", jobData);
-
-  const recentApplications = defaultJobs.slice(0, 5);
-
-  // const recentApplications = jobData.slice(0, 5);
+  const recentApplications = jobData.slice(0, 5);
 
   return (
     <section className="py-4 overflow-x-hidden">
@@ -29,10 +26,10 @@ function RecentApplicationsTable() {
       </div>
 
       <table
-        className="w-full border-collapse bg-bg "
+        className="w-full border-collapse bg-bg font-manrope"
         style={{ boxShadow: "rgba(0, 0, 0, 0.16) 0px 1px 4px" }}
       >
-        <thead className="text-left text-text-secondary border-b border-border sm:text-[1.5rem] table-fixed font-semibold font-manrope">
+        <thead className="text-left text-text-secondary border-b border-border sm:text-[1.5rem] table-fixed font-semibold ">
           <tr>
             <th className="w-[25%] px-8 py-6 ">Company</th>
             <th className="w-[25%] px-8 py-6 ">Position</th>
@@ -42,28 +39,24 @@ function RecentApplicationsTable() {
           </tr>
         </thead>
 
-        <tbody className="text-[1rem] sm:text-[1.4rem]">
+        <tbody className="text-[1rem] sm:text-[1.4rem]  font-medium">
           {loading ? (
             <TableSkeleton />
           ) : (
-            recentApplications.map((job) => (
+            recentApplications.map((job, index) => (
               <tr
-                key={job.id}
+                key={index}
                 className="border-b border-border last:border-b-0"
               >
-                {/* <td className="px-8 py-5">
-                  <span></span>
-                  <span> {job.company}</span>
-                </td> */}
                 <td className="px-8 py-5">
                   <div className="flex items-center gap-4">
-                    {/* company logo */}
+                    <CompanyLogo company={job.company} />
                     <span>{job.company}</span>
                   </div>
                 </td>
                 <td className="px-8 py-5">{job.position}</td>
 
-                <td className="px-8 py-5">
+                <td className="px-8 py-5 text-nowrap">
                   <StatusBadge status={job.status} />
                 </td>
 
