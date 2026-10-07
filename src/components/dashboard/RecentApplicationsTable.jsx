@@ -4,7 +4,7 @@ import { formatDateForDisplay } from "../../helper/formatDate";
 import TableSkeleton from "../skeletons/TableSkeleton";
 import StatusBadge from "../ui/StatusBadge";
 import { defaultJobs } from "../../data/defaultJobs";
-import CompanyLogo from "./applications/CompanyLogo";
+import CompanyLogo from "../ui/CompanyLogo";
 
 function RecentApplicationsTable() {
   const { jobData, loading } = useJob();
@@ -60,10 +60,10 @@ function RecentApplicationsTable() {
                   <StatusBadge status={job.status} />
                 </td>
 
-                <td className="px-8 py-5">
+                <td className="px-8 py-5 text-nowrap">
                   {formatDateForDisplay(job.date) || "N/A"}
                 </td>
-                <td className="px-8 py-4">
+                <td className="px-8 py-4 text-nowrap">
                   {formatDateForDisplay(job.created_at) || "N/A"}
                 </td>
               </tr>

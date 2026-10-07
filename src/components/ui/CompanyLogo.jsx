@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { getCompanyLogo } from "../../../helper/getCompanyLogo";
+import { getCompanyLogo } from "../../helper/getCompanyLogo";
 
 function CompanyLogo({ company }) {
   const [logo, setLogo] = useState(null);
