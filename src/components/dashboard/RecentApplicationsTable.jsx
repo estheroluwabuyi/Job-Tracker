@@ -5,6 +5,7 @@ import TableSkeleton from "../skeletons/TableSkeleton";
 import StatusBadge from "../ui/StatusBadge";
 import { defaultJobs } from "../../data/defaultJobs";
 import CompanyLogo from "../ui/CompanyLogo";
+import CardsHeader from "../ui/CardsHeader";
 
 function RecentApplicationsTable() {
   const { jobData, loading } = useJob();
@@ -13,14 +14,10 @@ function RecentApplicationsTable() {
   return (
     <section className="py-4 overflow-x-hidden">
       <div className="flex items-center justify-between mb-4">
-        <div>
-          <h2 className="text-[1.5rem] sm:text-[1.8rem] font-semibold tracking-tight font-manrope">
-            Recent Applications
-          </h2>
-          <p className="mt-2 text-[1.2rem] sm:text-[1.4rem] text-text-secondary/70 xs:text-nowrap">
-            Your latest job applications
-          </p>
-        </div>
+        <CardsHeader
+          title="Recent Applications"
+          subtitle="Your latest job applications"
+        />
 
         <Link
           to="/applications"
