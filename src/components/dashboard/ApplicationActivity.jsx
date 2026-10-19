@@ -32,7 +32,7 @@ function ApplicationActivity() {
 
       <div className="flex items-center gap-3 mt-4">
         <span className="font-manrope text-[3.5rem] font-bold">18</span>
-        <span className="font-inter text-text-secondary/80 text-[1.2rem] sm:text-[1.5rem] tracking-wide mt-3">
+        <span className="font-inter text-text-secondary/80 text-[1.2rem] sm:text-[1.5rem] tracking-wide mt-5.5">
           applications
         </span>
       </div>
