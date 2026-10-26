@@ -13,7 +13,7 @@ function RecentApplicationsTable() {
   const recentApplications = jobData.slice(0, 5);
 
   return (
-    <section className="py-4 overflow-x-hidden">
+    <section className="py-4 overflow-x-hidden mt-6">
       <div className="flex items-center justify-between mb-4">
         <SectionsHeader
           title="Recent Applications"
@@ -42,7 +42,7 @@ function RecentApplicationsTable() {
           </tr>
         </thead>
 
-        <tbody className="text-[1rem] sm:text-[1.4rem]  font-medium">
+        <tbody className="text-[1rem] sm:text-[1.4rem] font-medium">
           {loading ? (
             <TableSkeleton />
           ) : (
