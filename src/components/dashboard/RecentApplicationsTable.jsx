@@ -5,6 +5,8 @@ import TableSkeleton from "../skeletons/TableSkeleton";
 import StatusBadge from "../ui/StatusBadge";
 import { defaultJobs } from "../../data/defaultJobs";
 import CompanyLogo from "../ui/CompanyLogo";
+import { IoIosArrowForward } from "react-icons/io";
+import SectionsHeader from "../ui/SectionHeader";
 
 function RecentApplicationsTable() {
   const { jobData, loading } = useJob();
@@ -13,20 +15,16 @@ function RecentApplicationsTable() {
   return (
     <section className="py-4 overflow-x-hidden">
       <div className="flex items-center justify-between mb-4">
-        <div>
-          <h2 className="text-[1.5rem] sm:text-[1.8rem] font-semibold tracking-tight font-manrope">
-            Recent Applications
-          </h2>
-          <p className="mt-2 text-[1.2rem] sm:text-[1.4rem] text-text-secondary/70 xs:text-nowrap">
-            Your latest job applications
-          </p>
-        </div>
+        <SectionsHeader
+          title="Recent Applications"
+          subtitle="Your latest job applications"
+        />
 
         <Link
           to="/applications"
-          className="rounded-lg px-8 py-3 sm:text-[1.5rem] font-medium text-primary transition-colors hover:bg-primary/10"
+          className="rounded-lg px-8 py-3 sm:text-[1.5rem] font-medium text-primary transition-colors hover:bg-primary/10 flex items-center gap-2"
         >
-          View All <IoIosArrowForward />
+          View All <IoIosArrowForward size={17} />
         </Link>
       </div>
 

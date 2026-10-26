@@ -7,6 +7,7 @@ import { useJob } from "../contexts/JobContext";
 import DashboardEmptyState from "../components/dashboard/DashboardEmptyState";
 import Loader from "../components/ui/Loader";
 import ApplicationActivity from "../components/dashboard/ApplicationActivity";
+import ApplicationStatus from "../components/dashboard/ApplicationStatus";
 
 function Dashboard() {
   const { jobData, loading } = useJob();
@@ -21,8 +22,13 @@ function Dashboard() {
         ) : hasApplications ? (
           <>
             <DashboardStats />
-            {/* <RecentApplicationsTable /> */}
-            <ApplicationActivity />
+
+            <div className="mt-6 grid grid-cols-1 gap-6 lg:grid-cols-2">
+              <ApplicationActivity />
+              <ApplicationStatus />
+            </div>
+
+            <RecentApplicationsTable />
           </>
         ) : (
           <DashboardEmptyState />
