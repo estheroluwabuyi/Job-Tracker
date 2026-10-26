@@ -100,7 +100,7 @@ function ApplicationActivity() {
 
   return (
     <div className="bg-bg p-7 rounded-[10px]">
-      <div className="flex items-center justify-between gap-4">
+      <div className="flex flex-col sm:flex-row  items-center justify-between gap-4">
         <CardsHeader
           title="Application Activity"
           subtitle="How much have you been applying?"
@@ -147,7 +147,7 @@ function ApplicationActivity() {
             <CartesianGrid
               strokeDasharray="3 3"
               vertical={false}
-              stroke="var(--border)"
+              stroke="#e5e7eb"
             />
             <XAxis
               dataKey="date"
