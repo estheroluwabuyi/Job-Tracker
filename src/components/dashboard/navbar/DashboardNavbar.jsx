@@ -62,7 +62,7 @@ export default function DashboardNavbar() {
                   <LuPartyPopper className="text-primary -mt-2 text-[20px] sm:text-[35px]" />
                 </h1>
 
-                <p className="mt-2 text-[1.2rem] sm:text-[1.4rem] text-text-secondary/70 xs:text-nowrap">
+                <p className="mt-2 text-[1.2rem] sm:text-[1.4rem] text-text-secondary/70 xs:text-nowrap font-medium">
                   {hasApplications
                     ? "Here's a quick look at your job search"
                     : "Let's get your job search organized"}
