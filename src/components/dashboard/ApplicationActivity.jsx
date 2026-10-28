@@ -149,13 +149,14 @@ function ApplicationActivity() {
               vertical={false}
               stroke="#e5e7eb"
             />
+
             <XAxis
               dataKey="date"
               axisLine={false}
               tickLine={false}
-              tick={{ fontSize: 12 }}
+              tick={{ fontSize: 11 }}
               interval="preserveStartEnd"
-              minTickGap={16}
+              minTickGap={15}
             />
             <YAxis
               allowDecimals={false}

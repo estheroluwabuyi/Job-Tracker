@@ -8,7 +8,7 @@ import {
 
 export const stats = [
   {
-    label: "Applied",
+    label: "Total Applications",
     status: "Applied",
     icon: LuBriefcaseBusiness,
     bg: "bg-sky-500/5",
